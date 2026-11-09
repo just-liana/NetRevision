@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONO — Studio créatif</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f6f2;
+      color: #222;
+    }
+
+    header {
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      border-bottom: 1px solid #e8e6df;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 13px;
+      transition: color .3s;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      padding: 120px 8% 70px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1s ease;
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 400;
+      letter-spacing: -7px;
+      line-height: 1.05;
+      max-width: 900px;
+    }
+
+    h1 span {
+      color: #aaa;
+    }
+
+    .hero p {
+      margin-top: 30px;
+      max-width: 420px;
+      line-height: 1.8;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 16px 25px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: #777;
+      transform: translateY(-3px);
+    }
+
+    .visual {
+      margin: 40px 8% 100px;
+      height: 480px;
+      overflow: hidden;
+      background: #dedbd3;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s;
+    }
+
+    .visual:hover img {
+      transform: scale(1.03);
+    }
+
+    .about {
+      padding: 100px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      border-top: 1px solid #e5e3dc;
+    }
+
+    .about h2 {
+      font-size: 42px;
+      font-weight: 400;
+      letter-spacing: -2px;
+    }
+
+    .about p {
+      color: #777;
+      font-size: 14px;
+      line-height: 2;
+      max-width: 450px;
+    }
+
+    .contact {
+      background: #222;
+      color: white;
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(35px, 6vw, 65px);
+      font-weight: 400;
+      letter-spacing: -3px;
+    }
+
+    .contact p {
+      color: #aaa;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .contact a {
+      display: inline-block;
+      color: white;
+      margin-top: 35px;
+      text-decoration: none;
+      border-bottom: 1px solid #888;
+      padding-bottom: 8px;
+    }
+
+    footer {
+      padding: 30px 8%;
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      font-size: 11px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 700px) {
+      header {
+        padding: 0 6%;
+      }
+
+      nav {
+        gap: 13px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 90px 6% 50px;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      .visual {
+        margin: 20px 6% 60px;
+        height: 280px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 70px 6%;
+      }
+
+      .about h2 {
+        font-size: 34px;
+      }
+
+      .contact {
+        padding: 75px 6%;
+      }
+
+      footer {
+        padding: 25px 6%;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">MONO®</div>
+
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="tag">STUDIO CRÉATIF — 2026</div>
+
+      <h1>
+        Moins,<br>
+        <span>mais mieux.</span>
+      </h1>
+
+      <p>
+        Nous créons des expériences digitales
+        qui donnent du sens à chaque détail.
+        L'élégance se trouve dans la simplicité.
+      </p>
+
+      <a href="#apropos" class="btn">
+        Découvrir le studio ↗
+      </a>
+    </section>
+
+    <section class="visual">
+      <img
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600"
+        alt="Architecture intérieure minimaliste">
+    </section>
+
+    <section class="about" id="apropos">
+      <h2>
+        La simplicité<br>
+        est une signature.
+      </h2>
+
+      <p>
+        Notre philosophie est simple :
+        aller à l'essentiel.
+
+        Nous imaginons des univers visuels
+        modernes, harmonieux et intemporels.
+        Chaque couleur, chaque espace et
+        chaque élément possède une raison d'être.
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Parlons de votre projet.</h2>
+
+      <p>
+        Une idée, une ambition ou simplement
+        une envie de créer ?
+      </p>
+
+      <a href="mailto:bonjour@mono.fr">
+        Nous contacter ↗
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 MONO STUDIO</span>
+    <span>Fait avec simplicité.</span>
+  </footer>
+
+</body>
+</html>
