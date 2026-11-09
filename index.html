@@ -1,121 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NetRev</title>
-  <style>
-    /* Styles généraux */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
+    <style>
+        /* Styles généraux pour réinitialiser les marges */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* Corps de page pour caler le footer en bas */
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      color: #333;
-    }
+        /* Style de la barre de navigation */
+        .navbar {
+            background-color: #006600; /* Votre couleur verte */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
 
-    /* ========== BARRE DE NAV ========== */
-    header {
-      background-color: #006600; /* Fond vert demandé */
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+        /* Style du logo / titre du site */
+        .nav-logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    header .logo {
-      color: #ffffff;
-      font-size: 24px;
-      font-weight: bold;
-    }
+        /* Liste des liens de navigation */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px; /* Espace entre les mots */
+        }
 
-    header nav {
-      display: flex;
-      gap: 25px; /* Espace entre les liens */
-    }
+        /* Style de base des mots (liens) */
+        .nav-links a {
+            color: #ffffff; /* Écrit en blanc */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease; /* Transition fluide pour le survol */
+        }
 
-    header nav a {
-      color: #ffffff; /* Écrit en blanc */
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase; /* Force les majuscules si besoin */
-      transition: color 0.3s ease; /* Effet de transition fluide */
-    }
+        /* Effet au passage de la souris (Hover) */
+        .nav-links a:hover {
+            color: #a3ffa3; /* Nouvelle couleur au survol (vert clair) */
+        }
 
-    /* Changement de couleur au passage de la souris */
-    header nav a:hover {
-      color: #a3ffa3; /* Devient vert clair au survol */
-    }
+        /* Style pour le contenu principal de la page */
+        .content {
+            padding: 40px;
+            text-align: center;
+            color: #333333;
+        }
 
-    /* ========== DESCRIPTION DE NETREV ========== */
-    main {
-      flex: 1; /* Prend l'espace restant pour pousser le footer en bas */
-      padding: 60px 40px;
-      text-align: center;
-    }
-
-    main h1 {
-      font-size: 40px;
-      color: #006600;
-      margin-bottom: 20px;
-    }
-
-    main p {
-      font-size: 18px;
-      color: #666;
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      background-color: #f4f4f4;
-      padding: 20px 40px;
-      border-top: 1px solid #ddd;
-    }
-
-    footer p {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
+        .content h1 {
+            margin-bottom: 15px;
+            color: #006600;
+        }
+    </style>
 </head>
-
 <body>
-  
-  <!--==========BARRE DE NAV==========-->
-  <header>
-    <div class="logo">NetRev®</div>
-    <nav>
-      <a href="#">Accueil</a>
-      <a href="#">COURS</a>
-      <a href="#">QUIZZ</a>
-      <a href="#">LABS</a>
-    </nav>
-  </header>
-  <!--==========FIN DE LA BARRE DE NAV==========-->
 
-  <!--==========DESCRIPTION DE NETREV==========-->
-  <main>
-      <h1>NetRev</h1>
-      <p>blablabla blablablabla</p>
-  </main>
-  <!--==========FIN DE LA DESCRIPTION DE NETREV==========-->
-  
-  <!--==========FOOTER==========-->
-  <footer>
-    <p><span>© 2026 NetRev</span> <span>Réviser avec simplicité.</span></p>
-  </footer>
-  <!--==========FIN DU FOOTER==========-->
+    <!-- Barre de navigation -->
+    <nav class="navbar">
+        <div class="nav-logo">MonPlateau</div>
+        <ul class="nav-links">
+            <li><a href="#cours">COURS</a></li>
+            <li><a href="#quizz">QUIZZ</a></li>
+            <li><a href="#labs">LABS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenu de la page -->
+    <main class="content">
+        <h1>Bienvenue sur la plateforme</h1>
+        <p>Sélectionnez une option dans la barre de navigation ci-dessus.</p>
+    </main>
 
 </body>
 </html>
