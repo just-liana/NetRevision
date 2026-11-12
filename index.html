@@ -1095,4 +1095,113 @@ body {
 
 </main>
 
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="nr-footer">
+
+    <!-- PARTIE NOIRE -->
+
+    <div class="footer-left">
+
+        <p class="nr-eyebrow">
+            NETREVISION® — LE SAVOIR EN MOUVEMENT
+        </p>
+
+        <h2>
+            LET'S MAKE<br>
+            <span>PROGRESS.</span>
+        </h2>
+
+        <a href="#cours" class="footer-cta">
+            COMMENCER ↗
+        </a>
+
+    </div>
+
+
+    <!-- PARTIE VERTE -->
+
+    <div class="footer-right">
+
+        <div class="footer-newsletter">
+
+            <p class="nr-eyebrow">
+                RESTE DANS LA BOUCLE
+            </p>
+
+            <h3>UNE DOSE DE SAVOIR ?</h3>
+
+            <p>
+                Apprendre aujourd'hui, réussir demain.
+            </p>
+
+        </div>
+
+        <div class="footer-visual">
+
+            <div class="footer-book">📚</div>
+
+            <strong>APPRENDS.</strong>
+            <strong>ÉVOLUE.</strong>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT MENU MOBILE
+===================================== -->
+
+<script>
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+function closeMenu() {
+    navLinks.classList.remove("active");
+
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+}
+
+menuToggle.addEventListener("click", () => {
+
+    const isOpen = navLinks.classList.toggle("active");
+
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Fermer le menu" : "Ouvrir le menu"
+    );
+
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 700) {
+        closeMenu();
+    }
+});
+
+</script>
+
+</body>
+</html>
+
    
