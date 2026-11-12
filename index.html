@@ -1,1207 +1,800 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NetRevision — Apprends. Teste. Progresse.</title>
-
-<style>
-/* =====================================
-   1. VARIABLES ET RESET
-===================================== */
-
-:root {
-    --black: #171719;
-    --green: #006663;
-    --mint: #a3ffa3;
-    --yellow: #ffd629;
-    --white: #ffffff;
-    --background: #f4f8f7;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', 'Segoe UI', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--background);
-    color: var(--black);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* =====================================
-   2. NAVIGATION
-===================================== */
-
-.navbar {
-    width: 100%;
-    height: 65px;
-    padding: 0 4.5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--black);
-    border-bottom: 1px solid #ffffff25;
-    position: relative;
-    z-index: 100;
-}
-
-.nav-logo {
-    color: var(--mint);
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: -2px;
-    text-decoration: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 800;
-    transition: .25s;
-}
-
-.nav-links a:hover {
-    color: var(--mint);
-}
-
-.nav-links .btn {
-    display: inline-block;
-    border: none;
-    background: var(--yellow);
-    color: var(--black);
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.nav-links .btn:hover {
-    background: var(--mint);
-    transform: translateY(-3px);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--mint);
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* =====================================
-   3. HERO PRINCIPAL
-===================================== */
-
-.home-hero {
-    height: 355px;
-    position: relative;
-    z-index: 2;
-    background: var(--black);
-    color: white;
-    text-align: center;
-    padding: 20px 20px 0;
-    clip-path: polygon(0 0, 100% 0, 100% 62%, 0 100%);
-}
-
-.home-eyebrow {
-    color: var(--mint);
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.home-hero h1 {
-    font-size: clamp(55px, 7vw, 92px);
-    font-weight: 1000;
-    line-height: .9;
-    letter-spacing: -5px;
-    margin-bottom: 8px;
-}
-
-.home-hero h1 span {
-    color: var(--mint);
-    font-style: italic;
-}
-
-.home-description {
-    color: white;
-    font-size: 21px;
-    margin-bottom: 15px;
-}
-
-.home-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--yellow);
-    color: var(--black);
-    min-width: 275px;
-    height: 55px;
-    padding: 0 25px;
-    border: 1px solid var(--black);
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 900;
-    transition: .3s;
-}
-
-.home-cta:hover {
-    background: var(--mint);
-    transform: translateY(-4px);
-}
-
-/* Décorations du hero */
-
-.hero-star {
-    position: absolute;
-    left: 9%;
-    top: 55px;
-    color: var(--mint);
-    font-size: 110px;
-    font-weight: bold;
-    transform: rotate(15deg);
-}
-
-.hero-rays {
-    position: absolute;
-    right: 13%;
-    top: 35px;
-    color: var(--mint);
-    font-size: 85px;
-    transform: rotate(20deg);
-}
-
-/* =====================================
-   4. SECTION APPRENTISSAGE
-===================================== */
-
-.learning-section {
-    position: relative;
-    z-index: 1;
-    padding: 25px 5.7% 35px;
-    margin-top: -1px;
-    background: var(--background);
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 17px;
-}
-
-.section-eyebrow {
-    color: var(--green);
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 3px;
-}
-
-.section-heading h2 {
-    color: var(--black);
-    font-size: clamp(28px, 4vw, 46px);
-    font-weight: 1000;
-    letter-spacing: -2px;
-}
-
-.section-heading h2 span {
-    color: var(--green);
-}
-
-/* =====================================
-   5. CARTES
-===================================== */
-
-.card-container {
-    display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 17px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.card {
-    position: relative;
-    min-height: 170px;
-    padding: 18px 32px;
-    border: 2px solid var(--black);
-    border-radius: 14px;
-    transition: .3s;
-}
-
-.card-form-1,
-.card-form-2 {
-    background: var(--mint);
-    box-shadow: 4px 4px 0 var(--green);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 7px 9px 0 var(--black);
-}
-
-.card-form-1 {
-    grid-column: 1;
-}
-
-.card-form-2 {
-    grid-column: 2;
-}
-
-.card-form-3 {
-    grid-column: 1 / -1;
-    min-height: 105px;
-    padding: 15px 32px;
-    background: var(--black);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Badge */
-
-.badge {
-    display: table;
-    width: fit-content;
-    background: var(--yellow);
-    color: var(--black);
-    padding: 6px 12px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: 900;
-    margin-bottom: 10px;
-}
-
-/* Numéros */
-
-.card-number {
-    display: block;
-    color: var(--green);
-    font-size: 17px;
-    font-weight: 900;
-    margin-bottom: 3px;
-}
-
-.card-form-3 .card-number {
-    color: var(--mint);
-}
-
-/* Titres */
-
-.card h3 {
-    color: var(--black);
-    font-size: 27px;
-    font-weight: 900;
-    margin-bottom: 2px;
-    letter-spacing: -.5px;
-}
-
-.card-form-3 h3 {
-    color: white;
-}
-
-/* Paragraphes */
-
-.card p {
-    color: var(--black);
-    font-size: 18px;
-    line-height: 1.4;
-}
-
-.card-form-3 p {
-    color: white;
-}
-
-/* Boutons des cartes */
-
-.card .btn {
-    display: inline-block;
-    width: fit-content;
-    background: var(--black);
-    color: white;
-    padding: 7px 30px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 900;
-    text-decoration: none;
-    margin-top: 8px;
-    transition: .3s;
-}
-
-.card .btn:hover {
-    background: var(--green);
-    color: var(--mint);
-}
-
-/* Lien de la troisième carte */
-
-.card-form-3 .link {
-    position: absolute;
-    right: 20%;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--mint);
-    text-decoration: none;
-    font-size: 19px;
-    font-weight: 900;
-    border-bottom: 2px solid var(--mint);
-    padding-bottom: 7px;
-}
-
-.card-form-3 .link:hover {
-    color: var(--yellow);
-    border-color: var(--yellow);
-}
-
-/* =====================================
-   6. ILLUSTRATIONS SVG
-===================================== */
-
-.card-illustration {
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    width: 125px;
-    height: 125px;
-}
-
-.card-form-3 .card-illustration {
-    width: 75px;
-    height: 75px;
-    right: 30px;
-    top: 15px;
-}
-
-/* =====================================
-   7. FOOTER
-===================================== */
-
-.nr-footer {
-    width: 100%;
-    min-height: 245px;
-    position: relative;
-    overflow: hidden;
-    background: var(--mint);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-}
-
-/* Fond noir en diagonale */
-
-.nr-footer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--black);
-    clip-path: polygon(
-        0 0,
-        65% 0,
-        42% 100%,
-        0 100%
-    );
-}
-
-/* Partie gauche */
-
-.footer-left {
-    position: relative;
-    z-index: 1;
-    padding: 35px 4%;
-    color: white;
-}
-
-.footer-left .nr-eyebrow {
-    color: var(--mint);
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.footer-left h2 {
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 1000;
-    line-height: .9;
-    letter-spacing: -3px;
-}
-
-.footer-left h2 span {
-    color: var(--mint);
-}
-
-/* Bouton footer */
-
-.footer-cta {
-    position: absolute;
-    left: 60%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 190px;
-    height: 63px;
-    border-radius: 40px;
-    background: var(--yellow);
-    color: var(--black);
-    font-size: 16px;
-    font-weight: 900;
-    text-decoration: none;
-    transition: .3s;
-}
-
-.footer-cta:hover {
-    background: white;
-    transform: translate(-50%, -55%);
-}
-
-/* Partie droite */
-
-.footer-right {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px 4% 35px 0;
-    gap: 15px;
-}
-
-.footer-newsletter {
-    color: var(--black);
-    flex: 1;
-}
-
-.footer-newsletter .nr-eyebrow {
-    color: var(--green);
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.footer-newsletter h3 {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 1000;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-}
-
-.footer-newsletter p {
-    font-size: 17px;
-}
-
-/* Illustration livres */
-
-.footer-visual {
-    border-left: 2px solid var(--green);
-    padding-left: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--green);
-    min-width: 145px;
-}
-
-.footer-book {
-    font-size: 75px;
-    line-height: 1.1;
-    animation: nr-float 3s ease-in-out infinite;
-}
-
-.footer-visual strong {
-    font-size: 23px;
-    font-weight: 1000;
-    text-align: center;
-    line-height: 1.25;
-}
-
-/* Animation */
-
-@keyframes nr-float {
-    0%, 100% {
-        transform: translateY(0) rotate(-3deg);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonPlateau — NetRevision®</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0e100f;
+      --bg-light: #f6f7f5;
+      --mint: #a8f8a4;
+      --yellow: #fbd223;
+      --teal-dark: #0b4a42;
+      --teal-text: #0c584e;
+      --text-white: #ffffff;
+      --text-dark: #111312;
+      --cream: #f4f2ec;
     }
 
-    50% {
-        transform: translateY(-9px) rotate(3deg);
-    }
-}
-
-/* =====================================
-   8. RESPONSIVE TABLETTE
-===================================== */
-
-@media (max-width: 900px) {
-
-    .card-container {
-        grid-template-columns: 1fr 1fr;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .card-illustration {
-        opacity: .7;
-        width: 95px;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .footer-left h2 {
-        font-size: 43px;
+    /* ==================== NAVBAR ==================== */
+    header {
+      background-color: var(--bg-dark);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 20;
     }
 
-    .footer-cta {
-        left: 65%;
-        width: 150px;
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--mint);
+      text-decoration: none;
+      letter-spacing: -0.03em;
     }
 
-    .footer-newsletter h3 {
-        font-size: 25px;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
 
-    .footer-visual {
-        min-width: 110px;
-        padding-left: 15px;
+    nav a.nav-link {
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
 
-    .footer-visual strong {
-        font-size: 18px;
-    }
-}
-
-/* =====================================
-   9. RESPONSIVE MOBILE
-===================================== */
-
-@media (max-width: 700px) {
-
-    /* Navigation */
-
-    .navbar {
-        height: 65px;
-        padding: 0 20px;
+    nav a.nav-link:hover {
+      color: var(--mint);
     }
 
-    .nav-logo {
-        font-size: 28px;
+    .btn-login {
+      background-color: var(--yellow);
+      color: var(--text-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .menu-toggle {
-        display: block;
+    .btn-login:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(251, 210, 35, 0.35);
     }
 
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        padding: 25px;
-        background: var(--black);
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
+    /* ==================== HERO SECTION ==================== */
+    .hero-wrapper {
+      position: relative;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      padding: 36px 24px 120px;
+      text-align: center;
+      overflow: hidden;
     }
 
-    .nav-links.active {
-        display: flex;
+    .hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
     }
 
-    /* Hero */
-
-    .home-hero {
-        height: 340px;
-        padding: 35px 15px 0;
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 82%,
-            0 100%
-        );
+    .hero-subtitle-top {
+      color: var(--mint);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .home-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
     }
 
-    .home-hero h1 {
-        font-size: clamp(38px, 10vw, 58px);
-        letter-spacing: -2px;
-        margin-top: 35px;
+    .hero-title .line-white {
+      display: block;
+      font-size: clamp(44px, 6.2vw, 76px);
+      color: var(--text-white);
     }
 
-    .home-description {
-        font-size: 14px;
-        margin-top: 15px;
+    .hero-title .line-mint {
+      display: block;
+      font-size: clamp(44px, 6.4vw, 78px);
+      color: var(--mint);
+      font-style: italic;
+      transform: skewX(-4deg);
     }
 
-    .home-cta {
-        min-width: 210px;
-        height: 48px;
-        font-size: 13px;
+    .hero-desc {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 28px;
     }
 
-    .hero-star {
-        font-size: 50px;
-        left: 3%;
-        top: 120px;
-        opacity: .5;
+    .btn-cta-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--yellow);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 15px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease;
     }
 
-    .hero-rays {
-        font-size: 40px;
-        right: 4%;
-        top: 110px;
-        opacity: .5;
+    .btn-cta-hero:hover {
+      transform: translateY(-2px);
     }
 
-    /* Section */
+    /* Decorative Hero Doodles */
+    .doodle-asterisk {
+      position: absolute;
+      left: 7%;
+      top: 48px;
+      width: 112px;
+      height: 112px;
+      color: var(--mint);
+      pointer-events: none;
+    }
 
+    .doodle-rays {
+      position: absolute;
+      right: 12%;
+      top: 24px;
+      width: 90px;
+      height: 90px;
+      color: var(--mint);
+      pointer-events: none;
+    }
+
+    /* Diagonal Slanted Bottom Edge of Hero */
+    .hero-slant {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 135px;
+      background-color: var(--bg-light);
+      clip-path: polygon(0 82%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 2;
+    }
+
+    /* ==================== LEARNING SPACE SECTION ==================== */
     .learning-section {
-        padding: 30px 18px 45px;
+      position: relative;
+      z-index: 6;
+      max-width: 1080px;
+      margin: -34px auto 0;
+      padding: 0 24px 60px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
     }
 
     .section-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
+      color: var(--teal-text);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
-    .section-heading h2 {
-        font-size: 28px;
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 3.8vw, 40px);
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.025em;
     }
 
-    /* Cartes */
-
-    .card-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .section-title span {
+      color: var(--teal-text);
     }
 
-    .card {
-        width: 100%;
-        max-width: 430px;
-        min-height: 170px;
-        padding: 20px;
+    /* Cards Grid */
+    .cards-top-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 22px;
     }
 
-    .card h3 {
-        font-size: 22px;
-        max-width: 75%;
+    .card-mint {
+      background-color: var(--mint);
+      border: 2px solid var(--text-dark);
+      border-radius: 16px;
+      padding: 22px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      box-shadow: 4px 4px 0px var(--teal-dark);
+      transition: transform 0.15s ease;
     }
 
-    .card p {
-        font-size: 14px;
-        max-width: 75%;
+    .card-mint:hover {
+      transform: translateY(-2px);
     }
 
-    .card-illustration {
-        width: 85px;
-        height: 85px;
-        right: 10px;
-        top: 35px;
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .card-form-3 {
-        min-height: 170px;
-        display: block;
+    .badge-new {
+      background-color: var(--yellow);
+      color: var(--text-dark);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
     }
 
-    .card-form-3 .link {
-        position: static;
-        display: inline-block;
-        transform: none;
-        margin-top: 15px;
-        font-size: 14px;
+    .card-step {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--teal-text);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
-    .card-form-3 .card-illustration {
-        width: 65px;
-        height: 65px;
-        top: 20px;
-        right: 10px;
+    .card-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
     }
 
-    /* Footer */
-
-    .nr-footer {
-        display: flex;
-        flex-direction: column;
+    .card-sub {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1c241e;
+      margin-bottom: 16px;
     }
 
-    .nr-footer::before {
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 43%,
-            0 53%
-        );
+    .btn-card-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background-color 0.2s;
     }
 
-    .footer-left {
-        min-height: 260px;
-        padding: 40px 6% 75px;
+    .btn-card-dark:hover {
+      background-color: #262b28;
     }
 
-    .footer-left .nr-eyebrow {
-        font-size: 11px;
+    .card-icon {
+      width: 115px;
+      height: 115px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .footer-left h2 {
-        font-size: clamp(43px, 11vw, 65px);
+    /* Full Width Labs Card */
+    .card-labs {
+      background-color: var(--bg-dark);
+      border-radius: 16px;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-white);
+      position: relative;
+      z-index: 10;
     }
 
+    .labs-info .card-step {
+      color: var(--mint);
+    }
+
+    .labs-info .card-heading {
+      color: var(--text-white);
+      font-size: 23px;
+    }
+
+    .labs-info .card-sub {
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 0;
+    }
+
+    .labs-right {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .link-labs {
+      color: var(--mint);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--mint);
+      padding-bottom: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .link-labs:hover {
+      opacity: 0.85;
+    }
+
+    /* ==================== BREAVER-STYLE TEAL FLAME FOOTER ==================== */
+    .footer-wrapper {
+      position: relative;
+      margin-top: -54px;
+      z-index: 12;
+      color: var(--cream);
+    }
+
+    .flames-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: -2px;
+      pointer-events: none;
+    }
+
+    .footer-body {
+      background-color: var(--teal-dark);
+      padding: 8px 48px 26px;
+    }
+
+    .footer-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      align-items: start;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    /* Left Column */
+    .footer-nav h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .footer-nav a {
+      color: rgba(244, 242, 236, 0.88);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--mint);
+    }
+
+    /* Center Column */
     .footer-cta {
-        top: auto;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 170px;
-        height: 50px;
-        font-size: 13px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .footer-cta:hover {
-        transform: translateX(-50%) translateY(-4px);
+    .footer-cta h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 6px;
     }
 
-    .footer-right {
-        padding: 55px 6% 35px;
+    .footer-cta p {
+      font-size: 13px;
+      color: rgba(244, 242, 236, 0.85);
+      margin-bottom: 14px;
+    }
+
+    .btn-chat {
+      background-color: var(--bg-dark);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s ease, background-color 0.2s;
+    }
+
+    .btn-chat:hover {
+      background-color: #1c201e;
+      transform: translateY(-1px);
+    }
+
+    /* Right Column */
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      gap: 10px;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--cream);
+      color: var(--bg-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform 0.15s ease;
+    }
+
+    .social-circle:hover {
+      transform: scale(1.08);
+    }
+
+    .copyright {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .webstudio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(244, 242, 236, 0.55);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .webstudio-badge strong {
+      font-weight: 800;
+    }
+
+    /* Giant Bottom Brand Wordmark */
+    .footer-wordmark {
+      max-width: 1240px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(38px, 7.6vw, 106px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      color: var(--cream);
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 860px) {
+      header {
+        padding: 16px 20px;
+      }
+      nav {
+        gap: 16px;
+      }
+      .cards-top-row {
+        grid-template-columns: 1fr;
+      }
+      .card-labs {
         flex-direction: column;
         align-items: flex-start;
-        gap: 25px;
-    }
-
-    .footer-newsletter .nr-eyebrow {
-        font-size: 12px;
-    }
-
-    .footer-newsletter h3 {
-        font-size: 27px;
-    }
-
-    .footer-newsletter p {
-        font-size: 14px;
-    }
-
-    .footer-visual {
-        align-self: center;
-        border-left: none;
-        border-top: 2px solid var(--green);
-        padding: 20px 0 0;
+        gap: 20px;
+      }
+      .labs-right {
         width: 100%;
+        justify-content: space-between;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-nav ul {
+        align-items: center;
+      }
+      .footer-meta {
+        align-items: center;
+        text-align: center;
+      }
+      .footer-body {
+        padding: 16px 20px 24px;
+      }
+      .doodle-asterisk,
+      .doodle-rays {
+        display: none;
+      }
     }
-
-    .footer-book {
-        font-size: 65px;
-    }
-
-    .footer-visual strong {
-        font-size: 21px;
-    }
-}
-
-/* Accessibilité : réduire les animations si nécessaire */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
+  </style>
 </head>
-
 <body>
 
-<!-- =====================================
-     NAVIGATION
-===================================== -->
+  <!-- NAVBAR -->
+  <header>
+    <a href="#" class="logo">MonPlateau</a>
+    <nav>
+      <a href="#cours" class="nav-link">COURS</a>
+      <a href="#quizz" class="nav-link">QUIZZ</a>
+      <a href="#labs" class="nav-link">LABS</a>
+      <a href="#login" class="btn-login">SE CONNECTER</a>
+    </nav>
+  </header>
 
-<nav class="navbar" aria-label="Navigation principale">
+  <!-- HERO -->
+  <section class="hero-wrapper">
+    <!-- Left Mint Asterisk -->
+    <svg class="doodle-asterisk" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 12V108M18.4 36L101.6 84M101.6 36L18.4 84" stroke="currentColor" stroke-width="20" stroke-linecap="butt"/>
+    </svg>
 
-    <a href="#" class="nav-logo">MonPlateau</a>
+    <!-- Right Mint Rays -->
+    <svg class="doodle-rays" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="25" y1="15" x2="12" y2="55" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+      <line x1="65" y1="35" x2="32" y2="70" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+      <line x1="85" y1="75" x2="45" y2="85" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+    </svg>
 
-    <button
-        class="menu-toggle"
-        id="menu-toggle"
-        type="button"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
-        aria-controls="nav-links">
-        ☰
-    </button>
-
-    <ul class="nav-links" id="nav-links">
-        <li><a href="#cours">COURS</a></li>
-        <li><a href="#quizz">QUIZZ</a></li>
-        <li><a href="#labs">LABS</a></li>
-
-        <li>
-            <button class="btn" type="button">
-                SE CONNECTER
-            </button>
-        </li>
-    </ul>
-
-</nav>
-
-
-<!-- =====================================
-     HERO PRINCIPAL
-===================================== -->
-
-<section class="home-hero">
-
-    <div class="hero-star">✳</div>
-    <div class="hero-rays">〽</div>
-
-    <p class="home-eyebrow">
-        BIENVENUE SUR NETREVISION®
-    </p>
-
-    <h1>
-        APPRENDS.<br>
-        <span>TESTE. PROGRESSE.</span>
-    </h1>
-
-    <p class="home-description">
-        Développe tes connaissances, entraîne-toi et avance à ton rythme.
-    </p>
-
-    <a href="#cours" class="home-cta">
-        EXPLORER LES COURS ↗
-    </a>
-
-</section>
-
-
-<!-- =====================================
-     SECTION APPRENTISSAGE
-===================================== -->
-
-<main class="learning-section" id="cours">
-
-    <div class="section-heading">
-
-        <p class="section-eyebrow">
-            TON ESPACE D'APPRENTISSAGE
-        </p>
-
-        <h2>
-            CHOISIS TON PROCHAIN <span>DÉFI.</span>
-        </h2>
-
+    <div class="hero-content">
+      <p class="hero-subtitle-top">BIENVENUE SUR NETREVISION®</p>
+      <h1 class="hero-title">
+        <span class="line-white">APPRENDS.</span>
+        <span class="line-mint">TESTE. PROGRESSE.</span>
+      </h1>
+      <p class="hero-desc">Développe tes connaissances, entraîne-toi et avance à ton rythme.</p>
+      <a href="#cours" class="btn-cta-hero">EXPLORER LES COURS <span>↗</span></a>
     </div>
 
+    <div class="hero-slant"></div>
+  </section>
 
-    <div class="card-container">
-
-        <!-- CARTE 1 : COURS -->
-
-        <article class="card card-form-1">
-
-            <span class="badge">NOUVEAU</span>
-
-            <span class="card-number">01 / COURS</span>
-
-            <h3>Apprends les bases.</h3>
-
-            <p>Des cours pour progresser.</p>
-
-            <a href="#cours" class="btn">
-                Découvrir ↗
-            </a>
-
-            <svg class="card-illustration"
-                 viewBox="0 0 130 130"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M10 35 L70 12 L120 38 L61 62 Z"
-                      stroke="#171719"
-                      stroke-width="5"
-                      stroke-linejoin="round"/>
-
-                <path d="M29 45 V72 C29 92 93 92 93 72 V45"
-                      stroke="#171719"
-                      stroke-width="5"
-                      stroke-linecap="round"/>
-
-                <path d="M119 39 V92"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-                <circle cx="119" cy="96" r="5" fill="#171719"/>
-
-                <path d="M119 101 L115 119 M119 101 L124 119"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-                <path d="M112 5 L120 -5 M125 17 L135 10"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-            </svg>
-
-        </article>
-
-
-        <!-- CARTE 2 : QUIZ -->
-
-        <article class="card card-form-2" id="quizz">
-
-            <span class="badge">NOUVEAU</span>
-
-            <span class="card-number">02 / QUIZ</span>
-
-            <h3>Teste tes connaissances.</h3>
-
-            <p>Mesure tes progrès.</p>
-
-            <a href="#quizz" class="btn">
-                Faire un quiz ↗
-            </a>
-
-            <svg class="card-illustration"
-                 viewBox="0 0 130 130"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M64 18
-                         C47 2 27 14 30 32
-                         C12 35 12 58 24 67
-                         C10 85 28 106 43 103
-                         C49 119 65 113 65 99
-                         V24 Z"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linejoin="round"/>
-
-                <path d="M66 18
-                         C83 2 103 14 100 32
-                         C118 35 118 58 106 67
-                         C120 85 102 106 87 103
-                         C81 119 65 113 65 99
-                         V24 Z"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linejoin="round"/>
-
-                <path d="M65 17 V110"
-                      stroke="#171719"
-                      stroke-width="3"/>
-
-                <path d="M37 42 L49 53 M49 42 L37 53
-                         M80 43 L92 54 M92 43 L80 54
-                         M30 75 L43 85 M43 75 L30 85
-                         M83 80 L95 91 M95 80 L83 91"
-                      stroke="#171719"
-                      stroke-width="3"
-                      stroke-linecap="round"/>
-
-                <path d="M111 15 L120 5 M119 34 L131 29"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-            </svg>
-
-        </article>
-
-
-        <!-- CARTE 3 : LABS -->
-
-        <article class="card card-form-3" id="labs">
-
-            <span class="card-number">03 / LABS</span>
-
-            <h3>Passe à la pratique.</h3>
-
-            <p>
-                Expérimente et mets tes connaissances en application.
-            </p>
-
-            <a href="#labs" class="link">
-                Explorer les Labs ↗
-            </a>
-
-            <!-- Illustration fiole -->
-
-            <svg class="card-illustration"
-                 viewBox="0 0 100 100"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M36 10 H64 M41 10 V42
-                         L18 81 Q14 91 27 91 H73
-                         Q86 91 82 81 L59 42 V10"
-                      stroke="white"
-                      stroke-width="5"
-                      stroke-linejoin="round"/>
-
-                <path d="M28 70 H72 L82 85
-                         Q83 91 72 91 H27
-                         Q17 91 20 85 Z"
-                      fill="#A3FFA3"/>
-
-                <path d="M31 67 Q50 75 69 67"
-                      stroke="#006663"
-                      stroke-width="3"/>
-
-                <circle cx="40" cy="80" r="3" fill="#006663"/>
-                <circle cx="58" cy="84" r="4" fill="#006663"/>
-                <circle cx="66" cy="76" r="2" fill="#006663"/>
-
-                <path d="M45 3 V0 M72 24 L80 16 M26 27 L18 20"
-                      stroke="#A3FFA3"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-            </svg>
-
-        </article>
-
+  <!-- LEARNING SPACE -->
+  <main class="learning-section">
+    <div class="section-header">
+      <p class="section-eyebrow">TON ESPACE D'APPRENTISSAGE</p>
+      <h2 class="section-title">CHOISIS TON PROCHAIN <span>DÉFI.</span></h2>
     </div>
 
-</main>
+    <div class="cards-top-row">
+      <!-- Card 01 -->
+      <article class="card-mint" id="cours">
+        <div class="card-left">
+          <span class="badge-new">NOUVEAU</span>
+          <span class="card-step">01 / COURS</span>
+          <h3 class="card-heading">Apprends les bases.</h3>
+          <p class="card-sub">Des cours pour progresser.</p>
+          <a href="#" class="btn-card-dark">Découvrir <span>↗</span></a>
+        </div>
+        <div class="card-icon">
+          <!-- Graduation Cap Doodle SVG -->
+          <svg width="115" height="105" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 44L60 22L108 44L60 66L12 44Z" stroke="#111312" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M30 53V76C30 82 44 90 60 90C76 90 90 82 90 76V53" stroke="#111312" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M98 49V82" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M98 82L94 94M98 82L102 94" stroke="#111312" stroke-width="3" stroke-linecap="round"/>
+            <!-- Doodle rays -->
+            <line x1="94" y1="22" x2="101" y2="11" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="104" y1="29" x2="114" y2="23" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="107" y1="38" x2="117" y2="37" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
 
-
-<!-- =====================================
-     FOOTER
-===================================== -->
-
-<footer class="nr-footer">
-
-    <!-- PARTIE NOIRE -->
-
-    <div class="footer-left">
-
-        <p class="nr-eyebrow">
-            NETREVISION® — LE SAVOIR EN MOUVEMENT
-        </p>
-
-        <h2>
-            LET'S MAKE<br>
-            <span>PROGRESS.</span>
-        </h2>
-
-        <a href="#cours" class="footer-cta">
-            COMMENCER ↗
-        </a>
-
+      <!-- Card 02 -->
+      <article class="card-mint" id="quizz">
+        <div class="card-left">
+          <span class="badge-new">NOUVEAU</span>
+          <span class="card-step">02 / QUIZ</span>
+          <h3 class="card-heading">Teste tes connaissances.</h3>
+          <p class="card-sub">Mesure tes progrès.</p>
+          <a href="#" class="btn-card-dark">Faire un quiz <span>↗</span></a>
+        </div>
+        <div class="card-icon">
+          <!-- Brain Doodle SVG -->
+          <svg width="110" height="105" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M58 26C52 20 40 22 37 30C28 31 23 40 26 49C21 56 23 68 31 72C31 82 42 89 52 86C55 88 58 88 58 84V26Z" stroke="#111312" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M62 26C68 20 80 22 83 30C92 31 97 40 94 49C99 56 97 68 89 72C89 82 78 89 68 86C65 88 62 88 62 84V26Z" stroke="#111312" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Brain Folds -->
+            <path d="M44 40C48 42 48 48 43 50M38 62C43 60 46 65 44 70M76 40C72 42 72 48 77 50M82 62C77 60 74 65 76 70" stroke="#111312" stroke-width="3.2" stroke-linecap="round"/>
+            <!-- Doodle rays -->
+            <line x1="88" y1="18" x2="94" y2="8" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="97" y1="24" x2="106" y2="18" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="101" y1="33" x2="111" y2="32" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
     </div>
 
+    <!-- Card 03 Labs -->
+    <article class="card-labs" id="labs">
+      <div class="labs-info">
+        <span class="card-step">03 / LABS</span>
+        <h3 class="card-heading">Passe à la pratique.</h3>
+        <p class="card-sub">Expérimente et mets tes connaissances en application.</p>
+      </div>
+      <div class="labs-right">
+        <a href="#" class="link-labs">Explorer les Labs <span>↗</span></a>
+        <!-- Flask Doodle SVG -->
+        <svg width="86" height="82" viewBox="0 0 96 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rays -->
+          <line x1="26" y1="22" x2="18" y2="14" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="20" y1="36" x2="10" y2="34" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="22" y1="50" x2="12" y2="54" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <!-- Flask Outer White Border -->
+          <path d="M44 14H62M47 14V34L31 66C29 70 32 75 37 75H69C74 75 77 70 75 66L59 34V14" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Green Liquid -->
+          <path d="M39 52H67L73 65C74 68 72 71 69 71H37C34 71 32 68 33 65L39 52Z" fill="#7ce878"/>
+          <!-- Bubbles -->
+          <circle cx="48" cy="63" r="2.2" fill="#111312"/>
+          <circle cx="58" cy="60" r="1.8" fill="#111312"/>
+          <circle cx="53" cy="43" r="2" fill="#a8f8a4"/>
+        </svg>
+      </div>
+    </article>
+  </main>
 
-    <!-- PARTIE VERTE -->
+  <!-- BREAVER STUDIOS INSPIRED FLAME FOOTER -->
+  <footer class="footer-wrapper">
+    <!-- Custom Flames + Character Mascot SVG -->
+    <svg class="flames-svg" viewBox="0 0 1440 245" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Main Teal Flames Wave -->
+      <path d="M0 245V152C12 135 28 118 22 92C16 68 0 65 8 46C15 32 34 45 38 66C42 88 26 112 36 128C46 144 68 134 76 112C84 90 74 64 90 48C104 34 114 55 108 78C102 100 94 128 114 140C134 152 162 134 166 106C170 80 152 56 168 42C182 30 198 52 194 78C190 104 176 136 198 152C220 168 254 150 264 122C274 96 258 68 276 54C292 42 308 66 302 92C296 118 282 146 308 160C334 174 368 152 376 122C384 94 366 66 386 52C404 40 420 66 414 94C408 122 396 152 424 166C452 180 486 156 494 126C502 98 486 72 504 58C520 46 534 72 528 98C522 124 512 156 542 168C565 177 588 165 602 148C612 115 628 84 654 68C666 60 662 42 678 28C696 14 722 28 724 52C726 72 746 76 760 94C776 114 782 142 794 164C815 176 846 168 860 142C874 116 858 84 878 68C896 54 914 78 906 106C898 134 888 164 918 174C948 184 982 158 990 126C998 96 980 66 1002 52C1022 40 1038 66 1030 96C1022 126 1012 158 1044 170C1076 182 1112 154 1120 120C1128 88 1110 56 1134 42C1154 30 1172 58 1164 90C1156 122 1144 156 1178 168C1212 180 1248 150 1256 114C1264 80 1244 48 1268 34C1290 22 1308 52 1300 86C1292 120 1280 156 1316 168C1352 180 1388 148 1396 112C1404 78 1384 46 1408 32C1424 22 1436 42 1440 62V245H0Z" fill="#0b4a42"/>
 
-    <div class="footer-right">
+      <!-- Center Dark Character Silhouette Peeking Over -->
+      <path d="M606 176C608 132 624 98 652 80C664 72 664 52 680 38C696 24 716 36 718 58C720 76 742 82 756 100C772 120 778 150 784 176H606Z" fill="#0e100f" stroke="#0b4a42" stroke-width="6" stroke-linejoin="round"/>
 
-        <div class="footer-newsletter">
+      <!-- Character Cheeky Eyes & Grin -->
+      <path d="M664 138C672 132 684 132 690 138" stroke="#0b4a42" stroke-width="5" stroke-linecap="round"/>
+      <path d="M708 138C714 132 726 132 734 138" stroke="#0b4a42" stroke-width="5" stroke-linecap="round"/>
+      <path d="M674 152H724L718 172H704L700 158L696 172H680L674 152Z" fill="#0b4a42"/>
 
-            <p class="nr-eyebrow">
-                RESTE DANS LA BOUCLE
-            </p>
+      <!-- Left & Right Black Paws Gripping the Edge -->
+      <rect x="596" y="166" width="44" height="32" rx="10" transform="rotate(-14 596 166)" fill="#0e100f"/>
+      <rect x="758" y="156" width="44" height="32" rx="10" transform="rotate(14 758 156)" fill="#0e100f"/>
 
-            <h3>UNE DOSE DE SAVOIR ?</h3>
+      <!-- Exclamation Mark Above Right -->
+      <g transform="rotate(24 795 45)">
+        <rect x="782" y="8" width="26" height="58" rx="8" fill="#0e100f" stroke="#0b4a42" stroke-width="6"/>
+        <circle cx="795" cy="84" r="12" fill="#0e100f" stroke="#0b4a42" stroke-width="6"/>
+      </g>
+    </svg>
 
-            <p>
-                Apprendre aujourd'hui, réussir demain.
-            </p>
-
+    <div class="footer-body">
+      <div class="footer-grid">
+        <!-- Left Navigation -->
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Freebies</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
         </div>
 
-        <div class="footer-visual">
-
-            <div class="footer-book">📚</div>
-
-            <strong>APPRENDS.</strong>
-            <strong>ÉVOLUE.</strong>
-
+        <!-- Center CTA -->
+        <div class="footer-cta">
+          <h4>Say Hi!</h4>
+          <p>Interested in working with us?</p>
+          <a href="#" class="btn-chat">Lets Chat!</a>
         </div>
 
+        <!-- Right Socials & Copyright -->
+        <div class="footer-meta">
+          <div class="social-icons">
+            <!-- LinkedIn -->
+            <a href="#" class="social-circle" aria-label="LinkedIn">in</a>
+            <!-- Instagram -->
+            <a href="#" class="social-circle" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" class="social-circle" aria-label="TikTok">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
+            <!-- Threads -->
+            <a href="#" class="social-circle" aria-label="Threads">@</a>
+          </div>
+          <p class="copyright">© 2026 Breaver Studios</p>
+          <a href="#" class="webstudio-badge">
+            <strong>W</strong> Built with love in Webstudio
+          </a>
+        </div>
+      </div>
+
+      <!-- Massive Bottom Title -->
+      <div class="footer-wordmark">BREAVER STUDIOS</div>
     </div>
-
-</footer>
-
-
-<!-- =====================================
-     JAVASCRIPT MENU MOBILE
-===================================== -->
-
-<script>
-
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-
-function closeMenu() {
-    navLinks.classList.remove("active");
-
-    menuToggle.textContent = "☰";
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
-}
-
-menuToggle.addEventListener("click", () => {
-
-    const isOpen = navLinks.classList.toggle("active");
-
-    menuToggle.textContent = isOpen ? "✕" : "☰";
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
-    menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Fermer le menu" : "Ouvrir le menu"
-    );
-
-});
-
-navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
-
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 700) {
-        closeMenu();
-    }
-});
-
-</script>
+  </footer>
 
 </body>
 </html>
-
-   
