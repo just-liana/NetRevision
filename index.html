@@ -1,10 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NetRevision — Apprends. Teste. Progresse.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
 <style>
 
@@ -435,172 +438,208 @@ body {
 }
 
 /* =====================================
-   7. FOOTER
+   7. FOOTER (style Breaver)
 ===================================== */
 
-.nr-footer {
-    width: 100%;
-    min-height: 245px;
-    position: relative;
+.site-footer {
+    background: var(--black);
+    color: var(--black);
     overflow: hidden;
-    background: var(--mint);
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
 }
 
-/* Fond noir en diagonale */
+.footer-scene {
+    position: relative;
+    height: clamp(170px, 23vw, 330px);
+    margin-bottom: -1px;
+}
 
-.nr-footer::before {
-    content: "";
+.footer-flames {
     position: absolute;
     inset: 0;
-    background: var(--black);
-
-    clip-path: polygon(
-        0 0,
-        65% 0,
-        42% 100%,
-        0 100%
-    );
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
-/* Partie gauche */
-
-.footer-left {
-    position: relative;
-    z-index: 1;
-    padding: 35px 4%;
-    color: white;
+.footer-flames path {
+    fill: var(--mint);
 }
 
-.footer-left .nr-eyebrow {
-    color: var(--mint);
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.footer-left h2 {
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 1000;
-    line-height: .9;
-    letter-spacing: -3px;
-}
-
-.footer-left h2 span {
-    color: var(--mint);
-}
-
-/* Bouton footer */
-
-.footer-cta {
+.footer-mascot {
     position: absolute;
-    left: 60%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: clamp(150px, 27vw, 380px);
+    height: auto;
+    display: block;
+    overflow: visible;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.footer-mascot .line {
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 
-    width: 190px;
-    height: 63px;
+.footer-mascot .solid {
+    fill: var(--black);
+    stroke: var(--mint);
+    stroke-width: 9;
+    stroke-linejoin: round;
+}
 
-    border-radius: 40px;
-    background: var(--yellow);
+.footer-mascot .face {
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 7;
+    stroke-linecap: round;
+}
+
+.footer-mascot .wiggle {
+    transform-origin: 200px 40px;
+    animation: nr-wiggle 3.2s ease-in-out infinite;
+}
+
+@keyframes nr-wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50%      { transform: rotate(2deg); }
+}
+
+.footer-body {
+    background: var(--mint);
+    padding: 34px 2% 0;
+}
+
+.footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    padding: 0 1%;
+}
+
+.footer-nav h4,
+.footer-hi h4 {
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 900;
+    letter-spacing: -.5px;
+    margin-bottom: 10px;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: grid;
+    gap: 7px;
+}
+
+.footer-nav a {
     color: var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    transition: .2s;
+}
 
-    font-size: 16px;
+.footer-nav a:hover {
+    color: var(--green);
+    padding-left: 6px;
+}
+
+.footer-hi {
+    text-align: center;
+}
+
+.footer-hi p {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.footer-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 62px;
+    padding: 0 34px;
+    border-radius: 40px;
+    background: var(--black);
+    color: var(--mint);
+    font-size: 18px;
     font-weight: 900;
     text-decoration: none;
-
     transition: .3s;
 }
 
-.footer-cta:hover {
-    background: white;
-    transform: translate(-50%, -55%);
-}
-
-/* Partie droite */
-
-.footer-right {
-    position: relative;
-    z-index: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 35px 4% 35px 0;
-    gap: 15px;
-}
-
-.footer-newsletter {
+.footer-pill:hover {
+    background: var(--yellow);
     color: var(--black);
-    flex: 1;
+    transform: translateY(-4px);
 }
 
-.footer-newsletter .nr-eyebrow {
-    color: var(--green);
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.footer-newsletter h3 {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 1000;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-}
-
-.footer-newsletter p {
-    font-size: 17px;
-}
-
-/* Illustration livres */
-
-.footer-visual {
-    border-left: 2px solid var(--green);
-    padding-left: 25px;
-
+.footer-side {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    color: var(--green);
-    min-width: 145px;
+    align-items: flex-end;
+    gap: 14px;
 }
 
-.footer-book {
-    font-size: 75px;
-    line-height: 1.1;
-    animation: nr-float 3s ease-in-out infinite;
+.footer-social {
+    display: flex;
+    gap: 10px;
 }
 
-.footer-visual strong {
-    font-size: 23px;
-    font-weight: 1000;
-    text-align: center;
-    line-height: 1.25;
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--mint);
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 900;
+    transition: .25s;
 }
 
-/* Animation */
+.footer-social a:hover {
+    background: var(--yellow);
+    color: var(--black);
+    transform: translateY(-3px);
+}
 
-@keyframes nr-float {
-    0%, 100% {
-        transform: translateY(0) rotate(-3deg);
-    }
+.footer-copy {
+    font-size: 22px;
+    font-weight: 900;
+}
 
-    50% {
-        transform: translateY(-9px) rotate(3deg);
-    }
+.footer-badge {
+    border: 2px solid var(--black);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 15px;
+    color: var(--black);
+    text-decoration: none;
+}
+
+/* Wordmark géant pleine largeur */
+
+.footer-wordmark {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: -1%;
+}
+
+.footer-wordmark text {
+    fill: var(--black);
+    stroke: var(--black);
+    stroke-width: 7;
+    stroke-linejoin: round;
+    font-weight: 900;
+    font-family: 'Anton', 'Impact', 'Arial Black', sans-serif;
 }
 
 /* =====================================
@@ -618,26 +657,14 @@ body {
         width: 95px;
     }
 
-    .footer-left h2 {
-        font-size: 43px;
+    .footer-cols {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .footer-cta {
-        left: 65%;
-        width: 150px;
-    }
-
-    .footer-newsletter h3 {
-        font-size: 25px;
-    }
-
-    .footer-visual {
-        min-width: 110px;
-        padding-left: 15px;
-    }
-
-    .footer-visual strong {
-        font-size: 18px;
+    .footer-hi {
+        grid-column: 1 / -1;
+        order: -1;
+        margin-bottom: 10px;
     }
 }
 
@@ -802,80 +829,25 @@ body {
 
     /* Footer */
 
-    .nr-footer {
-        display: flex;
-        flex-direction: column;
+    .footer-body {
+        padding-top: 26px;
     }
 
-    .nr-footer::before {
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 43%,
-            0 53%
-        );
+    .footer-cols {
+        grid-template-columns: 1fr;
     }
 
-    .footer-left {
-        min-height: 260px;
-        padding: 40px 6% 75px;
-    }
-
-    .footer-left .nr-eyebrow {
-        font-size: 11px;
-    }
-
-    .footer-left h2 {
-        font-size: clamp(43px, 11vw, 65px);
-    }
-
-    .footer-cta {
-        top: auto;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 170px;
-        height: 50px;
-        font-size: 13px;
-    }
-
-    .footer-cta:hover {
-        transform: translateX(-50%) translateY(-4px);
-    }
-
-    .footer-right {
-        padding: 55px 6% 35px;
-        flex-direction: column;
+    .footer-side {
         align-items: flex-start;
-        gap: 25px;
     }
 
-    .footer-newsletter .nr-eyebrow {
-        font-size: 12px;
+    .footer-pill {
+        height: 52px;
+        font-size: 16px;
     }
 
-    .footer-newsletter h3 {
-        font-size: 27px;
-    }
-
-    .footer-newsletter p {
-        font-size: 14px;
-    }
-
-    .footer-visual {
-        align-self: center;
-        border-left: none;
-        border-top: 2px solid var(--green);
-        padding: 20px 0 0;
-        width: 100%;
-    }
-
-    .footer-book {
-        font-size: 65px;
-    }
-
-    .footer-visual strong {
-        font-size: 21px;
+    .footer-nav a {
+        font-size: 18px;
     }
 }
 
@@ -902,7 +874,7 @@ body {
 
 <nav class="navbar" aria-label="Navigation principale">
 
-    <a href="#" class="nav-logo">MonPlateau</a>
+    <a href="#" class="nav-logo">NetRevision</a>
 
     <button
         class="menu-toggle"
@@ -1117,8 +1089,6 @@ body {
                 Explorer les Labs ↗
             </a>
 
-            <!-- Illustration fiole -->
-
             <svg class="card-illustration"
                  viewBox="0 0 100 100"
                  fill="none"
@@ -1162,54 +1132,72 @@ body {
      FOOTER
 ===================================== -->
 
-<footer class="nr-footer">
+<footer class="site-footer">
 
-    <!-- PARTIE NOIRE -->
+    <div class="footer-scene">
 
-    <div class="footer-left">
+        <!-- Flammes -->
+        <svg class="footer-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,300 V130 C30,110 70,70 45,8 C100,45 112,95 92,135 C86,152 100,168 128,166 C128,110 160,60 225,30 C212,90 250,118 292,146 C332,174 332,226 318,252 C336,236 360,196 402,186 C424,202 414,238 440,264 L1000,264 C1016,244 1004,214 1052,194 C1076,214 1084,240 1106,238 C1112,200 1134,150 1156,118 C1166,86 1182,62 1206,44 C1218,100 1262,128 1286,160 C1306,188 1300,232 1290,254 C1322,244 1334,160 1336,108 C1356,76 1384,36 1404,6 C1404,56 1440,96 1440,130 V300 Z"/>
+        </svg>
 
-        <p class="nr-eyebrow">
-            NETREVISION® — LE SAVOIR EN MOUVEMENT
-        </p>
-
-        <h2>
-            LET'S MAKE<br>
-            <span>PROGRESS.</span>
-        </h2>
-
-        <a href="#cours" class="footer-cta">
-            COMMENCER ↗
-        </a>
+        <!-- Mascotte ampoule -->
+        <svg class="footer-mascot" viewBox="0 0 400 330" aria-hidden="true">
+            <g class="wiggle">
+                <path class="solid" d="M200 20 C150 20 105 62 105 120 C105 160 128 182 142 208 C148 220 150 232 150 246 H250 C250 232 252 220 258 208 C272 182 295 160 295 120 C295 62 250 20 200 20 Z"/>
+                <path class="line" d="M165 262 H235 M175 284 H225"/>
+                <path class="line" d="M178 246 C170 215 160 190 185 170 C205 154 215 190 222 170 C230 150 220 140 215 128"/>
+                <path class="face" d="M150 132 Q168 118 186 132"/>
+                <path class="face" d="M214 132 Q232 118 250 132"/>
+                <path class="solid" d="M300 -10 L335 -10 L322 78 L305 78 Z" transform="rotate(14 318 34)"/>
+                <circle class="solid" cx="330" cy="108" r="14"/>
+            </g>
+            <g class="solid">
+                <path d="M70 262 L118 250 L128 296 L84 306 Z"/>
+                <path d="M282 250 L330 262 L316 306 L272 296 Z"/>
+            </g>
+        </svg>
 
     </div>
 
+    <div class="footer-body">
 
-    <!-- PARTIE VERTE -->
+        <div class="footer-cols">
 
-    <div class="footer-right">
+            <nav class="footer-nav" aria-label="Navigation du pied de page">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#cours">Cours</a></li>
+                    <li><a href="#quizz">Quiz</a></li>
+                    <li><a href="#labs">Labs</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
 
-        <div class="footer-newsletter">
+            <div class="footer-hi">
+                <h4>On commence ?</h4>
+                <p>Prêt à passer à la vitesse supérieure ?</p>
+                <a href="#cours" class="footer-pill">C'est parti !</a>
+            </div>
 
-            <p class="nr-eyebrow">
-                RESTE DANS LA BOUCLE
-            </p>
-
-            <h3>UNE DOSE DE SAVOIR ?</h3>
-
-            <p>
-                Apprendre aujourd'hui, réussir demain.
-            </p>
+            <div class="footer-side">
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Instagram">ig</a>
+                    <a href="#" aria-label="TikTok">tk</a>
+                    <a href="#" aria-label="Threads">@</a>
+                </div>
+                <p class="footer-copy">© 2026 NetRevision®</p>
+                <a href="#" class="footer-badge">Fait avec ♥ en France</a>
+            </div>
 
         </div>
 
-        <div class="footer-visual">
-
-            <div class="footer-book">📚</div>
-
-            <strong>APPRENDS.</strong>
-            <strong>ÉVOLUE.</strong>
-
-        </div>
+        <!-- Wordmark géant -->
+        <svg class="footer-wordmark" viewBox="0 0 1000 225" role="img" aria-label="NetRevision">
+            <text x="0" y="205" font-size="270" textLength="1000" lengthAdjust="spacingAndGlyphs">NETREVISION</text>
+        </svg>
 
     </div>
 
@@ -1217,7 +1205,7 @@ body {
 
 
 <!-- =====================================
-     JAVASCRIPT MENU MOBILE
+     JAVASCRIPT : MENU HAMBURGER
 ===================================== -->
 
 <script>
@@ -1226,11 +1214,15 @@ const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
 function closeMenu() {
+
     navLinks.classList.remove("active");
 
     menuToggle.textContent = "☰";
+
     menuToggle.setAttribute("aria-expanded", "false");
+
     menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+
 }
 
 menuToggle.addEventListener("click", () => {
@@ -1256,9 +1248,11 @@ navLinks.querySelectorAll("a").forEach(link => {
 });
 
 window.addEventListener("resize", () => {
+
     if (window.innerWidth > 700) {
         closeMenu();
     }
+
 });
 
 </script>
