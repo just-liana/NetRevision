@@ -191,12 +191,239 @@
         }*/
 
         /* Pied de page */
-        footer {
-            padding: 50px;
-            text-align: center;
-            color: #666666;
-            background-color: black;
-        }
+        
+/* FOOTER GLOBAL */
+
+.nr-footer {
+  width: 100%;
+  overflow: hidden;
+  font-family: inherit;
+  background: #a3ffa3;
+}
+
+/* PARTIE NOIRE */
+
+.nr-footer-hero {
+  position: relative;
+  z-index: 2;
+  height: 438px;
+  box-sizing: border-box;
+  padding: 60px 6.3% 0;
+  background: #171719;
+
+  /* LA DIAGONALE */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 62%,
+    0 100%
+  );
+}
+
+/* PETIT TEXTE EN HAUT */
+
+.nr-eyebrow {
+  color: #a3ffa3;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+/* GRAND TITRE */
+
+.nr-footer-hero h2 {
+  color: #ffffff;
+  text-align: center;
+  font-size: clamp(45px, 9.5vw, 96px);
+  line-height: 1;
+  letter-spacing: -5px;
+  font-weight: 900;
+  margin: 38px 0 0;
+}
+
+.nr-footer-hero h2 span {
+  color: #a3ffa3;
+}
+
+/* BOUTON JAUNE */
+
+.nr-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 49px;
+  transform: translateX(-50%);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 215px;
+  height: 62px;
+  box-sizing: border-box;
+
+  background: #ffd629;
+  color: #171719;
+
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 900;
+
+  transition: .3s ease;
+}
+
+.nr-cta:hover {
+  background: #ffffff;
+  transform: translateX(-50%) translateY(-5px);
+  box-shadow: 0 8px 0 #006663;
+}
+
+/* PARTIE VERTE */
+
+.nr-footer-main {
+  position: relative;
+  z-index: 1;
+
+  min-height: 255px;
+  box-sizing: border-box;
+
+  background: #a3ffa3;
+  padding: 55px 6.3% 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+/* TEXTE DE GAUCHE */
+
+.nr-newsletter {
+  color: #171719;
+}
+
+.nr-newsletter .nr-eyebrow {
+  color: #006663;
+  margin-bottom: 20px;
+}
+
+.nr-newsletter h3 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0 0 15px;
+}
+
+.nr-slogan {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* VISUEL DE DROITE */
+
+.nr-footer-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: #006663;
+  margin-right: 5%;
+}
+
+.nr-book {
+  font-size: 85px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+
+  filter: drop-shadow(0 8px 5px #00666330);
+
+  animation: nr-float 3s ease-in-out infinite;
+}
+
+.nr-footer-visual strong {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.35;
+}
+
+/* ANIMATION DU LIVRE */
+
+@keyframes nr-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 700px) {
+
+  .nr-footer-hero {
+    height: 340px;
+    padding: 40px 5% 0;
+
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 82%,
+      0 100%
+    );
+  }
+
+  .nr-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .nr-footer-hero h2 {
+    font-size: clamp(40px, 10vw, 65px);
+    letter-spacing: -2px;
+    margin-top: 45px;
+  }
+
+  .nr-cta {
+    min-width: 170px;
+    height: 50px;
+    font-size: 14px;
+    bottom: 25px;
+  }
+
+  .nr-footer-main {
+    padding: 45px 6% 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+  }
+
+  .nr-newsletter h3 {
+    font-size: 30px;
+  }
+
+  .nr-slogan {
+    font-size: 15px;
+  }
+
+  .nr-footer-visual {
+    align-self: center;
+    margin: 0;
+  }
+
+  .nr-book {
+    font-size: 70px;
+  }
+
+  .nr-footer-visual strong {
+    font-size: 25px;
+  }
+}
+        
 
         /* =================================
            VERSION MOBILE : MENU HAMBURGER
@@ -369,14 +596,52 @@
 
 
     <!-- PIED DE PAGE -->
-    <footer>
+<footer class="nr-footer">
 
-        <p>
-            &copy; 2026 - Mon site web |
-            venez découvrir <a href="#">plus ici</a>
-        </p>
+  <!-- PARTIE NOIRE -->
+  <section class="nr-footer-hero">
 
-    </footer>
+    <p class="nr-eyebrow">
+      NETREVISION® — LE SAVOIR EN MOUVEMENT
+    </p>
+
+    <h2>
+      LET'S MAKE<br>
+      <span>PROGRESS.</span>
+    </h2>
+
+    <a href="#cours" class="nr-cta">
+      COMMENCER ↗
+    </a>
+
+  </section>
+
+  <!-- PARTIE VERTE -->
+  <section class="nr-footer-main">
+
+    <div class="nr-newsletter">
+      <p class="nr-eyebrow">
+        RESTE DANS LA BOUCLE
+      </p>
+
+      <h3>UNE DOSE DE SAVOIR ?</h3>
+
+      <p class="nr-slogan">
+        Apprendre aujourd'hui, réussir demain.
+      </p>
+    </div>
+
+    <div class="nr-footer-visual">
+      <div class="nr-book">📚</div>
+
+      <strong>APPRENDS.</strong>
+      <strong>ÉVOLUE.</strong>
+    </div>
+
+  </section>
+
+</footer>
+    
 
 
     <!-- JAVASCRIPT DU MENU HAMBURGER -->
