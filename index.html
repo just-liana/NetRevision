@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Site Web</title>
+
     <style>
-        /* Styles généraux pour réinitialiser les marges */
+        /* Styles généraux */
         * {
             margin: 0;
             padding: 0;
@@ -18,46 +20,70 @@
             min-height: 100vh;
         }
 
-        /* Style de la barre de navigation */
+        /* Barre de navigation */
         .navbar {
-            background-color: #006663; /* Votre couleur verte emerode */
+            background-color: #006663;
             padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 3px 5px #51515178;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Style du logo / titre du site */
+        /* Logo */
         .nav-logo {
             color: #a3ffa3f9;
             font-size: 24px;
             font-weight: bold;
         }
 
-        /* Liste des liens de navigation */
+        /* Liens du menu */
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 25px; /* Espace entre les mots */
+            align-items: center;
+            gap: 25px;
         }
 
-        /* Style de base des mots (liens) */
         .nav-links a {
-            color: #ffffff; /* Écrit en blanc */
+            color: white;
             text-decoration: none;
             font-size: 16px;
             font-weight: 600;
             letter-spacing: 1px;
-            transition: color 0.3s ease; /* Transition fluide pour le survol */
+            transition: color 0.3s ease;
         }
 
-        /* Effet au passage de la souris (Hover) */
         .nav-links a:hover {
-            color: #a3ffa3f9; /* Nouvelle couleur au survol (vert clair) */
+            color: #a3ffa3f9;
         }
 
-        /* Style pour le contenu principal de la page */
+        /* Bouton connexion */
+        .nav-links .btn {
+            background-color: #a3ffa3;
+            color: #006663;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Bouton hamburger */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Contenu principal */
         .content {
             padding: 40px;
             text-align: center;
@@ -65,11 +91,11 @@
         }
 
         .content h1 {
-            margin: 100px 0px 50px 0px;
+            margin: 100px 0 50px;
             color: #006663;
         }
 
-        /* Container pour aligner les 3 cartes */
+        /* Conteneur des cartes */
         .card-container {
             display: flex;
             justify-content: center;
@@ -79,7 +105,7 @@
             padding: 10px;
         }
 
-        /* Style de base partagé par toutes les cartes */
+        /* Style général des cartes */
         .card {
             background-color: #bae9baa1;
             width: 300px;
@@ -102,13 +128,11 @@
             margin-bottom: 20px;
         }
 
-        /* ------------------------------------------------
-           FORME 1 : La carte classique avec bouton flashy
-           ------------------------------------------------ */
+        /* Carte 1 */
         .card-form-1 {
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        
+
         .card-form-1:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -125,17 +149,12 @@
             font-weight: 600;
         }
 
-        /* ------------------------------------------------
-           FORME 2 : La carte avec un Badge supérieur
-           ------------------------------------------------ */
+        /* Carte 2 */
         .card-form-2 {
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: relative;
-            border-top: 4px solid #006663; /* Ligne d'accentuation */
-
-    
+            border-top: 4px solid #006663;
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .card-form-2 .badge {
@@ -149,9 +168,7 @@
             margin-bottom: 10px;
         }
 
-        /* ------------------------------------------------
-           FORME 3 : La carte Minimaliste à bordure réactive
-           ------------------------------------------------ */
+        /* Carte 3 */
         .card-form-3 {
             border: 2px solid #e0e0e0;
         }
@@ -167,61 +184,257 @@
             font-weight: bold;
             font-size: 14px;
         }
-        
+
         .card-form-3 .link:hover {
             text-decoration: underline;
         }
+
+        /* Pied de page */
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #666666;
+        }
+
+        /* =================================
+           VERSION MOBILE : MENU HAMBURGER
+           ================================= */
+
+        @media screen and (max-width: 768px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            /* Afficher le bouton hamburger */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Menu fermé par défaut */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+
+                position: absolute;
+                top: 100%;
+                left: 0;
+
+                width: 100%;
+                padding: 22px 20px;
+
+                background-color: #006663;
+                box-shadow: 0 3px 5px #51515178;
+            }
+
+            /* Menu ouvert */
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                list-style: none;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content h1 {
+                margin: 60px 0 30px;
+                font-size: 26px;
+            }
+
+            .card-container {
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .card-form-2 {
+                transform: none;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
-    <!-- Barre de navigation -->
-    <nav class="navbar">
+    <!-- NAVIGATION -->
+    <nav class="navbar" aria-label="Navigation principale">
+
         <div class="nav-logo">MonPlateau</div>
-        <ul class="nav-links">
+
+        <!-- Bouton hamburger -->
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="nav-links">
+            ☰
+        </button>
+
+        <!-- Liens de navigation -->
+        <ul class="nav-links" id="nav-links">
+
             <li><a href="#cours">COURS</a></li>
+
             <li><a href="#quizz">QUIZZ</a></li>
+
             <li><a href="#labs">LABS</a></li>
-            <li><button class="btn" type="button">SE CONNECTER</button></li>
+
+            <li>
+                <button class="btn" type="button">
+                    SE CONNECTER
+                </button>
+            </li>
 
         </ul>
+
     </nav>
 
-    <!-- Contenu de la page -->
+
+    <!-- CONTENU PRINCIPAL -->
     <main class="content">
+
         <h1>Bienvenue sur la plateforme !!</h1>
+
         <sub>Parce que la théorie ne suffit plus ;)</sub>
-        
-        <!-- Zone contenant les 3 formes de cartes -->
+
+        <!-- CARTES -->
         <div class="card-container">
-            
-            <!-- Forme 1 -->
+
+            <!-- Carte 1 -->
             <div class="card card-form-1">
+
                 <h3>Forme 1 : Ombrée</h3>
-                <p>Ce modèle utilise une ombre douce qui s'accentue et s'élève légèrement lorsque l'on passe la souris dessus.</p>
+
+                <p>
+                    Ce modèle utilise une ombre douce qui s'accentue
+                    et s'élève légèrement lorsque l'on passe
+                    la souris dessus.
+                </p>
+
                 <a href="#" class="btn">Découvrir</a>
+
             </div>
 
-            <!-- Forme 2 -->
+
+            <!-- Carte 2 -->
             <div class="card card-form-2">
+
                 <span class="badge">NOUVEAU</span>
+
                 <h3>Forme 2 : Badge</h3>
-                <p>Ce style intègre une bordure colorée sur le dessus ainsi qu'un badge pour mettre en avant du contenu important.</p>
+
+                <p>
+                    Ce style intègre une bordure colorée sur le dessus
+                    ainsi qu'un badge pour mettre en avant
+                    du contenu important.
+                </p>
+
             </div>
 
-            <!-- Forme 3 -->
+
+            <!-- Carte 3 -->
             <div class="card card-form-3">
+
                 <h3>Forme 3 : Bordure</h3>
-                <p>Un design minimaliste sans ombre qui change la couleur de sa bordure et de son fond au survol de la souris.</p>
-                <a href="#" class="link">En savoir plus &rarr;</a>
+
+                <p>
+                    Un design minimaliste sans ombre qui change
+                    la couleur de sa bordure et de son fond
+                    au survol de la souris.
+                </p>
+
+                <a href="#" class="link">
+                    En savoir plus &rarr;
+                </a>
+
             </div>
 
         </div>
+
     </main>
 
+
+    <!-- PIED DE PAGE -->
     <footer>
-        <p>&copy 2026 - Mon site web | venez découvrir <a href="#">plus ici</a></p>
+
+        <p>
+            &copy; 2026 - Mon site web |
+            venez découvrir <a href="#">plus ici</a>
+        </p>
+
     </footer>
+
+
+    <!-- JAVASCRIPT DU MENU HAMBURGER -->
+    <script>
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        // Fonction pour fermer le menu
+        function closeMenu() {
+
+            navLinks.classList.remove("active");
+
+            menuToggle.textContent = "☰";
+
+            menuToggle.setAttribute("aria-expanded", "false");
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Ouvrir le menu"
+            );
+
+        }
+
+        // Ouvrir ou fermer le menu au clic
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Fermer le menu" : "Ouvrir le menu"
+            );
+
+        });
+
+        // Fermer le menu après un clic sur un lien
+        navLinks.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", closeMenu);
+
+        });
+
+        // Réinitialiser le menu si on repasse sur ordinateur
+        window.addEventListener("resize", () => {
+
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
