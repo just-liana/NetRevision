@@ -1,44 +1,74 @@
-```html
-<!-- ... existing code ... -->
-    /* ==================== BARRE DE NAVIGATION ==================== */
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonPlateau — NetRevision®</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0e100f;
+      --bg-light: #f6f7f5;
+      --mint: #a8f8a4;
+      --yellow: #fbd223;
+      --teal-dark: #0b4a42;
+      --teal-text: #0c584e;
+      --text-white: #ffffff;
+      --text-dark: #111312;
+      --cream: #f4f2ec;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==================== NAVBAR ==================== */
     header {
       background-color: var(--bg-dark);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 16px clamp(12px, 3vw, 48px);
+      padding: 18px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
       position: relative;
       z-index: 20;
     }
 
     .logo {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(20px, 2.8vw, 26px);
+      font-size: 26px;
       font-weight: 800;
       color: var(--mint);
       text-decoration: none;
       letter-spacing: -0.03em;
-      flex-shrink: 0;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: clamp(10px, 2vw, 32px);
-      flex-wrap: wrap;
+      gap: 32px;
     }
 
     nav a.nav-link {
       color: var(--text-white);
       text-decoration: none;
-      font-size: clamp(11px, 1.4vw, 13px);
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     nav a.nav-link:hover {
@@ -48,16 +78,13 @@
     .btn-login {
       background-color: var(--yellow);
       color: var(--text-dark);
-      font-size: clamp(11px, 1.3vw, 12px);
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.03em;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 999px;
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      white-space: nowrap;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -66,40 +93,176 @@
       box-shadow: 0 4px 12px rgba(251, 210, 35, 0.35);
     }
 
-    /* ==================== SECTION HERO ==================== */
-<!-- ... existing code ... -->
+    /* ==================== HERO SECTION ==================== */
+    .hero-wrapper {
+      position: relative;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      padding: 36px 24px 120px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-subtitle-top {
+      color: var(--mint);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .hero-title .line-white {
+      display: block;
+      font-size: clamp(44px, 6.2vw, 76px);
+      color: var(--text-white);
+    }
+
+    .hero-title .line-mint {
+      display: block;
+      font-size: clamp(44px, 6.4vw, 78px);
+      color: var(--mint);
+      font-style: italic;
+      transform: skewX(-4deg);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 28px;
+    }
+
+    .btn-cta-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--yellow);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 15px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease;
+    }
+
+    .btn-cta-hero:hover {
+      transform: translateY(-2px);
+    }
+
+    .doodle-asterisk {
+      position: absolute;
+      left: 7%;
+      top: 48px;
+      width: 112px;
+      height: 112px;
+      color: var(--mint);
+      pointer-events: none;
+    }
+
+    .doodle-rays {
+      position: absolute;
+      right: 12%;
+      top: 24px;
+      width: 90px;
+      height: 90px;
+      color: var(--mint);
+      pointer-events: none;
+    }
+
+    .hero-slant {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 135px;
+      background-color: var(--bg-light);
+      clip-path: polygon(0 82%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 2;
+    }
+
+    /* ==================== LEARNING SPACE SECTION ==================== */
+    .learning-section {
+      position: relative;
+      z-index: 6;
+      max-width: 1080px;
+      margin: -34px auto 0;
+      padding: 0 24px 60px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-eyebrow {
+      color: var(--teal-text);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 3.8vw, 40px);
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.025em;
+    }
+
+    .section-title span {
+      color: var(--teal-text);
+    }
+
     .cards-top-row {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 22px;
     }
 
     .card-mint {
       background-color: var(--mint);
       border: 2px solid var(--text-dark);
       border-radius: 16px;
-      padding: clamp(18px, 2.5vw, 24px);
+      padding: 22px 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
       position: relative;
       box-shadow: 4px 4px 0px var(--teal-dark);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease;
     }
 
     .card-mint:hover {
-      transform: translate(-1px, -2px);
-      box-shadow: 6px 6px 0px var(--teal-dark);
+      transform: translateY(-2px);
     }
 
     .card-left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      min-width: 0;
-      flex: 1;
     }
 
     .badge-new {
@@ -111,11 +274,11 @@
       padding: 4px 10px;
       border-radius: 999px;
       letter-spacing: 0.04em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .card-step {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
       color: var(--teal-text);
       letter-spacing: 0.05em;
@@ -125,20 +288,18 @@
 
     .card-heading {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(17px, 2vw, 22px);
+      font-size: 22px;
       font-weight: 800;
       color: var(--text-dark);
       letter-spacing: -0.02em;
       margin-bottom: 4px;
-      line-height: 1.15;
     }
 
     .card-sub {
-      font-size: clamp(13px, 1.5vw, 14px);
+      font-size: 14px;
       font-weight: 500;
       color: #1c241e;
-      margin-bottom: 14px;
-      line-height: 1.35;
+      margin-bottom: 16px;
     }
 
     .btn-card-dark {
@@ -147,54 +308,37 @@
       gap: 6px;
       background-color: var(--bg-dark);
       color: var(--text-white);
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 9px 20px;
       border-radius: 999px;
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      white-space: nowrap;
-      transition: background-color 0.2s ease, transform 0.15s ease;
+      transition: background-color 0.2s;
     }
 
     .btn-card-dark:hover {
       background-color: #262b28;
-      transform: translateX(2px);
     }
 
     .card-icon {
-      width: clamp(70px, 9vw, 115px);
-      height: clamp(70px, 9vw, 115px);
+      width: 115px;
+      height: 115px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .card-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Carte sombre 03 / LABS */
     .card-labs {
       background-color: var(--bg-dark);
       border-radius: 16px;
-      padding: clamp(20px, 3vw, 26px) clamp(20px, 4vw, 32px);
+      padding: 20px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
       color: var(--text-white);
       position: relative;
       z-index: 10;
-      box-shadow: 0 12px 28px rgba(14, 16, 15, 0.16);
-    }
-
-    .labs-info {
-      min-width: 0;
-      flex: 1;
     }
 
     .labs-info .card-step {
@@ -203,7 +347,7 @@
 
     .labs-info .card-heading {
       color: var(--text-white);
-      font-size: clamp(19px, 2.3vw, 23px);
+      font-size: 23px;
     }
 
     .labs-info .card-sub {
@@ -214,13 +358,12 @@
     .labs-right {
       display: flex;
       align-items: center;
-      gap: clamp(16px, 3vw, 44px);
-      flex-shrink: 0;
+      gap: 44px;
     }
 
     .link-labs {
       color: var(--mint);
-      font-size: clamp(13px, 1.5vw, 15px);
+      font-size: 15px;
       font-weight: 700;
       text-decoration: none;
       border-bottom: 2px solid var(--mint);
@@ -228,47 +371,33 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s;
     }
 
     .link-labs:hover {
       opacity: 0.85;
     }
 
-    /* ==================== FOOTER HARMONISÉ ==================== */
+    /* ==================== FOOTER HARMONISÉ (FOND NOIR & ACCENTS DU SITE) ==================== */
     .footer-wrapper {
       position: relative;
-      margin-top: -48px;
+      margin-top: -54px;
       z-index: 12;
       color: var(--text-white);
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .flames-container {
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      margin-bottom: -2px;
-      pointer-events: none;
     }
 
     .flames-svg {
       display: block;
       width: 100%;
-      min-width: 600px;
       height: auto;
-      flex-shrink: 0;
+      margin-bottom: -2px;
+      pointer-events: none;
     }
 
     .footer-body {
       background-color: var(--bg-dark);
-      padding: 16px clamp(16px, 4vw, 48px) 32px;
-      border-top: 1px solid rgba(168, 248, 164, 0.12);
-      width: 100%;
+      padding: 8px 48px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .footer-grid {
@@ -300,7 +429,7 @@
       text-decoration: none;
       font-size: 13px;
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     .footer-nav a:hover {
@@ -332,12 +461,10 @@
       color: var(--text-dark);
       font-size: 12px;
       font-weight: 800;
-      padding: 11px 28px;
+      padding: 11px 26px;
       border-radius: 999px;
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.15s ease, background-color 0.2s ease;
+      transition: transform 0.15s ease, background-color 0.2s;
     }
 
     .btn-chat:hover {
@@ -350,20 +477,18 @@
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
-      gap: 12px;
+      gap: 10px;
     }
 
     .social-icons {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 10px;
     }
 
     .social-circle {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.1);
       color: var(--text-white);
@@ -371,9 +496,9 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
-      transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      transition: background-color 0.15s ease, transform 0.15s ease;
     }
 
     .social-circle:hover {
@@ -383,84 +508,39 @@
     }
 
     .copyright {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.65);
     }
 
-    .footer-wordmark-container {
-      width: 100%;
-      overflow: hidden;
-      padding: 0 10px;
-    }
-
     .footer-wordmark {
-      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
       text-align: center;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(28px, 9.5vw, 112px);
+      font-size: clamp(38px, 7.6vw, 106px);
       font-weight: 800;
       letter-spacing: -0.02em;
-      line-height: 0.94;
+      line-height: 0.92;
       color: var(--mint);
       text-transform: uppercase;
       user-select: none;
-      white-space: nowrap;
     }
 
-    .toast-notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      left: auto;
-      max-width: calc(100vw - 40px);
-      background-color: var(--bg-dark);
-      color: var(--mint);
-      border: 1.5px solid var(--mint);
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      z-index: 100;
-      transform: translateY(150%);
-      opacity: 0;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .toast-notification.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* ==================== RESPONSIVE MEDIA QUERIES ==================== */
-    @media (max-width: 960px) {
-      .doodle-asterisk,
-      .doodle-rays {
-        opacity: 0.4;
+    @media (max-width: 860px) {
+      header {
+        padding: 16px 20px;
+      }
+      nav {
+        gap: 16px;
       }
       .cards-top-row {
         grid-template-columns: 1fr;
-        gap: 16px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 12px 16px;
-      }
-      nav {
-        gap: 12px;
-      }
-      .doodle-asterisk,
-      .doodle-rays {
-        display: none;
       }
       .card-labs {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        padding: 20px 18px;
+        gap: 20px;
       }
       .labs-right {
         width: 100%;
@@ -469,7 +549,6 @@
       .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 24px;
       }
       .footer-nav ul {
         align-items: center;
@@ -478,113 +557,180 @@
         align-items: center;
         text-align: center;
       }
-      .social-icons {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      nav {
-        justify-content: center;
-      }
-      .card-mint {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-      }
-      .card-icon {
-        width: 64px;
-        height: 64px;
+      .footer-body {
+        padding: 16px 20px 24px;
       }
     }
   </style>
 </head>
 <body>
-<!-- ... existing code ... -->
+
+  <!-- NAVBAR -->
+  <header>
+    <a href="#" class="logo">MonPlateau</a>
+    <nav>
+      <a href="#cours" class="nav-link">COURS</a>
+      <a href="#quizz" class="nav-link">QUIZZ</a>
+      <a href="#labs" class="nav-link">LABS</a>
+      <a href="#login" class="btn-login">SE CONNECTER</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-wrapper">
+    <svg class="doodle-asterisk" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 12V108M18.4 36L101.6 84M101.6 36L18.4 84" stroke="currentColor" stroke-width="20" stroke-linecap="butt"/>
+    </svg>
+    <svg class="doodle-rays" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="25" y1="15" x2="12" y2="55" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+      <line x1="65" y1="35" x2="32" y2="70" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+      <line x1="85" y1="75" x2="45" y2="85" stroke="currentColor" stroke-width="7.5" stroke-linecap="round"/>
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-subtitle-top">BIENVENUE SUR NETREVISION®</p>
+      <h1 class="hero-title">
+        <span class="line-white">APPRENDS.</span>
+        <span class="line-mint">TESTE. PROGRESSE.</span>
+      </h1>
+      <p class="hero-desc">Développe tes connaissances, entraîne-toi et avance à ton rythme.</p>
+      <a href="#cours" class="btn-cta-hero">EXPLORER LES COURS <span>↗</span></a>
+    </div>
+
+    <div class="hero-slant"></div>
+  </section>
+
+  <!-- LEARNING SPACE -->
+  <main class="learning-section">
+    <div class="section-header">
+      <p class="section-eyebrow">TON ESPACE D'APPRENTISSAGE</p>
+      <h2 class="section-title">CHOISIS TON PROCHAIN <span>DÉFI.</span></h2>
+    </div>
+
+    <div class="cards-top-row">
+      <article class="card-mint" id="cours">
+        <div class="card-left">
+          <span class="badge-new">NOUVEAU</span>
+          <span class="card-step">01 / COURS</span>
+          <h3 class="card-heading">Apprends les bases.</h3>
+          <p class="card-sub">Des cours pour progresser.</p>
+          <a href="#" class="btn-card-dark">Découvrir <span>↗</span></a>
+        </div>
+        <div class="card-icon">
+          <svg width="115" height="105" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 44L60 22L108 44L60 66L12 44Z" stroke="#111312" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M30 53V76C30 82 44 90 60 90C76 90 90 82 90 76V53" stroke="#111312" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M98 49V82" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M98 82L94 94M98 82L102 94" stroke="#111312" stroke-width="3" stroke-linecap="round"/>
+            <line x1="94" y1="22" x2="101" y2="11" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="104" y1="29" x2="114" y2="23" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="107" y1="38" x2="117" y2="37" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="card-mint" id="quizz">
+        <div class="card-left">
+          <span class="badge-new">NOUVEAU</span>
+          <span class="card-step">02 / QUIZ</span>
+          <h3 class="card-heading">Teste tes connaissances.</h3>
+          <p class="card-sub">Mesure tes progrès.</p>
+          <a href="#" class="btn-card-dark">Faire un quiz <span>↗</span></a>
+        </div>
+        <div class="card-icon">
+          <svg width="110" height="105" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M58 26C52 20 40 22 37 30C28 31 23 40 26 49C21 56 23 68 31 72C31 82 42 89 52 86C55 88 58 88 58 84V26Z" stroke="#111312" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M62 26C68 20 80 22 83 30C92 31 97 40 94 49C99 56 97 68 89 72C89 82 78 89 68 86C65 88 62 88 62 84V26Z" stroke="#111312" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M44 40C48 42 48 48 43 50M38 62C43 60 46 65 44 70M76 40C72 42 72 48 77 50M82 62C77 60 74 65 76 70" stroke="#111312" stroke-width="3.2" stroke-linecap="round"/>
+            <line x1="88" y1="18" x2="94" y2="8" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="97" y1="24" x2="106" y2="18" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="101" y1="33" x2="111" y2="32" stroke="#111312" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </article>
+    </div>
+
+    <article class="card-labs" id="labs">
+      <div class="labs-info">
+        <span class="card-step">03 / LABS</span>
+        <h3 class="card-heading">Passe à la pratique.</h3>
+        <p class="card-sub">Expérimente et mets tes connaissances en application.</p>
+      </div>
+      <div class="labs-right">
+        <a href="#" class="link-labs">Explorer les Labs <span>↗</span></a>
+        <svg width="86" height="82" viewBox="0 0 96 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="26" y1="22" x2="18" y2="14" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="20" y1="36" x2="10" y2="34" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="22" y1="50" x2="12" y2="54" stroke="#a8f8a4" stroke-width="3" stroke-linecap="round"/>
+          <path d="M44 14H62M47 14V34L31 66C29 70 32 75 37 75H69C74 75 77 70 75 66L59 34V14" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M39 52H67L73 65C74 68 72 71 69 71H37C34 71 32 68 33 65L39 52Z" fill="#7ce878"/>
+          <circle cx="48" cy="63" r="2.2" fill="#111312"/>
+          <circle cx="58" cy="60" r="1.8" fill="#111312"/>
+          <circle cx="53" cy="43" r="2" fill="#a8f8a4"/>
+        </svg>
+      </div>
+    </article>
+  </main>
+
   <!-- FOOTER HARMONISÉ -->
   <footer class="footer-wrapper">
-    <div class="flames-container">
-      <svg class="flames-svg" viewBox="0 0 1440 245" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <path d="M0 245V152C12 135 28 118 22 92C16 68 0 65 8 46C15 32 34 45 38 66C42 88 26 112 36 128C46 144 68 134 76 112C84 90 74 64 90 48C104 34 114 55 108 78C102 100 94 128 114 140C134 152 162 134 166 106C170 80 152 56 168 42C182 30 198 52 194 78C190 104 176 136 198 152C220 168 254 150 264 122C274 96 258 68 276 54C292 42 308 66 302 92C296 118 282 146 308 160C334 174 368 152 376 122C384 94 366 66 386 52C404 40 420 66 414 94C408 122 396 152 424 166C452 180 486 156 494 126C502 98 486 72 504 58C520 46 534 72 528 98C522 124 512 156 542 168C565 177 588 165 602 148C612 115 628 84 654 68C666 60 662 42 678 28C696 14 722 28 724 52C726 72 746 76 760 94C776 114 782 142 794 164C815 176 846 168 860 142C874 116 858 84 878 68C896 54 914 78 906 106C898 134 888 164 918 174C948 184 982 158 990 126C998 96 980 66 1002 52C1022 40 1038 66 1030 96C1022 126 1012 158 1044 170C1076 182 1112 154 1120 120C1128 88 1110 56 1134 42C1154 30 1172 58 1164 90C1156 122 1144 156 1178 168C1212 180 1248 150 1256 114C1264 80 1244 48 1268 34C1290 22 1308 52 1300 86C1292 120 1280 156 1316 168C1352 180 1388 148 1396 112C1404 78 1384 46 1408 32C1424 22 1436 42 1440 62V245H0Z" fill="#0b4a42"/>
-        <path d="M0 245V196C180 176 420 184 720 192C1020 200 1260 182 1440 194V245H0Z" fill="#0e100f"/>
-        <path d="M606 176C608 132 624 98 652 80C664 72 664 52 680 38C696 24 716 36 718 58C720 76 742 82 756 100C772 120 778 150 784 176H606Z" fill="#052723" stroke="#0b4a42" stroke-width="6" stroke-linejoin="round"/>
-        <path d="M664 138C672 132 684 132 690 138" stroke="#a8f8a4" stroke-width="5" stroke-linecap="round"/>
-        <path d="M708 138C714 132 726 132 734 138" stroke="#a8f8a4" stroke-width="5" stroke-linecap="round"/>
-        <path d="M674 152H724L718 172H704L700 158L696 172H680L674 152Z" fill="#a8f8a4"/>
-        <rect x="596" y="166" width="44" height="32" rx="10" transform="rotate(-14 596 166)" fill="#052723"/>
-        <rect x="758" y="156" width="44" height="32" rx="10" transform="rotate(14 758 156)" fill="#052723"/>
-        <g transform="rotate(24 795 45)">
-          <rect x="782" y="8" width="26" height="58" rx="8" fill="#052723" stroke="#0b4a42" stroke-width="6"/>
-          <circle cx="795" cy="84" r="12" fill="#052723" stroke="#0b4a42" stroke-width="6"/>
-        </g>
-      </svg>
-    </div>
+    <svg class="flames-svg" viewBox="0 0 1440 245" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 245V152C12 135 28 118 22 92C16 68 0 65 8 46C15 32 34 45 38 66C42 88 26 112 36 128C46 144 68 134 76 112C84 90 74 64 90 48C104 34 114 55 108 78C102 100 94 128 114 140C134 152 162 134 166 106C170 80 152 56 168 42C182 30 198 52 194 78C190 104 176 136 198 152C220 168 254 150 264 122C274 96 258 68 276 54C292 42 308 66 302 92C296 118 282 146 308 160C334 174 368 152 376 122C384 94 366 66 386 52C404 40 420 66 414 94C408 122 396 152 424 166C452 180 486 156 494 126C502 98 486 72 504 58C520 46 534 72 528 98C522 124 512 156 542 168C565 177 588 165 602 148C612 115 628 84 654 68C666 60 662 42 678 28C696 14 722 28 724 52C726 72 746 76 760 94C776 114 782 142 794 164C815 176 846 168 860 142C874 116 858 84 878 68C896 54 914 78 906 106C898 134 888 164 918 174C948 184 982 158 990 126C998 96 980 66 1002 52C1022 40 1038 66 1030 96C1022 126 1012 158 1044 170C1076 182 1112 154 1120 120C1128 88 1110 56 1134 42C1154 30 1172 58 1164 90C1156 122 1144 156 1178 168C1212 180 1248 150 1256 114C1264 80 1244 48 1268 34C1290 22 1308 52 1300 86C1292 120 1280 156 1316 168C1352 180 1388 148 1396 112C1404 78 1384 46 1408 32C1424 22 1436 42 1440 62V245H0Z" fill="#0b4a42"/>
+      <path d="M606 176C608 132 624 98 652 80C664 72 664 52 680 38C696 24 716 36 718 58C720 76 742 82 756 100C772 120 778 150 784 176H606Z" fill="#052723" stroke="#0b4a42" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M664 138C672 132 684 132 690 138" stroke="#a8f8a4" stroke-width="5" stroke-linecap="round"/>
+      <path d="M708 138C714 132 726 132 734 138" stroke="#a8f8a4" stroke-width="5" stroke-linecap="round"/>
+      <path d="M674 152H724L718 172H704L700 158L696 172H680L674 152Z" fill="#a8f8a4"/>
+      <rect x="596" y="166" width="44" height="32" rx="10" transform="rotate(-14 596 166)" fill="#052723"/>
+      <rect x="758" y="156" width="44" height="32" rx="10" transform="rotate(14 758 156)" fill="#052723"/>
+      <g transform="rotate(24 795 45)">
+        <rect x="782" y="8" width="26" height="58" rx="8" fill="#052723" stroke="#0b4a42" stroke-width="6"/>
+        <circle cx="795" cy="84" r="12" fill="#052723" stroke="#0b4a42" stroke-width="6"/>
+      </g>
+    </svg>
 
     <div class="footer-body">
       <div class="footer-grid">
         <div class="footer-nav">
           <h4>Navigation</h4>
           <ul>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#cours">Cours</a></li>
-            <li><a href="#quizz">Quizz</a></li>
-            <li><a href="#labs">Labs</a></li>
-            <li><a href="#">Confidentialité</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Freebies</a></li>
+            <li><a href="#">Privacy Policy</a></li>
           </ul>
         </div>
 
         <div class="footer-cta">
-          <h4>Une question ?</h4>
-          <p>Envie d'en savoir plus sur la plateforme ?</p>
-          <button type="button" class="btn-chat" onclick="showToast('Ouverture de la messagerie MonPlateau')">Discutons !</button>
+          <h4>Say Hi!</h4>
+          <p>Interested in working with us?</p>
+          <a href="#" class="btn-chat">Lets Chat!</a>
         </div>
 
         <div class="footer-meta">
           <div class="social-icons">
-            <a href="#" class="social-circle" aria-label="LinkedIn" onclick="event.preventDefault(); showToast('Redirection LinkedIn')">in</a>
-            <a href="#" class="social-circle" aria-label="Instagram" onclick="event.preventDefault(); showToast('Redirection Instagram')">
+            <a href="#" class="social-circle" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-circle" aria-label="Instagram">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
-            <a href="#" class="social-circle" aria-label="TikTok" onclick="event.preventDefault(); showToast('Redirection TikTok')">
+            <a href="#" class="social-circle" aria-label="TikTok">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
               </svg>
             </a>
-            <a href="#" class="social-circle" aria-label="Threads" onclick="event.preventDefault(); showToast('Redirection Threads')">@</a>
+            <a href="#" class="social-circle" aria-label="Threads">@</a>
           </div>
-          <p class="copyright">© 2026 MonPlateau — NetRevision®</p>
+          <p class="copyright">© 2026 MonPlateau</p>
         </div>
       </div>
 
-      <div class="footer-wordmark-container">
-        <div class="footer-wordmark">MONPLATEAU</div>
-      </div>
+      <div class="footer-wordmark">MONPLATEAU</div>
     </div>
   </footer>
 
-  <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
-
-  <script>
-    let toastTimeout;
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2800);
-    }
-  </script>
-
 </body>
 </html>
-```
