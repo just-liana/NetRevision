@@ -774,7 +774,37 @@ body {
         font-size: clamp(43px, 11vw, 65px);
     }
 
-    .footer-cta {
+   .footer-cta {
+    position: absolute;
+    left: 88%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 190px;
+    height: 63px;
+
+    border-radius: 40px;
+    background: var(--yellow);
+    color: var(--black);
+
+    font-size: 16px;
+    font-weight: 900;
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+.footer-cta:hover {
+    background: white;
+    transform: translate(-50%, -55%);
+}
+
+    /*.footer-cta {
         top: auto;
         bottom: 15px;
         left: 50%;
@@ -786,7 +816,7 @@ body {
 
     .footer-cta:hover {
         transform: translateX(-50%) translateY(-4px);
-    }
+    }*/
 
     .footer-right {
         padding: 55px 6% 35px;
