@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -435,220 +434,201 @@ body {
 }
 
 /* =====================================
-   7. FOOTER
+   7. FOOTER (STYLE RÉFÉRENCE AMÉLIORÉ)
 ===================================== */
 
 .nr-footer {
-    width: 100%;
-    min-height: 245px;
+    background: var(--mint);
+    color: var(--black);
     position: relative;
     overflow: hidden;
-    background: var(--mint);
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+    padding-top: 0;
 }
 
-/* Fond noir en diagonale */
-
-.nr-footer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+/* Bannière supérieure de flammes et illustration */
+.footer-flames-banner {
     background: var(--black);
-
-    clip-path: polygon(
-        0 0,
-        65% 0,
-        42% 100%,
-        0 100%
-    );
-}
-
-/* Partie gauche */
-
-.footer-left {
     position: relative;
-    z-index: 1;
-    padding: 35px 4%;
-    color: white;
-}
-
-.footer-left .nr-eyebrow {
-    color: var(--mint);
-    font-size: 17px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.footer-left h2 {
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 1000;
-    line-height: .9;
-    letter-spacing: -3px;
-}
-
-.footer-left h2 span {
-    color: var(--mint);
-}
-
-/* Bouton footer */
-
-.footer-cta {
-    position: absolute;
-    left: 60%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
+    width: 100%;
+    padding: 40px 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    width: 190px;
-    height: 63px;
+.footer-flames-svg {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    display: block;
+}
 
-    border-radius: 40px;
-    background: var(--yellow);
-    color: var(--black);
+/* Corps central du footer */
+.footer-body {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: center;
+    padding: 50px 5% 30px;
+    gap: 30px;
+}
 
+/* Navigation footer (colonne gauche) */
+.footer-col-nav h4 {
     font-size: 16px;
     font-weight: 900;
-    text-decoration: none;
-
-    transition: .3s;
-}
-
-.footer-cta:hover {
-    background: white;
-    transform: translate(-50%, -55%);
-}
-
-/* Partie droite */
-
-.footer-right {
-    position: relative;
-    z-index: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 35px 4% 35px 0;
-    gap: 15px;
-}
-
-.footer-newsletter {
+    margin-bottom: 15px;
     color: var(--black);
-    flex: 1;
 }
 
-.footer-newsletter .nr-eyebrow {
+.footer-col-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col-nav ul a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 700;
+    transition: color .2s;
+}
+
+.footer-col-nav ul a:hover {
     color: var(--green);
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
 }
 
-.footer-newsletter h3 {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 1000;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-}
-
-.footer-newsletter p {
-    font-size: 17px;
-}
-
-/* Illustration livres */
-
-.footer-visual {
-    border-left: 2px solid var(--green);
-    padding-left: 25px;
-
+/* Appel à l'action (colonne centrale) */
+.footer-col-cta {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    color: var(--green);
-    min-width: 145px;
 }
 
-.footer-book {
-    font-size: 75px;
-    line-height: 1.1;
-    animation: nr-float 3s ease-in-out infinite;
+.footer-col-cta h4 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 6px;
 }
 
-.footer-visual strong {
-    font-size: 23px;
-    font-weight: 1000;
+.footer-col-cta p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.footer-chat-btn {
+    display: inline-block;
+    background: var(--black);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 900;
+    transition: .3s;
+    border: 2px solid var(--black);
+}
+
+.footer-chat-btn:hover {
+    background: var(--green);
+    color: var(--mint);
+}
+
+/* Infos et réseaux (colonne droite) */
+.footer-col-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--black);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.social-icon:hover {
+    background: var(--green);
+    color: var(--mint);
+}
+
+.footer-copy {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.footer-badge {
+    background: white;
+    border: 1.5px solid var(--black);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Grand titre de marque en bas du footer */
+.footer-brand-title {
+    width: 100%;
     text-align: center;
-    line-height: 1.25;
+    padding: 20px 20px 30px;
 }
 
-/* Animation */
-
-@keyframes nr-float {
-    0%, 100% {
-        transform: translateY(0) rotate(-3deg);
-    }
-
-    50% {
-        transform: translateY(-9px) rotate(3deg);
-    }
+.footer-brand-title h2 {
+    font-size: clamp(45px, 9vw, 130px);
+    font-weight: 1000;
+    letter-spacing: -3px;
+    color: var(--black);
+    line-height: .9;
+    text-transform: uppercase;
 }
 
 /* =====================================
-   8. RESPONSIVE TABLETTE
+   8. RESPONSIVE TABLETTE & MOBILE
 ===================================== */
 
 @media (max-width: 900px) {
-
     .card-container {
         grid-template-columns: 1fr 1fr;
     }
 
-    .card-illustration {
-        opacity: .7;
-        width: 95px;
+    .footer-body {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 35px;
     }
 
-    .footer-left h2 {
-        font-size: 43px;
+    .footer-col-right {
+        align-items: center;
     }
 
-    .footer-cta {
-        left: 65%;
-        width: 150px;
-    }
-
-    .footer-newsletter h3 {
-        font-size: 25px;
-    }
-
-    .footer-visual {
-        min-width: 110px;
-        padding-left: 15px;
-    }
-
-    .footer-visual strong {
-        font-size: 18px;
+    .footer-col-nav ul {
+        align-items: center;
     }
 }
 
-/* =====================================
-   9. RESPONSIVE MOBILE
-===================================== */
-
 @media (max-width: 700px) {
-
-    /* Navigation */
-
     .navbar {
         height: 65px;
         padding: 0 20px;
@@ -664,16 +644,12 @@ body {
 
     .nav-links {
         display: none;
-
         position: absolute;
         top: 65px;
         left: 0;
-
         width: 100%;
         padding: 25px;
-
         background: var(--black);
-
         flex-direction: column;
         align-items: center;
         gap: 25px;
@@ -683,72 +659,15 @@ body {
         display: flex;
     }
 
-    /* Hero */
-
     .home-hero {
         height: 340px;
         padding: 35px 15px 0;
-
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 82%,
-            0 100%
-        );
-    }
-
-    .home-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
+        clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
     }
 
     .home-hero h1 {
         font-size: clamp(38px, 10vw, 58px);
-        letter-spacing: -2px;
-        margin-top: 35px;
     }
-
-    .home-description {
-        font-size: 14px;
-        margin-top: 15px;
-    }
-
-    .home-cta {
-        min-width: 210px;
-        height: 48px;
-        font-size: 13px;
-    }
-
-    .hero-star {
-        font-size: 50px;
-        left: 3%;
-        top: 120px;
-        opacity: .5;
-    }
-
-    .hero-rays {
-        font-size: 40px;
-        right: 4%;
-        top: 110px;
-        opacity: .5;
-    }
-
-    /* Section */
-
-    .learning-section {
-        padding: 30px 18px 45px;
-    }
-
-    .section-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    .section-heading h2 {
-        font-size: 28px;
-    }
-
-    /* Cartes */
 
     .card-container {
         display: flex;
@@ -759,135 +678,6 @@ body {
     .card {
         width: 100%;
         max-width: 430px;
-        min-height: 170px;
-        padding: 20px;
-    }
-
-    .card h3 {
-        font-size: 22px;
-        max-width: 75%;
-    }
-
-    .card p {
-        font-size: 14px;
-        max-width: 75%;
-    }
-
-    .card-illustration {
-        width: 85px;
-        height: 85px;
-        right: 10px;
-        top: 35px;
-    }
-
-    .card-form-3 {
-        min-height: 170px;
-        display: block;
-    }
-
-    .card-form-3 .link {
-        position: static;
-        display: inline-block;
-        transform: none;
-        margin-top: 15px;
-        font-size: 14px;
-    }
-
-    .card-form-3 .card-illustration {
-        width: 65px;
-        height: 65px;
-        top: 20px;
-        right: 10px;
-    }
-
-    /* Footer */
-
-    .nr-footer {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nr-footer::before {
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 43%,
-            0 53%
-        );
-    }
-
-    .footer-left {
-        min-height: 260px;
-        padding: 40px 6% 75px;
-    }
-
-    .footer-left .nr-eyebrow {
-        font-size: 11px;
-    }
-
-    .footer-left h2 {
-        font-size: clamp(43px, 11vw, 65px);
-    }
-
-    .footer-cta {
-        top: auto;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 170px;
-        height: 50px;
-        font-size: 13px;
-    }
-
-    .footer-cta:hover {
-        transform: translateX(-50%) translateY(-4px);
-    }
-
-    .footer-right {
-        padding: 55px 6% 35px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 25px;
-    }
-
-    .footer-newsletter .nr-eyebrow {
-        font-size: 12px;
-    }
-
-    .footer-newsletter h3 {
-        font-size: 27px;
-    }
-
-    .footer-newsletter p {
-        font-size: 14px;
-    }
-
-    .footer-visual {
-        align-self: center;
-        border-left: none;
-        border-top: 2px solid var(--green);
-        padding: 20px 0 0;
-        width: 100%;
-    }
-
-    .footer-book {
-        font-size: 65px;
-    }
-
-    .footer-visual strong {
-        font-size: 21px;
-    }
-}
-
-/* Réduction des animations si demandée par le système */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
     }
 }
 
@@ -901,7 +691,6 @@ body {
 ===================================== -->
 
 <nav class="navbar" aria-label="Navigation principale">
-
     <a href="#" class="nav-logo">MonPlateau</a>
 
     <button
@@ -915,19 +704,15 @@ body {
     </button>
 
     <ul class="nav-links" id="nav-links">
-
         <li><a href="#cours">COURS</a></li>
         <li><a href="#quizz">QUIZZ</a></li>
         <li><a href="#labs">LABS</a></li>
-
         <li>
             <button class="btn" type="button">
                 SE CONNECTER
             </button>
         </li>
-
     </ul>
-
 </nav>
 
 
@@ -936,7 +721,6 @@ body {
 ===================================== -->
 
 <section class="home-hero">
-
     <div class="hero-star">✳</div>
     <div class="hero-rays">〽</div>
 
@@ -956,7 +740,6 @@ body {
     <a href="#cours" class="home-cta">
         EXPLORER LES COURS ↗
     </a>
-
 </section>
 
 
@@ -967,190 +750,65 @@ body {
 <main class="learning-section" id="cours">
 
     <div class="section-heading">
-
         <p class="section-eyebrow">
             TON ESPACE D'APPRENTISSAGE
         </p>
-
         <h2>
             CHOISIS TON PROCHAIN <span>DÉFI.</span>
         </h2>
-
     </div>
-
 
     <div class="card-container">
 
         <!-- CARTE 1 : COURS -->
-
         <article class="card card-form-1">
-
             <span class="badge">NOUVEAU</span>
-
             <span class="card-number">01 / COURS</span>
-
             <h3>Apprends les bases.</h3>
-
             <p>Des cours pour progresser.</p>
+            <a href="#cours" class="btn">Découvrir ↗</a>
 
-            <a href="#cours" class="btn">
-                Découvrir ↗
-            </a>
-
-            <!-- Illustration diplôme -->
-
-            <svg class="card-illustration"
-                 viewBox="0 0 130 130"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M10 35 L70 12 L120 38 L61 62 Z"
-                      stroke="#171719"
-                      stroke-width="5"
-                      stroke-linejoin="round"/>
-
-                <path d="M29 45 V72 C29 92 93 92 93 72 V45"
-                      stroke="#171719"
-                      stroke-width="5"
-                      stroke-linecap="round"/>
-
-                <path d="M119 39 V92"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
+            <svg class="card-illustration" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 35 L70 12 L120 38 L61 62 Z" stroke="#171719" stroke-width="5" stroke-linejoin="round"/>
+                <path d="M29 45 V72 C29 92 93 92 93 72 V45" stroke="#171719" stroke-width="5" stroke-linecap="round"/>
+                <path d="M119 39 V92" stroke="#171719" stroke-width="4" stroke-linecap="round"/>
                 <circle cx="119" cy="96" r="5" fill="#171719"/>
-
-                <path d="M119 101 L115 119 M119 101 L124 119"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
-                <path d="M112 5 L120 -5 M125 17 L135 10"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
+                <path d="M119 101 L115 119 M119 101 L124 119" stroke="#171719" stroke-width="4" stroke-linecap="round"/>
+                <path d="M112 5 L120 -5 M125 17 L135 10" stroke="#171719" stroke-width="4" stroke-linecap="round"/>
             </svg>
-
         </article>
-
 
         <!-- CARTE 2 : QUIZ -->
-
         <article class="card card-form-2" id="quizz">
-
             <span class="badge">NOUVEAU</span>
-
             <span class="card-number">02 / QUIZ</span>
-
             <h3>Teste tes connaissances.</h3>
-
             <p>Mesure tes progrès.</p>
+            <a href="#quizz" class="btn">Faire un quiz ↗</a>
 
-            <a href="#quizz" class="btn">
-                Faire un quiz ↗
-            </a>
-
-            <!-- Illustration cerveau -->
-
-            <svg class="card-illustration"
-                 viewBox="0 0 130 130"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M64 18
-                         C47 2 27 14 30 32
-                         C12 35 12 58 24 67
-                         C10 85 28 106 43 103
-                         C49 119 65 113 65 99
-                         V24 Z"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linejoin="round"/>
-
-                <path d="M66 18
-                         C83 2 103 14 100 32
-                         C118 35 118 58 106 67
-                         C120 85 102 106 87 103
-                         C81 119 65 113 65 99
-                         V24 Z"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linejoin="round"/>
-
-                <path d="M65 17 V110"
-                      stroke="#171719"
-                      stroke-width="3"/>
-
-                <path d="M37 42 L49 53 M49 42 L37 53
-                         M80 43 L92 54 M92 43 L80 54
-                         M30 75 L43 85 M43 75 L30 85
-                         M83 80 L95 91 M95 80 L83 91"
-                      stroke="#171719"
-                      stroke-width="3"
-                      stroke-linecap="round"/>
-
-                <path d="M111 15 L120 5 M119 34 L131 29"
-                      stroke="#171719"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
+            <svg class="card-illustration" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M64 18 C47 2 27 14 30 32 C12 35 12 58 24 67 C10 85 28 106 43 103 C49 119 65 113 65 99 V24 Z" stroke="#171719" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M66 18 C83 2 103 14 100 32 C118 35 118 58 106 67 C120 85 102 106 87 103 C81 119 65 113 65 99 V24 Z" stroke="#171719" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M65 17 V110" stroke="#171719" stroke-width="3"/>
+                <path d="M37 42 L49 53 M49 42 L37 53 M80 43 L92 54 M92 43 L80 54 M30 75 L43 85 M43 75 L30 85 M83 80 L95 91 M95 80 L83 91" stroke="#171719" stroke-width="3" stroke-linecap="round"/>
+                <path d="M111 15 L120 5 M119 34 L131 29" stroke="#171719" stroke-width="4" stroke-linecap="round"/>
             </svg>
-
         </article>
 
-
         <!-- CARTE 3 : LABS -->
-
         <article class="card card-form-3" id="labs">
-
+            <span class="badge">POPULAIRE</span>
             <span class="card-number">03 / LABS</span>
+            <h3>Mets en pratique.</h3>
+            <p>Des ateliers pratiques pour valider tes acquis sur le terrain.</p>
+            <a href="#labs" class="link">Accéder aux Labs ↗</a>
 
-            <h3>Passe à la pratique.</h3>
-
-            <p>
-                Expérimente et mets tes connaissances en application.
-            </p>
-
-            <a href="#labs" class="link">
-                Explorer les Labs ↗
-            </a>
-
-            <!-- Illustration fiole -->
-
-            <svg class="card-illustration"
-                 viewBox="0 0 100 100"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-
-                <path d="M36 10 H64 M41 10 V42
-                         L18 81 Q14 91 27 91 H73
-                         Q86 91 82 81 L59 42 V10"
-                      stroke="white"
-                      stroke-width="5"
-                      stroke-linejoin="round"/>
-
-                <path d="M28 70 H72 L82 85
-                         Q83 91 72 91 H27
-                         Q17 91 20 85 Z"
-                      fill="#A3FFA3"/>
-
-                <path d="M31 67 Q50 75 69 67"
-                      stroke="#006663"
-                      stroke-width="3"/>
-
-                <circle cx="40" cy="80" r="3" fill="#006663"/>
-                <circle cx="58" cy="84" r="4" fill="#006663"/>
-                <circle cx="66" cy="76" r="2" fill="#006663"/>
-
-                <path d="M45 3 V0 M72 24 L80 16 M26 27 L18 20"
-                      stroke="#A3FFA3"
-                      stroke-width="4"
-                      stroke-linecap="round"/>
-
+            <svg class="card-illustration" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="30" width="90" height="70" rx="8" stroke="white" stroke-width="5"/>
+                <path d="M45 55 L30 70 L45 85" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M85 55 L100 70 L85 85" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M60 45 L70 95" stroke="white" stroke-width="5" stroke-linecap="round"/>
             </svg>
-
         </article>
 
     </div>
@@ -1159,108 +817,84 @@ body {
 
 
 <!-- =====================================
-     FOOTER
+     FOOTER (INSPIRÉ DE LA PHOTO - NOIR/MENTHE/BLANC)
 ===================================== -->
 
 <footer class="nr-footer">
 
-    <!-- PARTIE NOIRE -->
+    <!-- Bannière flammes SVG intégrée avec les couleurs adaptées -->
+    <div class="footer-flames-banner">
+        <svg class="footer-flames-svg" viewBox="0 0 1000 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Flammes de fond (Noir) -->
+            <path d="M0 220 V120 C50 140 80 90 110 130 C150 90 180 150 220 110 C260 160 300 80 350 120 C400 60 450 150 500 100 C550 160 600 70 650 130 C700 80 750 140 800 100 C850 150 900 80 1000 130 V220 H0 Z" fill="#171719"/>
+            
+            <!-- Personnage central et flammes stylisées en vert menthe -->
+            <path d="M350 180 C360 130 380 90 410 60 C425 45 440 30 445 10 C450 35 465 50 490 60 C530 80 550 130 550 180 Z" fill="#a3ffa3"/>
+            
+            <!-- Yeux et détails du personnage caché -->
+            <rect x="445" y="140" width="12" height="15" rx="3" fill="#171719"/>
+            <rect x="473" y="140" width="12" height="15" rx="3" fill="#171719"/>
+            <path d="M462 162 H478 V175 H462 Z" fill="#171719"/>
 
-    <div class="footer-left">
+            <!-- Point d'exclamation / flamme secondaire -->
+            <path d="M570 70 C575 40 590 25 615 15 C600 45 610 65 635 75 C615 95 585 95 570 70 Z" fill="#a3ffa3"/>
+            <circle cx="615" cy="45" r="5" fill="#171719"/>
+            <rect x="612" y="58" width="6" height="12" rx="3" fill="#171719"/>
+        </svg>
+    </div>
 
-        <p class="nr-eyebrow">
-            NETREVISION® — LE SAVOIR EN MOUVEMENT
-        </p>
+    <!-- Contenu du footer -->
+    <div class="footer-body">
 
-        <h2>
-            LET'S MAKE<br>
-            <span>PROGRESS.</span>
-        </h2>
+        <!-- Colonne Navigation -->
+        <div class="footer-col-nav">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="#cours">Cours</a></li>
+                <li><a href="#quizz">Quizz</a></li>
+                <li><a href="#labs">Labs</a></li>
+                <li><a href="#">Mentions Légales</a></li>
+            </ul>
+        </div>
 
-        <a href="#cours" class="footer-cta">
-            COMMENCER ↗
-        </a>
+        <!-- Colonne Appel à discussion -->
+        <div class="footer-col-cta">
+            <h4>Say Hi!</h4>
+            <p>Une question ou un projet de révision ?</p>
+            <a href="#" class="footer-chat-btn">Discutons !</a>
+        </div>
+
+        <!-- Colonne Réseaux & Copyright -->
+        <div class="footer-col-right">
+            <div class="footer-socials">
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">ig</a>
+                <a href="#" class="social-icon">tk</a>
+                <a href="#" class="social-icon">yt</a>
+            </div>
+            <div class="footer-copy">&copy; 2026 NetRevision</div>
+            <div class="footer-badge">⚡ Propulsé pour réussir</div>
+        </div>
 
     </div>
 
-
-    <!-- PARTIE VERTE -->
-
-    <div class="footer-right">
-
-        <div class="footer-newsletter">
-
-            <p class="nr-eyebrow">
-                RESTE DANS LA BOUCLE
-            </p>
-
-            <h3>UNE DOSE DE SAVOIR ?</h3>
-
-            <p>
-                Apprendre aujourd'hui, réussir demain.
-            </p>
-
-        </div>
-
-        <div class="footer-visual">
-
-            <div class="footer-book">📚</div>
-
-            <strong>APPRENDS.</strong>
-            <strong>ÉVOLUE.</strong>
-
-        </div>
-
+    <!-- Grand titre de la marque -->
+    <div class="footer-brand-title">
+        <h2>NetRevision</h2>
     </div>
 
 </footer>
 
-
-<!-- =====================================
-     JAVASCRIPT MENU MOBILE
-===================================== -->
-
 <script>
+    // Script pour le menu mobile
+    const toggleButton = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-
-function closeMenu() {
-    navLinks.classList.remove("active");
-
-    menuToggle.textContent = "☰";
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
-}
-
-menuToggle.addEventListener("click", () => {
-
-    const isOpen = navLinks.classList.toggle("active");
-
-    menuToggle.textContent = isOpen ? "✕" : "☰";
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
-    menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Fermer le menu" : "Ouvrir le menu"
-    );
-
-});
-
-navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
-
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 700) {
-        closeMenu();
-    }
-});
-
+    toggleButton.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const expanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
+        toggleButton.setAttribute('aria-expanded', !expanded);
+    });
 </script>
 
 </body>
