@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours — NetRevision</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================
+   1. VARIABLES ET RESET
+===================================== */
+
+:root {
+    --black: #171719;
+    --green: #006663;
+    --mint: #a3ffa3;
+    --yellow: #ffd629;
+    --white: #ffffff;
+    --background: #f4f8f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Segoe UI', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--background);
+    color: var(--black);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =====================================
+   2. NAVIGATION
+===================================== */
+
+.navbar {
+    width: 100%;
+    height: 65px;
+    padding: 0 4.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--black);
+    border-bottom: 1px solid #ffffff25;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-logo {
+    color: var(--mint);
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    transition: .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active-page {
+    color: var(--mint);
+}
+
+.nav-links a.active-page {
+    border-bottom: 3px solid var(--mint);
+    padding-bottom: 4px;
+}
+
+.nav-links .btn {
+    display: inline-block;
+    border: none;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.nav-links .btn:hover {
+    background: var(--mint);
+    transform: translateY(-3px);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--mint);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* =====================================
+   3. HERO
+===================================== */
+
+.page-hero {
+    position: relative;
+    z-index: 2;
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 30px 20px 0;
+    height: 360px;
+
+    clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+}
+
+.hero-eyebrow {
+    color: var(--mint);
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.page-hero h1 {
+    font-size: clamp(44px, 7vw, 86px);
+    font-weight: 1000;
+    line-height: .92;
+    letter-spacing: -4px;
+    margin-bottom: 12px;
+}
+
+.page-hero h1 span {
+    color: var(--mint);
+    font-style: italic;
+}
+
+.hero-description {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.hero-star {
+    position: absolute;
+    left: 9%;
+    top: 70px;
+    color: var(--mint);
+    font-size: 100px;
+    font-weight: bold;
+    transform: rotate(15deg);
+}
+
+.hero-rays {
+    position: absolute;
+    right: 12%;
+    top: 55px;
+    color: var(--mint);
+    font-size: 80px;
+    transform: rotate(20deg);
+}
+
+/* Recherche */
+
+.search-box {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: min(520px, 90%);
+    height: 56px;
+    padding: 0 22px;
+    background: var(--white);
+    border: 2px solid var(--yellow);
+    border-radius: 40px;
+}
+
+.search-box span {
+    color: var(--black);
+    font-size: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.search-box input::placeholder {
+    color: #17171980;
+}
+
+/* =====================================
+   4. CATALOGUE
+===================================== */
+
+.catalog {
+    position: relative;
+    z-index: 1;
+    margin-top: -1px;
+    padding: 25px 5.7% 55px;
+    background: var(--background);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-eyebrow {
+    color: var(--green);
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 3px;
+}
+
+.section-heading h2 {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 1000;
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span { color: var(--green); }
+
+/* Filtres */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.chip {
+    border: 2px solid var(--black);
+    background: var(--white);
+    color: var(--black);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.chip:hover {
+    background: var(--mint);
+    transform: translateY(-3px);
+}
+
+.chip.active {
+    background: var(--black);
+    color: var(--mint);
+}
+
+.result-count {
+    text-align: center;
+    color: var(--green);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* Grille */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.course-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+    padding: 22px 26px 24px;
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    transition: .3s;
+}
+
+.course-card:nth-child(3n+1) {
+    background: var(--mint);
+    box-shadow: 4px 4px 0 var(--green);
+}
+
+.course-card:nth-child(3n+2) {
+    background: var(--white);
+    box-shadow: 4px 4px 0 var(--yellow);
+}
+
+.course-card:nth-child(3n) {
+    background: var(--black);
+    color: white;
+    box-shadow: 4px 4px 0 var(--green);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 7px 9px 0 var(--black);
+}
+
+.course-card:nth-child(3n):hover {
+    box-shadow: 7px 9px 0 var(--mint);
+}
+
+.course-card.hidden { display: none; }
+
+.badge {
+    display: table;
+    width: fit-content;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.card-number {
+    display: block;
+    color: var(--green);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.course-card:nth-child(3n) .card-number { color: var(--mint); }
+
+.course-card h3 {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    max-width: 75%;
+}
+
+.course-card p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    max-width: 85%;
+}
+
+.card-emoji {
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    border: 2px solid var(--black);
+    border-radius: 50%;
+    background: var(--yellow);
+}
+
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.card-meta span {
+    border: 2px solid currentColor;
+    border-radius: 30px;
+    padding: 4px 11px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+/* Progression */
+
+.progress {
+    margin-top: auto;
+    margin-bottom: 14px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 10px;
+    border: 2px solid currentColor;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar i {
+    display: block;
+    height: 100%;
+    background: var(--yellow);
+}
+
+.course-card .btn {
+    display: inline-block;
+    width: fit-content;
+    margin-top: auto;
+    background: var(--black);
+    color: white;
+    padding: 9px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.progress + .btn { margin-top: 0; }
+
+.course-card:nth-child(3n) .btn {
+    background: var(--mint);
+    color: var(--black);
+}
+
+.course-card .btn:hover {
+    background: var(--green);
+    color: var(--mint);
+}
+
+.course-card:nth-child(3n) .btn:hover {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+/* Aucun résultat */
+
+.empty-state {
+    display: none;
+    max-width: 520px;
+    margin: 20px auto 0;
+    padding: 30px;
+    text-align: center;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--yellow);
+}
+
+.empty-state.show { display: block; }
+
+.empty-state h3 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+/* Bandeau parcours */
+
+.path-banner {
+    position: relative;
+    max-width: 1400px;
+    margin: 28px auto 0;
+    padding: 26px 32px;
+    background: var(--black);
+    color: white;
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.path-banner .card-number { color: var(--mint); }
+
+.path-banner h3 {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    margin-bottom: 3px;
+}
+
+.path-banner p { font-size: 17px; }
+
+.path-banner .link {
+    color: var(--mint);
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 900;
+    border-bottom: 2px solid var(--mint);
+    padding-bottom: 7px;
+}
+
+.path-banner .link:hover {
+    color: var(--yellow);
+    border-color: var(--yellow);
+}
+
+/* =====================================
+   5. FOOTER (style Breaver)
+===================================== */
+
+.site-footer {
+    background: var(--black);
+    color: var(--black);
+    overflow: hidden;
+}
+
+.footer-scene {
+    position: relative;
+    height: clamp(170px, 23vw, 330px);
+    margin-bottom: -1px;
+}
+
+.footer-flames {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.footer-flames path { fill: var(--mint); }
+
+.footer-mascot {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: clamp(150px, 27vw, 380px);
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.footer-mascot .line {
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.footer-mascot .solid {
+    fill: var(--black);
+    stroke: var(--mint);
+    stroke-width: 9;
+    stroke-linejoin: round;
+}
+
+.footer-mascot .face {
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 7;
+    stroke-linecap: round;
+}
+
+.footer-mascot .wiggle {
+    transform-origin: 200px 40px;
+    animation: nr-wiggle 3.2s ease-in-out infinite;
+}
+
+@keyframes nr-wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50%      { transform: rotate(2deg); }
+}
+
+.footer-body {
+    background: var(--mint);
+    padding: 34px 2% 0;
+}
+
+.footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    padding: 0 1%;
+}
+
+.footer-nav h4,
+.footer-hi h4 {
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 900;
+    letter-spacing: -.5px;
+    margin-bottom: 10px;
+}
+
+/* Navigation centrée */
+
+.footer-nav { text-align: center; }
+
+.footer-nav ul {
+    list-style: none;
+    display: grid;
+    justify-items: center;
+    gap: 7px;
+}
+
+.footer-nav a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+    transition: .2s;
+}
+
+.footer-nav a:hover {
+    color: var(--green);
+    border-color: var(--green);
+}
+
+.footer-hi { text-align: center; }
+
+.footer-hi p {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.footer-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 62px;
+    padding: 0 34px;
+    border-radius: 40px;
+    background: var(--black);
+    color: var(--mint);
+    font-size: 18px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.footer-pill:hover {
+    background: var(--yellow);
+    color: var(--black);
+    transform: translateY(-4px);
+}
+
+.footer-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--mint);
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 900;
+    transition: .25s;
+}
+
+.footer-social a:hover {
+    background: var(--yellow);
+    color: var(--black);
+    transform: translateY(-3px);
+}
+
+.footer-copy {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.footer-badge {
+    border: 2px solid var(--black);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 15px;
+    color: var(--black);
+    text-decoration: none;
+}
+
+/* Wordmark géant pleine largeur (police lisible, sans déformation) */
+
+.footer-wordmark {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+.footer-wordmark text {
+    fill: var(--black);
+    font-family: 'Archivo Black', 'Arial Black', 'Impact', sans-serif;
+    font-weight: 900;
+}
+
+/* =====================================
+   6. RESPONSIVE TABLETTE
+===================================== */
+
+@media (max-width: 1000px) {
+
+    .course-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+
+    .footer-cols { grid-template-columns: 1fr 1fr; }
+
+    .footer-hi {
+        grid-column: 1 / -1;
+        order: -1;
+        margin-bottom: 10px;
+    }
+}
+
+/* =====================================
+   7. RESPONSIVE MOBILE
+===================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 65px;
+        padding: 0 20px;
+    }
+
+    .nav-logo { font-size: 28px; }
+
+    .menu-toggle { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: var(--black);
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .nav-links.active { display: flex; }
+
+    .page-hero {
+        height: 360px;
+        padding: 35px 15px 0;
+        clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
+    }
+
+    .hero-eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .page-hero h1 {
+        font-size: clamp(36px, 11vw, 54px);
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .hero-star {
+        font-size: 50px;
+        left: 3%;
+        top: 140px;
+        opacity: .5;
+    }
+
+    .hero-rays {
+        font-size: 40px;
+        right: 4%;
+        top: 130px;
+        opacity: .5;
+    }
+
+    .search-box { height: 50px; }
+
+    .catalog { padding: 30px 18px 45px; }
+
+    .section-eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .section-heading h2 { font-size: 28px; }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+        max-width: 430px;
+    }
+
+    .course-card { min-height: 270px; }
+
+    .course-card h3 { font-size: 22px; }
+
+    .course-card p { font-size: 14px; }
+
+    .path-banner { padding: 22px; }
+
+    .path-banner h3 { font-size: 22px; }
+
+    .path-banner p { font-size: 14px; }
+
+    .path-banner .link { font-size: 15px; }
+
+    .footer-body { padding-top: 26px; }
+
+    .footer-cols { grid-template-columns: 1fr; }
+
+    .footer-side { align-items: center; }
+
+    .footer-pill {
+        height: 52px;
+        font-size: 16px;
+    }
+
+    .footer-nav a { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<nav class="navbar" aria-label="Navigation principale">
+
+    <a href="index.html" class="nav-logo">NetRevision</a>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="nav-links">
+        ☰
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+
+        <li><a href="cours.html" class="active-page" aria-current="page">COURS</a></li>
+        <li><a href="index.html#quizz">QUIZZ</a></li>
+        <li><a href="index.html#labs">LABS</a></li>
+
+        <li>
+            <button class="btn" type="button">
+                SE CONNECTER
+            </button>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<header class="page-hero">
+
+    <div class="hero-star">✳</div>
+    <div class="hero-rays">〽</div>
+
+    <p class="hero-eyebrow">
+        CATALOGUE DE COURS
+    </p>
+
+    <h1>
+        APPRENDS À<br>
+        <span>TON RYTHME.</span>
+    </h1>
+
+    <p class="hero-description">
+        Des cours clairs, du niveau débutant à l'expert.
+    </p>
+
+    <label class="search-box">
+        <span aria-hidden="true">🔍</span>
+        <input
+            type="search"
+            id="search"
+            placeholder="Rechercher un cours…"
+            aria-label="Rechercher un cours"
+            autocomplete="off">
+    </label>
+
+</header>
+
+
+<!-- =====================================
+     CATALOGUE
+===================================== -->
+
+<main class="catalog" id="catalogue">
+
+    <div class="section-heading">
+
+        <p class="section-eyebrow">
+            TOUS LES COURS
+        </p>
+
+        <h2>
+            TROUVE TON <span>PARCOURS.</span>
+        </h2>
+
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrer par niveau">
+        <button class="chip active" type="button" data-filter="all">TOUS</button>
+        <button class="chip" type="button" data-filter="Débutant">DÉBUTANT</button>
+        <button class="chip" type="button" data-filter="Intermédiaire">INTERMÉDIAIRE</button>
+        <button class="chip" type="button" data-filter="Avancé">AVANCÉ</button>
+    </div>
+
+    <p class="result-count" id="result-count" aria-live="polite"></p>
+
+    <div class="course-grid" id="course-grid">
+
+        <!-- 01 -->
+        <article class="course-card" data-level="Débutant">
+            <span class="badge">NOUVEAU</span>
+            <span class="card-number">01 / RÉSEAUX</span>
+            <h3>Les bases des réseaux</h3>
+            <p>Comprendre comment les machines communiquent entre elles.</p>
+            <div class="card-meta">
+                <span>DÉBUTANT</span><span>⏱ 4 h</span><span>12 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🌐</div>
+        </article>
+
+        <!-- 02 -->
+        <article class="course-card" data-level="Débutant">
+            <span class="card-number">02 / PROGRAMMATION</span>
+            <h3>Python pour débuter</h3>
+            <p>Variables, boucles, fonctions : écris tes premiers scripts.</p>
+            <div class="card-meta">
+                <span>DÉBUTANT</span><span>⏱ 6 h</span><span>18 leçons</span>
+            </div>
+            <div class="progress">
+                <div class="progress-label"><span>PROGRESSION</span><span>40 %</span></div>
+                <div class="progress-bar"><i style="width:40%"></i></div>
+            </div>
+            <a href="#" class="btn">Continuer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🐍</div>
+        </article>
+
+        <!-- 03 -->
+        <article class="course-card" data-level="Débutant">
+            <span class="badge">NOUVEAU</span>
+            <span class="card-number">03 / CYBERSÉCURITÉ</span>
+            <h3>Sécurité : les fondamentaux</h3>
+            <p>Menaces, bonnes pratiques et réflexes pour se protéger.</p>
+            <div class="card-meta">
+                <span>DÉBUTANT</span><span>⏱ 5 h</span><span>14 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🔒</div>
+        </article>
+
+        <!-- 04 -->
+        <article class="course-card" data-level="Intermédiaire">
+            <span class="card-number">04 / RÉSEAUX</span>
+            <h3>Adressage IP &amp; sous-réseaux</h3>
+            <p>Maîtrise IPv4, masques et découpage de réseaux.</p>
+            <div class="card-meta">
+                <span>INTERMÉDIAIRE</span><span>⏱ 5 h</span><span>16 leçons</span>
+            </div>
+            <div class="progress">
+                <div class="progress-label"><span>PROGRESSION</span><span>75 %</span></div>
+                <div class="progress-bar"><i style="width:75%"></i></div>
+            </div>
+            <a href="#" class="btn">Continuer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🧮</div>
+        </article>
+
+        <!-- 05 -->
+        <article class="course-card" data-level="Intermédiaire">
+            <span class="card-number">05 / BASES DE DONNÉES</span>
+            <h3>SQL, de zéro aux requêtes</h3>
+            <p>Interroge, filtre et relie tes données avec SQL.</p>
+            <div class="card-meta">
+                <span>INTERMÉDIAIRE</span><span>⏱ 7 h</span><span>20 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🗄️</div>
+        </article>
+
+        <!-- 06 -->
+        <article class="course-card" data-level="Débutant">
+            <span class="card-number">06 / PROGRAMMATION</span>
+            <h3>HTML &amp; CSS modernes</h3>
+            <p>Construis des pages web propres et responsives.</p>
+            <div class="card-meta">
+                <span>DÉBUTANT</span><span>⏱ 6 h</span><span>15 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🎨</div>
+        </article>
+
+        <!-- 07 -->
+        <article class="course-card" data-level="Avancé">
+            <span class="card-number">07 / CYBERSÉCURITÉ</span>
+            <h3>Chiffrement &amp; authentification</h3>
+            <p>Cryptographie, certificats et gestion des accès.</p>
+            <div class="card-meta">
+                <span>AVANCÉ</span><span>⏱ 8 h</span><span>22 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🔑</div>
+        </article>
+
+        <!-- 08 -->
+        <article class="course-card" data-level="Avancé">
+            <span class="card-number">08 / RÉSEAUX</span>
+            <h3>Routage &amp; commutation</h3>
+            <p>VLAN, OSPF, BGP : conçois des réseaux d'entreprise.</p>
+            <div class="card-meta">
+                <span>AVANCÉ</span><span>⏱ 9 h</span><span>24 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🛰️</div>
+        </article>
+
+        <!-- 09 -->
+        <article class="course-card" data-level="Avancé">
+            <span class="card-number">09 / PROGRAMMATION</span>
+            <h3>Algorithmes &amp; structures</h3>
+            <p>Complexité, tris, graphes : pense comme un ingénieur.</p>
+            <div class="card-meta">
+                <span>AVANCÉ</span><span>⏱ 10 h</span><span>26 leçons</span>
+            </div>
+            <a href="#" class="btn">Commencer ↗</a>
+            <div class="card-emoji" aria-hidden="true">🧠</div>
+        </article>
+
+    </div>
+
+    <div class="empty-state" id="empty-state">
+        <h3>Aucun cours trouvé.</h3>
+        <p>Essaie un autre mot-clé ou change de niveau.</p>
+    </div>
+
+    <!-- Bandeau passage à l'action -->
+    <section class="path-banner">
+        <div>
+            <span class="card-number">PROCHAINE ÉTAPE</span>
+            <h3>Teste ce que tu as appris.</h3>
+            <p>Un quiz après chaque cours pour mesurer tes progrès.</p>
+        </div>
+        <a href="index.html#quizz" class="link">Faire un quiz ↗</a>
+    </section>
+
+</main>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="site-footer">
+
+    <div class="footer-scene">
+
+        <svg class="footer-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,300 V130 C30,110 70,70 45,8 C100,45 112,95 92,135 C86,152 100,168 128,166 C128,110 160,60 225,30 C212,90 250,118 292,146 C332,174 332,226 318,252 C336,236 360,196 402,186 C424,202 414,238 440,264 L1000,264 C1016,244 1004,214 1052,194 C1076,214 1084,240 1106,238 C1112,200 1134,150 1156,118 C1166,86 1182,62 1206,44 C1218,100 1262,128 1286,160 C1306,188 1300,232 1290,254 C1322,244 1334,160 1336,108 C1356,76 1384,36 1404,6 C1404,56 1440,96 1440,130 V300 Z"/>
+        </svg>
+
+        <svg class="footer-mascot" viewBox="0 0 400 330" aria-hidden="true">
+            <g class="wiggle">
+                <path class="solid" d="M200 20 C150 20 105 62 105 120 C105 160 128 182 142 208 C148 220 150 232 150 246 H250 C250 232 252 220 258 208 C272 182 295 160 295 120 C295 62 250 20 200 20 Z"/>
+                <path class="line" d="M165 262 H235 M175 284 H225"/>
+                <path class="line" d="M178 246 C170 215 160 190 185 170 C205 154 215 190 222 170 C230 150 220 140 215 128"/>
+                <path class="face" d="M150 132 Q168 118 186 132"/>
+                <path class="face" d="M214 132 Q232 118 250 132"/>
+                <path class="solid" d="M300 -10 L335 -10 L322 78 L305 78 Z" transform="rotate(14 318 34)"/>
+                <circle class="solid" cx="330" cy="108" r="14"/>
+            </g>
+            <g class="solid">
+                <path d="M70 262 L118 250 L128 296 L84 306 Z"/>
+                <path d="M282 250 L330 262 L316 306 L272 296 Z"/>
+            </g>
+        </svg>
+
+    </div>
+
+    <div class="footer-body">
+
+        <div class="footer-cols">
+
+            <nav class="footer-nav" aria-label="Navigation du pied de page">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="cours.html">Cours</a></li>
+                    <li><a href="index.html#quizz">Quiz</a></li>
+                    <li><a href="index.html#labs">Labs</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-hi">
+                <h4>On commence ?</h4>
+                <p>Prêt à passer à la vitesse supérieure ?</p>
+                <a href="#catalogue" class="footer-pill">C'est parti !</a>
+            </div>
+
+            <div class="footer-side">
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Threads">@</a>
+                </div>
+                <p class="footer-copy">© 2026 NetRevision®</p>
+                <a href="#" class="footer-badge">Fait avec ♥ en France</a>
+            </div>
+
+        </div>
+
+        <svg class="footer-wordmark" viewBox="0 0 1000 135" role="img" aria-label="NetRevision">
+            <text x="0" y="122" font-size="138" textLength="1000" lengthAdjust="spacing">NETREVISION</text>
+        </svg>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* ---------- Menu hamburger ---------- */
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+function closeMenu() {
+    navLinks.classList.remove("active");
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+}
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 700) closeMenu();
+});
+
+/* ---------- Filtres + recherche ---------- */
+
+const chips = document.querySelectorAll(".chip");
+const cards = document.querySelectorAll(".course-card");
+const searchInput = document.getElementById("search");
+const resultCount = document.getElementById("result-count");
+const emptyState = document.getElementById("empty-state");
+
+let currentFilter = "all";
+
+function normalize(text) {
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function applyFilters() {
+
+    const query = normalize(searchInput.value.trim());
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const matchLevel =
+            currentFilter === "all" ||
+            card.dataset.level === currentFilter;
+
+        const matchSearch =
+            query === "" ||
+            normalize(card.textContent).includes(query);
+
+        const show = matchLevel && matchSearch;
+
+        card.classList.toggle("hidden", !show);
+
+        if (show) visible++;
+
+    });
+
+    resultCount.textContent = visible + " COURS";
+
+    emptyState.classList.toggle("show", visible === 0);
+
+}
+
+chips.forEach(chip => {
+
+    chip.addEventListener("click", () => {
+
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        currentFilter = chip.dataset.filter;
+
+        applyFilters();
+
+    });
+
+});
+
+searchInput.addEventListener("input", applyFilters);
+
+applyFilters();
+
+</script>
+
+</body>
+</html>
