@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 
 <style>
 
@@ -529,9 +529,16 @@ body {
     margin-bottom: 10px;
 }
 
+/* Navigation centrée */
+
+.footer-nav {
+    text-align: center;
+}
+
 .footer-nav ul {
     list-style: none;
     display: grid;
+    justify-items: center;
     gap: 7px;
 }
 
@@ -539,12 +546,13 @@ body {
     color: var(--black);
     text-decoration: none;
     font-size: 20px;
+    border-bottom: 2px solid transparent;
     transition: .2s;
 }
 
 .footer-nav a:hover {
     color: var(--green);
-    padding-left: 6px;
+    border-color: var(--green);
 }
 
 .footer-hi {
@@ -623,23 +631,19 @@ body {
     text-decoration: none;
 }
 
-/* Wordmark géant pleine largeur */
+/* Wordmark géant pleine largeur (police lisible, sans déformation) */
 
 .footer-wordmark {
     display: block;
     width: 100%;
     height: auto;
     margin-top: 30px;
-    margin-bottom: -1%;
 }
 
 .footer-wordmark text {
     fill: var(--black);
-    stroke: var(--black);
-    stroke-width: 7;
-    stroke-linejoin: round;
+    font-family: 'Archivo Black', 'Arial Black', 'Impact', sans-serif;
     font-weight: 900;
-    font-family: 'Anton', 'Impact', 'Arial Black', sans-serif;
 }
 
 /* =====================================
@@ -838,7 +842,7 @@ body {
     }
 
     .footer-side {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .footer-pill {
@@ -874,7 +878,7 @@ body {
 
 <nav class="navbar" aria-label="Navigation principale">
 
-    <a href="#" class="nav-logo">NetRevision</a>
+    <a href="index.html" class="nav-logo">NetRevision</a>
 
     <button
         class="menu-toggle"
@@ -888,7 +892,7 @@ body {
 
     <ul class="nav-links" id="nav-links">
 
-        <li><a href="Cours.html">COURS</a></li>
+        <li><a href="cours.html">COURS</a></li>
         <li><a href="#quizz">QUIZZ</a></li>
         <li><a href="#labs">LABS</a></li>
 
@@ -925,7 +929,7 @@ body {
         Développe tes connaissances, entraîne-toi et avance à ton rythme.
     </p>
 
-    <a href="#cours" class="home-cta">
+    <a href="cours.html" class="home-cta">
         EXPLORER LES COURS ↗
     </a>
 
@@ -936,7 +940,7 @@ body {
      CARTES D'APPRENTISSAGE
 ===================================== -->
 
-<main class="learning-section" id="cours">
+<main class="learning-section" id="apprendre">
 
     <div class="section-heading">
 
@@ -965,7 +969,7 @@ body {
 
             <p>Des cours pour progresser.</p>
 
-            <a href="#cours" class="btn">
+            <a href="cours.html" class="btn">
                 Découvrir ↗
             </a>
 
@@ -1167,7 +1171,7 @@ body {
             <nav class="footer-nav" aria-label="Navigation du pied de page">
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="#cours">Cours</a></li>
+                    <li><a href="cours.html">Cours</a></li>
                     <li><a href="#quizz">Quiz</a></li>
                     <li><a href="#labs">Labs</a></li>
                     <li><a href="#">À propos</a></li>
@@ -1178,14 +1182,12 @@ body {
             <div class="footer-hi">
                 <h4>On commence ?</h4>
                 <p>Prêt à passer à la vitesse supérieure ?</p>
-                <a href="#cours" class="footer-pill">C'est parti !</a>
+                <a href="cours.html" class="footer-pill">C'est parti !</a>
             </div>
 
             <div class="footer-side">
                 <div class="footer-social">
                     <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="Instagram">ig</a>
-                    <a href="#" aria-label="TikTok">tk</a>
                     <a href="#" aria-label="Threads">@</a>
                 </div>
                 <p class="footer-copy">© 2026 NetRevision®</p>
@@ -1195,8 +1197,8 @@ body {
         </div>
 
         <!-- Wordmark géant -->
-        <svg class="footer-wordmark" viewBox="0 0 1000 225" role="img" aria-label="NetRevision">
-            <text x="0" y="205" font-size="270" textLength="1000" lengthAdjust="spacingAndGlyphs">NETREVISION</text>
+        <svg class="footer-wordmark" viewBox="0 0 1000 135" role="img" aria-label="NetRevision">
+            <text x="0" y="122" font-size="138" textLength="1000" lengthAdjust="spacing">NETREVISION</text>
         </svg>
 
     </div>
