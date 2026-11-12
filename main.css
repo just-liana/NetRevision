@@ -1,0 +1,254 @@
+
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9f9;
+            min-height: 100vh;
+        }
+
+        /* Barre de navigation */
+        .navbar {
+            background-color: #006663;
+            padding: 15px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 5px #51515178;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Logo */
+        .nav-logo {
+            color: #a3ffa3f9;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Liens du menu */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #a3ffa3f9;
+        }
+
+        /* Bouton connexion */
+        .nav-links .btn {
+            background-color: #a3ffa3;
+            color: #006663;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Bouton hamburger */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Contenu principal */
+        .content {
+            padding: 40px;
+            text-align: center;
+            color: #333333;
+        }
+
+        .content h1 {
+            margin: 100px 0 50px;
+            color: #006663;
+        }
+
+        /* Conteneur des cartes */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        /* Style général des cartes */
+        .card {
+            background-color: #bae9baa1;
+            width: 300px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #006663;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #666666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Carte 1 */
+        .card-form-1 {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-form-1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-form-1 .btn {
+            display: inline-block;
+            background-color: #006663;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Carte 2 */
+        .card-form-2 {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            border-top: 4px solid #006663;
+            transform: translateY(-5px);
+        }
+
+        .card-form-2 .badge {
+            display: inline-block;
+            background-color: #ffd100;
+            color: #006663;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Carte 3 */
+        .card-form-3 {
+            border: 2px solid #e0e0e0;
+        }
+
+        .card-form-3:hover {
+            border-color: #006663;
+            background-color: #fcfefe;
+        }
+
+        .card-form-3 .link {
+            color: #006663;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .card-form-3 .link:hover {
+            text-decoration: underline;
+        }
+
+        /* Pied de page */
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #666666;
+        }
+
+        /* =================================
+           VERSION MOBILE : MENU HAMBURGER
+           ================================= */
+
+        @media screen and (max-width: 768px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            /* Afficher le bouton hamburger */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Menu fermé par défaut */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+
+                position: absolute;
+                top: 100%;
+                left: 0;
+
+                width: 100%;
+                padding: 22px 20px;
+
+                background-color: #006663;
+                box-shadow: 0 3px 5px #51515178;
+            }
+
+            /* Menu ouvert */
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                list-style: none;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content h1 {
+                margin: 60px 0 30px;
+                font-size: 26px;
+            }
+
+            .card-container {
+                gap: 20px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .card-form-2 {
+                transform: none;
+            }
+        }
