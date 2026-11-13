@@ -1,1 +1,1 @@
-je veux une page cours où il y a une barre de recherche dans lequel on peut chercher les fiches de cours et les mémos. En dessous de cette barre je veux deux dossiers sous forme de cartes (une pour les fiches de cours et l'autre pour les mémos). Dans chacun des dossiers, la barre de recherche apparait en premier. Ensuite en dessous, une liste de tous les fichiers (soit des mémos soit des fiches de cours).
+
