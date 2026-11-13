@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cours — NetRevision</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
 <style>
 
 /* =====================================
@@ -39,6 +35,8 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
+
+[hidden] { display: none !important; }
 
 /* =====================================
    2. NAVIGATION
@@ -81,9 +79,7 @@ body {
 }
 
 .nav-links a:hover,
-.nav-links a.active-page {
-    color: var(--mint);
-}
+.nav-links a.active-page { color: var(--mint); }
 
 .nav-links a.active-page {
     border-bottom: 3px solid var(--mint);
@@ -128,9 +124,9 @@ body {
     color: white;
     text-align: center;
     padding: 30px 20px 0;
-    height: 360px;
+    height: 300px;
 
-    clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 0 100%);
 }
 
 .hero-eyebrow {
@@ -154,15 +150,12 @@ body {
     font-style: italic;
 }
 
-.hero-description {
-    font-size: 20px;
-    margin-bottom: 18px;
-}
+.hero-description { font-size: 20px; }
 
 .hero-star {
     position: absolute;
     left: 9%;
-    top: 70px;
+    top: 60px;
     color: var(--mint);
     font-size: 100px;
     font-weight: bold;
@@ -172,168 +165,173 @@ body {
 .hero-rays {
     position: absolute;
     right: 12%;
-    top: 55px;
+    top: 45px;
     color: var(--mint);
     font-size: 80px;
     transform: rotate(20deg);
 }
 
-/* Recherche */
+/* =====================================
+   4. ESPACE DOCUMENTS
+===================================== */
+
+.library {
+    position: relative;
+    z-index: 1;
+    margin-top: -1px;
+    padding: 25px 5.7% 60px;
+    background: var(--background);
+    min-height: 520px;
+}
+
+.library-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ----- Barre de recherche ----- */
 
 .search-box {
-    position: relative;
-    z-index: 3;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    width: min(520px, 90%);
-    height: 56px;
-    padding: 0 22px;
+    gap: 12px;
+    width: 100%;
+    height: 62px;
+    padding: 0 24px;
     background: var(--white);
-    border: 2px solid var(--yellow);
+    border: 2px solid var(--black);
     border-radius: 40px;
+    box-shadow: 4px 4px 0 var(--yellow);
+    transition: .25s;
 }
 
-.search-box span {
-    color: var(--black);
-    font-size: 20px;
+.search-box:focus-within {
+    box-shadow: 6px 6px 0 var(--green);
+    transform: translateY(-2px);
 }
+
+.search-box .icon { font-size: 22px; }
 
 .search-box input {
     flex: 1;
+    min-width: 0;
     border: none;
     outline: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--black);
 }
 
-.search-box input::placeholder {
-    color: #17171980;
-}
+.search-box input::placeholder { color: #17171985; }
 
-/* =====================================
-   4. CATALOGUE
-===================================== */
-
-.catalog {
-    position: relative;
-    z-index: 1;
-    margin-top: -1px;
-    padding: 25px 5.7% 55px;
-    background: var(--background);
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.section-eyebrow {
-    color: var(--green);
-    font-size: 19px;
+.search-box .scope {
+    flex-shrink: 0;
+    background: var(--mint);
+    border: 2px solid var(--black);
+    border-radius: 30px;
+    padding: 5px 14px;
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 3px;
+    letter-spacing: .5px;
+    white-space: nowrap;
 }
 
-.section-heading h2 {
-    font-size: clamp(28px, 4vw, 46px);
-    font-weight: 1000;
-    letter-spacing: -2px;
-}
-
-.section-heading h2 span { color: var(--green); }
-
-/* Filtres */
-
-.filters {
+.status-line {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 14px;
-}
-
-.chip {
-    border: 2px solid var(--black);
-    background: var(--white);
-    color: var(--black);
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.chip:hover {
-    background: var(--mint);
-    transform: translateY(-3px);
-}
-
-.chip.active {
-    background: var(--black);
-    color: var(--mint);
-}
-
-.result-count {
-    text-align: center;
+    min-height: 34px;
+    margin: 16px 4px 18px;
     color: var(--green);
     font-size: 15px;
     font-weight: 900;
     letter-spacing: 1px;
-    margin-bottom: 20px;
 }
 
-/* Grille */
-
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.course-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 290px;
-    padding: 22px 26px 24px;
+.back-link {
+    display: inline-flex;
+    align-items: center;
     border: 2px solid var(--black);
-    border-radius: 14px;
+    background: var(--white);
+    color: var(--black);
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 0;
+    transition: .25s;
+}
+
+.back-link:hover {
+    background: var(--mint);
+    transform: translateY(-3px);
+}
+
+.divider-label {
+    text-align: center;
+    color: var(--green);
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin: 6px 0 38px;
+}
+
+/* ----- Dossiers (cartes) ----- */
+
+.folder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+
+.folder {
+    position: relative;
+    display: block;
+    min-height: 250px;
+    padding: 28px 32px 30px;
+    border: 2px solid var(--black);
+    border-radius: 0 16px 16px 16px;
+    color: var(--black);
+    text-decoration: none;
     transition: .3s;
 }
 
-.course-card:nth-child(3n+1) {
+/* Onglet du dossier */
+
+.folder::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -30px;
+    width: 160px;
+    height: 30px;
+    background: inherit;
+    border: 2px solid var(--black);
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+}
+
+.folder-fiches {
     background: var(--mint);
     box-shadow: 4px 4px 0 var(--green);
 }
 
-.course-card:nth-child(3n+2) {
-    background: var(--white);
-    box-shadow: 4px 4px 0 var(--yellow);
-}
-
-.course-card:nth-child(3n) {
+.folder-memos {
     background: var(--black);
     color: white;
     box-shadow: 4px 4px 0 var(--green);
 }
 
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 7px 9px 0 var(--black);
+.folder:hover {
+    transform: translateY(-6px);
+    box-shadow: 7px 10px 0 var(--black);
 }
 
-.course-card:nth-child(3n):hover {
-    box-shadow: 7px 9px 0 var(--mint);
-}
-
-.course-card.hidden { display: none; }
+.folder-memos:hover { box-shadow: 7px 10px 0 var(--mint); }
 
 .badge {
     display: table;
@@ -344,100 +342,135 @@ body {
     border-radius: 30px;
     font-size: 12px;
     font-weight: 900;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .card-number {
     display: block;
     color: var(--green);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 900;
-    letter-spacing: 1px;
     margin-bottom: 4px;
 }
 
-.course-card:nth-child(3n) .card-number { color: var(--mint); }
+.folder-memos .card-number { color: var(--mint); }
 
-.course-card h3 {
-    font-size: 25px;
+.folder h2 {
+    font-size: 31px;
     font-weight: 900;
     letter-spacing: -.5px;
-    line-height: 1.1;
-    margin-bottom: 8px;
-    max-width: 75%;
+    margin-bottom: 6px;
+    max-width: 72%;
 }
 
-.course-card p {
-    font-size: 16px;
+.folder p {
+    font-size: 18px;
     line-height: 1.4;
-    margin-bottom: 14px;
-    max-width: 85%;
+    max-width: 78%;
 }
 
-.card-emoji {
+.folder .open {
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--black);
+    color: white;
+    padding: 9px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.folder-memos .open {
+    background: var(--mint);
+    color: var(--black);
+}
+
+.folder:hover .open {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+.folder-icon {
     position: absolute;
-    right: 20px;
-    top: 18px;
-    width: 64px;
-    height: 64px;
+    right: 28px;
+    top: 26px;
+    width: 120px;
+    height: 120px;
+}
+
+/* ----- Liste de fichiers ----- */
+
+.file-list {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+}
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--yellow);
+    transition: .25s;
+}
+
+.file-row:nth-child(even) { box-shadow: 4px 4px 0 var(--mint); }
+
+.file-row:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 8px 0 var(--black);
+}
+
+.file-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
     display: grid;
     place-items: center;
-    font-size: 32px;
     border: 2px solid var(--black);
     border-radius: 50%;
-    background: var(--yellow);
+    background: var(--mint);
+    font-size: 24px;
 }
 
-.card-meta {
+.file-icon.memo { background: var(--yellow); }
+
+.file-info { flex: 1; min-width: 0; }
+
+.file-title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -.3px;
+    margin-bottom: 7px;
+}
+
+.file-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 14px;
 }
 
-.card-meta span {
-    border: 2px solid currentColor;
+.file-meta span {
+    border: 2px solid var(--black);
     border-radius: 30px;
-    padding: 4px 11px;
+    padding: 3px 11px;
     font-size: 12px;
     font-weight: 900;
 }
 
-/* Progression */
+.file-meta .tag-fiche { background: var(--mint); }
+.file-meta .tag-memo  { background: var(--yellow); }
 
-.progress {
-    margin-top: auto;
-    margin-bottom: 14px;
-}
-
-.progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-weight: 900;
-    margin-bottom: 5px;
-}
-
-.progress-bar {
-    height: 10px;
-    border: 2px solid currentColor;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-bar i {
-    display: block;
-    height: 100%;
-    background: var(--yellow);
-}
-
-.course-card .btn {
-    display: inline-block;
-    width: fit-content;
-    margin-top: auto;
+.file-btn {
+    flex-shrink: 0;
     background: var(--black);
     color: white;
-    padding: 9px 28px;
+    padding: 10px 26px;
     border-radius: 30px;
     font-size: 15px;
     font-weight: 900;
@@ -445,30 +478,14 @@ body {
     transition: .3s;
 }
 
-.progress + .btn { margin-top: 0; }
-
-.course-card:nth-child(3n) .btn {
-    background: var(--mint);
-    color: var(--black);
-}
-
-.course-card .btn:hover {
+.file-btn:hover {
     background: var(--green);
     color: var(--mint);
 }
 
-.course-card:nth-child(3n) .btn:hover {
-    background: var(--yellow);
-    color: var(--black);
-}
-
-/* Aucun résultat */
-
 .empty-state {
-    display: none;
-    max-width: 520px;
-    margin: 20px auto 0;
-    padding: 30px;
+    margin-top: 10px;
+    padding: 34px 30px;
     text-align: center;
     background: var(--white);
     border: 2px solid var(--black);
@@ -476,291 +493,28 @@ body {
     box-shadow: 4px 4px 0 var(--yellow);
 }
 
-.empty-state.show { display: block; }
-
 .empty-state h3 {
     font-size: 26px;
     font-weight: 900;
     margin-bottom: 6px;
 }
 
-/* Bandeau parcours */
-
-.path-banner {
-    position: relative;
-    max-width: 1400px;
-    margin: 28px auto 0;
-    padding: 26px 32px;
-    background: var(--black);
-    color: white;
-    border: 2px solid var(--black);
-    border-radius: 14px;
-    box-shadow: 4px 4px 0 var(--green);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.path-banner .card-number { color: var(--mint); }
-
-.path-banner h3 {
-    font-size: 27px;
-    font-weight: 900;
-    letter-spacing: -.5px;
-    margin-bottom: 3px;
-}
-
-.path-banner p { font-size: 17px; }
-
-.path-banner .link {
-    color: var(--mint);
-    text-decoration: none;
-    font-size: 19px;
-    font-weight: 900;
-    border-bottom: 2px solid var(--mint);
-    padding-bottom: 7px;
-}
-
-.path-banner .link:hover {
-    color: var(--yellow);
-    border-color: var(--yellow);
-}
-
 /* =====================================
-   5. FOOTER (style Breaver)
+   5. RESPONSIVE
 ===================================== */
-
-.site-footer {
-    background: var(--black);
-    color: var(--black);
-    overflow: hidden;
-}
-
-.footer-scene {
-    position: relative;
-    height: clamp(170px, 23vw, 330px);
-    margin-bottom: -1px;
-}
-
-.footer-flames {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.footer-flames path { fill: var(--mint); }
-
-.footer-mascot {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: clamp(150px, 27vw, 380px);
-    height: auto;
-    display: block;
-    overflow: visible;
-}
-
-.footer-mascot .line {
-    fill: none;
-    stroke: var(--mint);
-    stroke-width: 9;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.footer-mascot .solid {
-    fill: var(--black);
-    stroke: var(--mint);
-    stroke-width: 9;
-    stroke-linejoin: round;
-}
-
-.footer-mascot .face {
-    fill: none;
-    stroke: var(--mint);
-    stroke-width: 7;
-    stroke-linecap: round;
-}
-
-.footer-mascot .wiggle {
-    transform-origin: 200px 40px;
-    animation: nr-wiggle 3.2s ease-in-out infinite;
-}
-
-@keyframes nr-wiggle {
-    0%, 100% { transform: rotate(-2deg); }
-    50%      { transform: rotate(2deg); }
-}
-
-.footer-body {
-    background: var(--mint);
-    padding: 34px 2% 0;
-}
-
-.footer-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    align-items: start;
-    padding: 0 1%;
-}
-
-.footer-nav h4,
-.footer-hi h4 {
-    font-size: clamp(22px, 2vw, 28px);
-    font-weight: 900;
-    letter-spacing: -.5px;
-    margin-bottom: 10px;
-}
-
-/* Navigation centrée */
-
-.footer-nav { text-align: center; }
-
-.footer-nav ul {
-    list-style: none;
-    display: grid;
-    justify-items: center;
-    gap: 7px;
-}
-
-.footer-nav a {
-    color: var(--black);
-    text-decoration: none;
-    font-size: 20px;
-    border-bottom: 2px solid transparent;
-    transition: .2s;
-}
-
-.footer-nav a:hover {
-    color: var(--green);
-    border-color: var(--green);
-}
-
-.footer-hi { text-align: center; }
-
-.footer-hi p {
-    font-size: 20px;
-    margin-bottom: 18px;
-}
-
-.footer-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 62px;
-    padding: 0 34px;
-    border-radius: 40px;
-    background: var(--black);
-    color: var(--mint);
-    font-size: 18px;
-    font-weight: 900;
-    text-decoration: none;
-    transition: .3s;
-}
-
-.footer-pill:hover {
-    background: var(--yellow);
-    color: var(--black);
-    transform: translateY(-4px);
-}
-
-.footer-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-}
-
-.footer-social {
-    display: flex;
-    gap: 10px;
-}
-
-.footer-social a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--black);
-    color: var(--mint);
-    display: grid;
-    place-items: center;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 900;
-    transition: .25s;
-}
-
-.footer-social a:hover {
-    background: var(--yellow);
-    color: var(--black);
-    transform: translateY(-3px);
-}
-
-.footer-copy {
-    font-size: 22px;
-    font-weight: 900;
-}
-
-.footer-badge {
-    border: 2px solid var(--black);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 15px;
-    color: var(--black);
-    text-decoration: none;
-}
-
-/* Wordmark géant pleine largeur (police lisible, sans déformation) */
-
-.footer-wordmark {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-top: 30px;
-}
-
-.footer-wordmark text {
-    fill: var(--black);
-    font-family: 'Archivo Black', 'Arial Black', 'Impact', sans-serif;
-    font-weight: 900;
-}
-
-/* =====================================
-   6. RESPONSIVE TABLETTE
-===================================== */
-
-@media (max-width: 1000px) {
-
-    .course-grid { grid-template-columns: 1fr 1fr; }
-}
 
 @media (max-width: 900px) {
 
-    .footer-cols { grid-template-columns: 1fr 1fr; }
+    .folder h2 { font-size: 26px; max-width: 70%; }
 
-    .footer-hi {
-        grid-column: 1 / -1;
-        order: -1;
-        margin-bottom: 10px;
-    }
+    .folder p { font-size: 16px; }
+
+    .folder-icon { width: 90px; height: 90px; }
 }
-
-/* =====================================
-   7. RESPONSIVE MOBILE
-===================================== */
 
 @media (max-width: 700px) {
 
-    .navbar {
-        height: 65px;
-        padding: 0 20px;
-    }
+    .navbar { height: 65px; padding: 0 20px; }
 
     .nav-logo { font-size: 28px; }
 
@@ -782,82 +536,51 @@ body {
     .nav-links.active { display: flex; }
 
     .page-hero {
-        height: 360px;
+        height: 280px;
         padding: 35px 15px 0;
         clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
     }
 
-    .hero-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
+    .hero-eyebrow { font-size: 12px; letter-spacing: 2px; }
 
     .page-hero h1 {
         font-size: clamp(36px, 11vw, 54px);
         letter-spacing: -2px;
     }
 
-    .hero-description {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
+    .hero-description { font-size: 14px; }
 
-    .hero-star {
-        font-size: 50px;
-        left: 3%;
-        top: 140px;
-        opacity: .5;
-    }
+    .hero-star { font-size: 50px; left: 3%; top: 130px; opacity: .5; }
 
-    .hero-rays {
-        font-size: 40px;
-        right: 4%;
-        top: 130px;
-        opacity: .5;
-    }
+    .hero-rays { font-size: 40px; right: 4%; top: 120px; opacity: .5; }
 
-    .search-box { height: 50px; }
+    .library { padding: 30px 18px 50px; }
 
-    .catalog { padding: 30px 18px 45px; }
+    .search-box { height: 54px; padding: 0 16px; }
 
-    .section-eyebrow {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
+    .search-box input { font-size: 16px; }
 
-    .section-heading h2 { font-size: 28px; }
+    .search-box .scope { display: none; }
 
-    .course-grid {
-        grid-template-columns: 1fr;
-        max-width: 430px;
-    }
+    .folder-grid { grid-template-columns: 1fr; gap: 46px; }
 
-    .course-card { min-height: 270px; }
+    .folder { min-height: 230px; padding: 24px 22px 26px; }
 
-    .course-card h3 { font-size: 22px; }
+    .folder::before { width: 130px; }
 
-    .course-card p { font-size: 14px; }
+    .folder h2 { font-size: 23px; max-width: 68%; }
 
-    .path-banner { padding: 22px; }
+    .folder p { font-size: 15px; max-width: 70%; }
 
-    .path-banner h3 { font-size: 22px; }
+    .folder-icon { width: 76px; height: 76px; right: 16px; top: 22px; }
 
-    .path-banner p { font-size: 14px; }
+    .file-row { flex-wrap: wrap; padding: 14px 16px; }
 
-    .path-banner .link { font-size: 15px; }
+    .file-icon { width: 44px; height: 44px; font-size: 20px; }
 
-    .footer-body { padding-top: 26px; }
+    .file-title { font-size: 17px; }
 
-    .footer-cols { grid-template-columns: 1fr; }
-
-    .footer-side { align-items: center; }
-
-    .footer-pill {
-        height: 52px;
-        font-size: 16px;
-    }
-
-    .footer-nav a { font-size: 18px; }
+    .file-btn { width: 100%; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -920,211 +643,393 @@ body {
     <div class="hero-rays">〽</div>
 
     <p class="hero-eyebrow">
-        CATALOGUE DE COURS
+        TES RESSOURCES
     </p>
 
     <h1>
-        APPRENDS À<br>
-        <span>TON RYTHME.</span>
+        TOUT POUR<br>
+        <span>RÉVISER.</span>
     </h1>
 
     <p class="hero-description">
-        Des cours clairs, du niveau débutant à l'expert.
+        Fiches de cours et mémos, au même endroit.
     </p>
-
-    <label class="search-box">
-        <span aria-hidden="true">🔍</span>
-        <input
-            type="search"
-            id="search"
-            placeholder="Rechercher un cours…"
-            aria-label="Rechercher un cours"
-            autocomplete="off">
-    </label>
 
 </header>
 
 
 <!-- =====================================
-     CATALOGUE
+     ESPACE DOCUMENTS
 ===================================== -->
 
-<main class="catalog" id="catalogue">
+<main class="library" id="catalogue">
 
-    <div class="section-heading">
+    <div class="library-inner">
 
-        <p class="section-eyebrow">
-            TOUS LES COURS
-        </p>
+        <!-- ========== VUE ACCUEIL ========== -->
 
-        <h2>
-            TROUVE TON <span>PARCOURS.</span>
-        </h2>
+        <section id="home-view" aria-label="Recherche et dossiers">
+
+            <!-- Barre de recherche globale (en premier) -->
+
+            <label class="search-box">
+                <span class="icon" aria-hidden="true">🔍</span>
+                <input
+                    type="search"
+                    id="global-search"
+                    placeholder="Rechercher une fiche ou un mémo…"
+                    aria-label="Rechercher une fiche de cours ou un mémo"
+                    autocomplete="off">
+            </label>
+
+            <p class="status-line" id="home-status" aria-live="polite"></p>
+
+            <!-- Dossiers -->
+
+            <div id="folders">
+
+                <p class="divider-label">OU OUVRE UN DOSSIER</p>
+
+                <div class="folder-grid">
+
+                    <a href="#fiches" class="folder folder-fiches">
+
+                        <span class="badge" id="count-fiches">0 FICHES</span>
+
+                        <span class="card-number">01 / DOSSIER</span>
+
+                        <h2>Fiches de cours</h2>
+
+                        <p>Les notions essentielles, expliquées simplement.</p>
+
+                        <span class="open">Ouvrir le dossier ↗</span>
+
+                        <svg class="folder-icon"
+                             viewBox="0 0 130 130"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             aria-hidden="true">
+                            <path d="M30 20 H82 L102 40 V108 H30 Z"
+                                  stroke="#171719" stroke-width="5" stroke-linejoin="round"/>
+                            <path d="M82 20 V40 H102"
+                                  stroke="#171719" stroke-width="5" stroke-linejoin="round"/>
+                            <path d="M44 58 H88 M44 74 H88 M44 90 H70"
+                                  stroke="#171719" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M16 36 V120 H88"
+                                  stroke="#171719" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M108 8 L116 -2 M118 22 L128 16"
+                                  stroke="#171719" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+
+                    </a>
+
+                    <a href="#memos" class="folder folder-memos">
+
+                        <span class="badge" id="count-memos">0 MÉMOS</span>
+
+                        <span class="card-number">02 / DOSSIER</span>
+
+                        <h2>Mémos</h2>
+
+                        <p>Des aide-mémoire courts à garder sous la main.</p>
+
+                        <span class="open">Ouvrir le dossier ↗</span>
+
+                        <svg class="folder-icon"
+                             viewBox="0 0 130 130"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             aria-hidden="true">
+                            <path d="M24 22 H106 V86 L84 108 H24 Z"
+                                  stroke="#A3FFA3" stroke-width="5" stroke-linejoin="round"/>
+                            <path d="M84 108 V86 H106"
+                                  stroke="#A3FFA3" stroke-width="5" stroke-linejoin="round"/>
+                            <path d="M40 46 H90 M40 62 H90 M40 78 H64"
+                                  stroke="#A3FFA3" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M52 12 V30 M78 12 V30"
+                                  stroke="#FFD629" stroke-width="6" stroke-linecap="round"/>
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Résultats de la recherche globale -->
+
+            <div id="global-results" hidden>
+                <ul class="file-list" id="global-list"></ul>
+                <div class="empty-state" id="global-empty" hidden>
+                    <h3>Aucun document trouvé.</h3>
+                    <p>Essaie un autre mot-clé, ou ouvre un dossier.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ========== VUE DOSSIER ========== -->
+
+        <section id="folder-view" aria-label="Contenu du dossier" hidden>
+
+            <!-- Barre de recherche du dossier (en premier) -->
+
+            <label class="search-box">
+                <span class="icon" aria-hidden="true">🔍</span>
+                <input
+                    type="search"
+                    id="folder-search"
+                    placeholder="Rechercher…"
+                    autocomplete="off">
+                <span class="scope" id="folder-scope">📁 DOSSIER</span>
+            </label>
+
+            <div class="status-line">
+                <a href="#" class="back-link" id="back-link">← Tous les dossiers</a>
+                <span id="folder-status" aria-live="polite"></span>
+            </div>
+
+            <!-- Liste de tous les fichiers du dossier -->
+
+            <ul class="file-list" id="folder-list"></ul>
+
+            <div class="empty-state" id="folder-empty" hidden>
+                <h3>Aucun document trouvé.</h3>
+                <p>Essaie un autre mot-clé.</p>
+            </div>
+
+        </section>
 
     </div>
-
-    <div class="filters" role="group" aria-label="Filtrer par niveau">
-        <button class="chip active" type="button" data-filter="all">TOUS</button>
-        <button class="chip" type="button" data-filter="Débutant">DÉBUTANT</button>
-        <button class="chip" type="button" data-filter="Intermédiaire">INTERMÉDIAIRE</button>
-        <button class="chip" type="button" data-filter="Avancé">AVANCÉ</button>
-    </div>
-
-    <p class="result-count" id="result-count" aria-live="polite"></p>
-
-    <div class="course-grid" id="course-grid">
-
-        <!-- 01 -->
-        <article class="course-card" data-level="Débutant">
-            <span class="badge">NOUVEAU</span>
-            <span class="card-number">01 / RÉSEAUX</span>
-            <h3>Les bases des réseaux</h3>
-            <p>Comprendre comment les machines communiquent entre elles.</p>
-            <div class="card-meta">
-                <span>DÉBUTANT</span><span>⏱ 4 h</span><span>12 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🌐</div>
-        </article>
-
-        <!-- 02 -->
-        <article class="course-card" data-level="Débutant">
-            <span class="card-number">02 / PROGRAMMATION</span>
-            <h3>Python pour débuter</h3>
-            <p>Variables, boucles, fonctions : écris tes premiers scripts.</p>
-            <div class="card-meta">
-                <span>DÉBUTANT</span><span>⏱ 6 h</span><span>18 leçons</span>
-            </div>
-            <div class="progress">
-                <div class="progress-label"><span>PROGRESSION</span><span>40 %</span></div>
-                <div class="progress-bar"><i style="width:40%"></i></div>
-            </div>
-            <a href="#" class="btn">Continuer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🐍</div>
-        </article>
-
-        <!-- 03 -->
-        <article class="course-card" data-level="Débutant">
-            <span class="badge">NOUVEAU</span>
-            <span class="card-number">03 / CYBERSÉCURITÉ</span>
-            <h3>Sécurité : les fondamentaux</h3>
-            <p>Menaces, bonnes pratiques et réflexes pour se protéger.</p>
-            <div class="card-meta">
-                <span>DÉBUTANT</span><span>⏱ 5 h</span><span>14 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🔒</div>
-        </article>
-
-        <!-- 04 -->
-        <article class="course-card" data-level="Intermédiaire">
-            <span class="card-number">04 / RÉSEAUX</span>
-            <h3>Adressage IP &amp; sous-réseaux</h3>
-            <p>Maîtrise IPv4, masques et découpage de réseaux.</p>
-            <div class="card-meta">
-                <span>INTERMÉDIAIRE</span><span>⏱ 5 h</span><span>16 leçons</span>
-            </div>
-            <div class="progress">
-                <div class="progress-label"><span>PROGRESSION</span><span>75 %</span></div>
-                <div class="progress-bar"><i style="width:75%"></i></div>
-            </div>
-            <a href="#" class="btn">Continuer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🧮</div>
-        </article>
-
-        <!-- 05 -->
-        <article class="course-card" data-level="Intermédiaire">
-            <span class="card-number">05 / BASES DE DONNÉES</span>
-            <h3>SQL, de zéro aux requêtes</h3>
-            <p>Interroge, filtre et relie tes données avec SQL.</p>
-            <div class="card-meta">
-                <span>INTERMÉDIAIRE</span><span>⏱ 7 h</span><span>20 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🗄️</div>
-        </article>
-
-        <!-- 06 -->
-        <article class="course-card" data-level="Débutant">
-            <span class="card-number">06 / PROGRAMMATION</span>
-            <h3>HTML &amp; CSS modernes</h3>
-            <p>Construis des pages web propres et responsives.</p>
-            <div class="card-meta">
-                <span>DÉBUTANT</span><span>⏱ 6 h</span><span>15 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🎨</div>
-        </article>
-
-        <!-- 07 -->
-        <article class="course-card" data-level="Avancé">
-            <span class="card-number">07 / CYBERSÉCURITÉ</span>
-            <h3>Chiffrement &amp; authentification</h3>
-            <p>Cryptographie, certificats et gestion des accès.</p>
-            <div class="card-meta">
-                <span>AVANCÉ</span><span>⏱ 8 h</span><span>22 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🔑</div>
-        </article>
-
-        <!-- 08 -->
-        <article class="course-card" data-level="Avancé">
-            <span class="card-number">08 / RÉSEAUX</span>
-            <h3>Routage &amp; commutation</h3>
-            <p>VLAN, OSPF, BGP : conçois des réseaux d'entreprise.</p>
-            <div class="card-meta">
-                <span>AVANCÉ</span><span>⏱ 9 h</span><span>24 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🛰️</div>
-        </article>
-
-        <!-- 09 -->
-        <article class="course-card" data-level="Avancé">
-            <span class="card-number">09 / PROGRAMMATION</span>
-            <h3>Algorithmes &amp; structures</h3>
-            <p>Complexité, tris, graphes : pense comme un ingénieur.</p>
-            <div class="card-meta">
-                <span>AVANCÉ</span><span>⏱ 10 h</span><span>26 leçons</span>
-            </div>
-            <a href="#" class="btn">Commencer ↗</a>
-            <div class="card-emoji" aria-hidden="true">🧠</div>
-        </article>
-
-    </div>
-
-    <div class="empty-state" id="empty-state">
-        <h3>Aucun cours trouvé.</h3>
-        <p>Essaie un autre mot-clé ou change de niveau.</p>
-    </div>
-
-    <!-- Bandeau passage à l'action -->
-    <section class="path-banner">
-        <div>
-            <span class="card-number">PROCHAINE ÉTAPE</span>
-            <h3>Teste ce que tu as appris.</h3>
-            <p>Un quiz après chaque cours pour mesurer tes progrès.</p>
-        </div>
-        <a href="index.html#quizz" class="link">Faire un quiz ↗</a>
-    </section>
 
 </main>
 
 
 <!-- =====================================
-     FOOTER
+     FOOTER (style Breaver) — bloc autonome
 ===================================== -->
 
-<footer class="site-footer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Georama:wdth,wght@62.5..150,100..900&display=swap" rel="stylesheet">
 
-    <div class="footer-scene">
+<style>
 
-        <svg class="footer-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+.bf {
+    --bf-black: #171719;
+    --bf-mint: #a3ffa3;
+    --bf-green: #006663;
+    --bf-yellow: #ffd629;
+
+    background: var(--bf-black);
+    color: var(--bf-black);
+    overflow: hidden;
+}
+
+.bf * { font-family: 'Arial', 'Segoe UI', sans-serif; }
+
+.bf-scene {
+    position: relative;
+    height: clamp(170px, 23vw, 330px);
+    margin-bottom: -1px;
+}
+
+.bf-flames {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.bf-flames path { fill: var(--bf-mint); }
+
+.bf-mascot {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: clamp(150px, 27vw, 380px);
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.bf-mascot .line  { fill: none; stroke: var(--bf-mint); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.bf-mascot .solid { fill: var(--bf-black); stroke: var(--bf-mint); stroke-width: 9; stroke-linejoin: round; }
+.bf-mascot .face  { fill: none; stroke: var(--bf-mint); stroke-width: 7; stroke-linecap: round; }
+
+.bf-mascot .wiggle {
+    transform-origin: 200px 40px;
+    animation: bf-wiggle 3.2s ease-in-out infinite;
+}
+
+@keyframes bf-wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50%      { transform: rotate(2deg); }
+}
+
+.bf-body {
+    background: var(--bf-mint);
+    padding: 34px 2% 0;
+}
+
+.bf-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    padding: 0 1%;
+}
+
+.bf-title {
+    font-family: 'Georama', 'Arial Black', Arial, sans-serif !important;
+    font-weight: 800;
+    font-size: clamp(24px, 2.2vw, 32px);
+    letter-spacing: -.5px;
+    margin-bottom: 12px;
+}
+
+.bf-nav { text-align: center; }
+
+.bf-nav ul {
+    list-style: none;
+    display: grid;
+    justify-items: center;
+    gap: 7px;
+}
+
+.bf-nav a {
+    color: var(--bf-black);
+    text-decoration: none;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+    transition: .2s;
+}
+
+.bf-nav a:hover {
+    color: var(--bf-green);
+    border-color: var(--bf-green);
+}
+
+.bf-hi { text-align: center; }
+
+.bf-hi p {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.bf-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 62px;
+    padding: 0 36px;
+    border-radius: 40px;
+    background: var(--bf-black);
+    color: var(--bf-mint);
+    font-family: 'Georama', 'Arial Black', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.bf-pill:hover {
+    background: var(--bf-yellow);
+    color: var(--bf-black);
+    transform: translateY(-4px);
+}
+
+.bf-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.bf-social { display: flex; gap: 10px; }
+
+.bf-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bf-black);
+    color: var(--bf-mint);
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+    transition: .25s;
+}
+
+.bf-social svg { width: 20px; height: 20px; fill: currentColor; }
+
+.bf-social a:hover {
+    background: var(--bf-yellow);
+    color: var(--bf-black);
+    transform: translateY(-3px);
+}
+
+.bf-copy {
+    font-family: 'Georama', 'Arial Black', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+}
+
+.bf-badge {
+    border: 2px solid var(--bf-black);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 15px;
+    color: var(--bf-black);
+    text-decoration: none;
+}
+
+.bf-wordmark {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 34px;
+}
+
+.bf-wordmark text {
+    fill: var(--bf-black);
+    font-family: 'Georama', 'Archivo Black', 'Arial Black', Impact, sans-serif;
+    font-weight: 900;
+    font-stretch: 70%;
+}
+
+@media (max-width: 900px) {
+    .bf-cols { grid-template-columns: 1fr 1fr; }
+    .bf-hi { grid-column: 1 / -1; order: -1; margin-bottom: 10px; }
+}
+
+@media (max-width: 600px) {
+    .bf-body { padding-top: 26px; }
+    .bf-cols { grid-template-columns: 1fr; }
+    .bf-side { align-items: center; }
+    .bf-pill { height: 52px; font-size: 16px; }
+    .bf-nav a { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bf-mascot .wiggle { animation: none; }
+}
+
+</style>
+
+<footer class="bf">
+
+    <div class="bf-scene">
+
+        <svg class="bf-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
             <path d="M0,300 V130 C30,110 70,70 45,8 C100,45 112,95 92,135 C86,152 100,168 128,166 C128,110 160,60 225,30 C212,90 250,118 292,146 C332,174 332,226 318,252 C336,236 360,196 402,186 C424,202 414,238 440,264 L1000,264 C1016,244 1004,214 1052,194 C1076,214 1084,240 1106,238 C1112,200 1134,150 1156,118 C1166,86 1182,62 1206,44 C1218,100 1262,128 1286,160 C1306,188 1300,232 1290,254 C1322,244 1334,160 1336,108 C1356,76 1384,36 1404,6 C1404,56 1440,96 1440,130 V300 Z"/>
         </svg>
 
-        <svg class="footer-mascot" viewBox="0 0 400 330" aria-hidden="true">
+        <svg class="bf-mascot" viewBox="0 0 400 330" aria-hidden="true">
             <g class="wiggle">
                 <path class="solid" d="M200 20 C150 20 105 62 105 120 C105 160 128 182 142 208 C148 220 150 232 150 246 H250 C250 232 252 220 258 208 C272 182 295 160 295 120 C295 62 250 20 200 20 Z"/>
                 <path class="line" d="M165 262 H235 M175 284 H225"/>
@@ -1142,12 +1047,12 @@ body {
 
     </div>
 
-    <div class="footer-body">
+    <div class="bf-body">
 
-        <div class="footer-cols">
+        <div class="bf-cols">
 
-            <nav class="footer-nav" aria-label="Navigation du pied de page">
-                <h4>Navigation</h4>
+            <nav class="bf-nav" aria-label="Navigation du pied de page">
+                <h2 class="bf-title">Navigation</h2>
                 <ul>
                     <li><a href="cours.html">Cours</a></li>
                     <li><a href="index.html#quizz">Quiz</a></li>
@@ -1157,25 +1062,27 @@ body {
                 </ul>
             </nav>
 
-            <div class="footer-hi">
-                <h4>On commence ?</h4>
+            <div class="bf-hi">
+                <h2 class="bf-title">On commence ?</h2>
                 <p>Prêt à passer à la vitesse supérieure ?</p>
-                <a href="#catalogue" class="footer-pill">C'est parti !</a>
+                <a href="cours.html" class="bf-pill">C'est parti !</a>
             </div>
 
-            <div class="footer-side">
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="Threads">@</a>
+            <div class="bf-side">
+                <div class="bf-social">
+                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8S13.5 14.6 13.5 16v5h-4V9.5Z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Threads" target="_blank" rel="noopener">@</a>
                 </div>
-                <p class="footer-copy">© 2026 NetRevision®</p>
-                <a href="#" class="footer-badge">Fait avec ♥ en France</a>
+                <p class="bf-copy">© 2026 NetRevision®</p>
+                <a href="#" class="bf-badge">Fait avec ♥ en France</a>
             </div>
 
         </div>
 
-        <svg class="footer-wordmark" viewBox="0 0 1000 135" role="img" aria-label="NetRevision">
-            <text x="0" y="122" font-size="138" textLength="1000" lengthAdjust="spacing">NETREVISION</text>
+        <svg class="bf-wordmark" viewBox="0 0 1000 172" role="img" aria-label="NetRevision">
+            <text x="0" y="168" font-size="228" textLength="1000" lengthAdjust="spacingAndGlyphs">NETREVISION</text>
         </svg>
 
     </div>
@@ -1216,15 +1123,48 @@ window.addEventListener("resize", () => {
     if (window.innerWidth > 700) closeMenu();
 });
 
-/* ---------- Filtres + recherche ---------- */
 
-const chips = document.querySelectorAll(".chip");
-const cards = document.querySelectorAll(".course-card");
-const searchInput = document.getElementById("search");
-const resultCount = document.getElementById("result-count");
-const emptyState = document.getElementById("empty-state");
+/* =====================================
+   DONNÉES — modifie cette liste
+   type : "fiche" ou "memo"
+   url  : chemin vers ton fichier (PDF, page…)
+===================================== */
 
-let currentFilter = "all";
+const FILES = [
+
+    /* ----- Fiches de cours ----- */
+
+    { type: "fiche", title: "Les bases des réseaux",           category: "Réseaux",          pages: 8,  url: "fichiers/fiches/bases-reseaux.pdf" },
+    { type: "fiche", title: "Modèle OSI et TCP/IP",            category: "Réseaux",          pages: 6,  url: "fichiers/fiches/osi-tcpip.pdf" },
+    { type: "fiche", title: "Adressage IP et sous-réseaux",    category: "Réseaux",          pages: 10, url: "fichiers/fiches/adressage-ip.pdf" },
+    { type: "fiche", title: "Python : variables et types",     category: "Programmation",    pages: 5,  url: "fichiers/fiches/python-variables.pdf" },
+    { type: "fiche", title: "Python : boucles et fonctions",   category: "Programmation",    pages: 7,  url: "fichiers/fiches/python-boucles.pdf" },
+    { type: "fiche", title: "HTML et CSS : les fondamentaux",  category: "Programmation",    pages: 9,  url: "fichiers/fiches/html-css.pdf" },
+    { type: "fiche", title: "SQL : SELECT, WHERE et JOIN",     category: "Bases de données", pages: 8,  url: "fichiers/fiches/sql-select.pdf" },
+    { type: "fiche", title: "Sécurité : les fondamentaux",     category: "Cybersécurité",    pages: 6,  url: "fichiers/fiches/securite-bases.pdf" },
+    { type: "fiche", title: "Chiffrement symétrique et asymétrique", category: "Cybersécurité", pages: 7, url: "fichiers/fiches/chiffrement.pdf" },
+
+    /* ----- Mémos ----- */
+
+    { type: "memo",  title: "Mémo : commandes Linux essentielles", category: "Systèmes",        pages: 2, url: "fichiers/memos/linux.pdf" },
+    { type: "memo",  title: "Mémo : masques de sous-réseau (CIDR)", category: "Réseaux",        pages: 1, url: "fichiers/memos/cidr.pdf" },
+    { type: "memo",  title: "Mémo : ports et protocoles courants",  category: "Réseaux",        pages: 1, url: "fichiers/memos/ports.pdf" },
+    { type: "memo",  title: "Mémo : syntaxe Python",                category: "Programmation",  pages: 2, url: "fichiers/memos/python.pdf" },
+    { type: "memo",  title: "Mémo : sélecteurs CSS",                category: "Programmation",  pages: 1, url: "fichiers/memos/css.pdf" },
+    { type: "memo",  title: "Mémo : requêtes SQL",                  category: "Bases de données", pages: 2, url: "fichiers/memos/sql.pdf" },
+    { type: "memo",  title: "Mémo : Git, commandes de base",        category: "Outils",         pages: 1, url: "fichiers/memos/git.pdf" }
+
+];
+
+const FOLDERS = {
+    fiches: { type: "fiche", title: "Fiches de cours", singular: "fiche", plural: "fiches" },
+    memos:  { type: "memo",  title: "Mémos",           singular: "mémo",  plural: "mémos"  }
+};
+
+
+/* =====================================
+   OUTILS
+===================================== */
 
 function normalize(text) {
     return text
@@ -1233,53 +1173,219 @@ function normalize(text) {
         .replace(/[\u0300-\u036f]/g, "");
 }
 
-function applyFilters() {
-
-    const query = normalize(searchInput.value.trim());
-    let visible = 0;
-
-    cards.forEach(card => {
-
-        const matchLevel =
-            currentFilter === "all" ||
-            card.dataset.level === currentFilter;
-
-        const matchSearch =
-            query === "" ||
-            normalize(card.textContent).includes(query);
-
-        const show = matchLevel && matchSearch;
-
-        card.classList.toggle("hidden", !show);
-
-        if (show) visible++;
-
-    });
-
-    resultCount.textContent = visible + " COURS";
-
-    emptyState.classList.toggle("show", visible === 0);
-
+function escapeHTML(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
 }
 
-chips.forEach(chip => {
+function matches(file, query) {
 
-    chip.addEventListener("click", () => {
+    if (!query) return true;
 
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
+    const kind = file.type === "fiche" ? "fiche cours" : "memo aide-memoire";
 
-        currentFilter = chip.dataset.filter;
+    const haystack = normalize(file.title + " " + file.category + " " + kind);
 
-        applyFilters();
+    return query.split(/\s+/).every(word => haystack.includes(word));
+}
 
-    });
+function plural(n, singular, pluralForm) {
+    return n + " " + (n > 1 ? pluralForm : singular);
+}
 
+function fillList(listEl, files, showType) {
+
+    listEl.innerHTML = files.map(file => {
+
+        const isMemo = file.type === "memo";
+
+        const tag = showType
+            ? '<span class="' + (isMemo ? "tag-memo" : "tag-fiche") + '">' + (isMemo ? "MÉMO" : "FICHE") + "</span>"
+            : "";
+
+        return (
+            '<li class="file-row">' +
+                '<div class="file-icon ' + (isMemo ? "memo" : "") + '" aria-hidden="true">' + (isMemo ? "📝" : "📄") + "</div>" +
+                '<div class="file-info">' +
+                    '<div class="file-title">' + escapeHTML(file.title) + "</div>" +
+                    '<div class="file-meta">' + tag +
+                        "<span>" + escapeHTML(file.category) + "</span>" +
+                        "<span>PDF · " + file.pages + " p.</span>" +
+                    "</div>" +
+                "</div>" +
+                '<a class="file-btn" href="' + escapeHTML(file.url) + '" target="_blank" rel="noopener">Ouvrir ↗</a>' +
+            "</li>"
+        );
+
+    }).join("");
+}
+
+
+/* =====================================
+   ÉLÉMENTS
+===================================== */
+
+const homeView      = document.getElementById("home-view");
+const folderView    = document.getElementById("folder-view");
+
+const globalSearch  = document.getElementById("global-search");
+const homeStatus    = document.getElementById("home-status");
+const foldersBlock  = document.getElementById("folders");
+const globalResults = document.getElementById("global-results");
+const globalList    = document.getElementById("global-list");
+const globalEmpty   = document.getElementById("global-empty");
+
+const folderSearch  = document.getElementById("folder-search");
+const folderScope   = document.getElementById("folder-scope");
+const folderStatus  = document.getElementById("folder-status");
+const folderList    = document.getElementById("folder-list");
+const folderEmpty   = document.getElementById("folder-empty");
+
+let lastFolder = null;
+
+
+/* =====================================
+   AFFICHAGE
+===================================== */
+
+function countFiles() {
+
+    const nFiches = FILES.filter(f => f.type === "fiche").length;
+    const nMemos  = FILES.filter(f => f.type === "memo").length;
+
+    document.getElementById("count-fiches").textContent = plural(nFiches, "FICHE", "FICHES");
+    document.getElementById("count-memos").textContent  = plural(nMemos, "MÉMO", "MÉMOS");
+}
+
+function renderHome() {
+
+    const raw   = globalSearch.value.trim();
+    const query = normalize(raw);
+
+    if (!query) {
+
+        foldersBlock.hidden  = false;
+        globalResults.hidden = true;
+
+        homeStatus.textContent = "";
+
+        return;
+    }
+
+    const results = FILES.filter(file => matches(file, query));
+
+    foldersBlock.hidden  = true;
+    globalResults.hidden = false;
+
+    fillList(globalList, results, true);
+
+    globalEmpty.hidden = results.length > 0;
+
+    homeStatus.textContent =
+        plural(results.length, "RÉSULTAT", "RÉSULTATS") + " POUR « " + raw.toUpperCase() + " »";
+}
+
+function renderFolder(key) {
+
+    const folder = FOLDERS[key];
+
+    const raw   = folderSearch.value.trim();
+    const query = normalize(raw);
+
+    const all     = FILES.filter(file => file.type === folder.type);
+    const visible = all.filter(file => matches(file, query));
+
+    folderSearch.placeholder = "Rechercher dans « " + folder.title + " »…";
+    folderSearch.setAttribute("aria-label", "Rechercher dans " + folder.title);
+
+    folderScope.textContent = "📁 " + folder.title.toUpperCase();
+
+    fillList(folderList, visible, false);
+
+    folderEmpty.hidden = visible.length > 0;
+
+    folderStatus.textContent = query
+        ? visible.length + " / " + plural(all.length, folder.singular.toUpperCase(), folder.plural.toUpperCase())
+        : plural(all.length, folder.singular.toUpperCase(), folder.plural.toUpperCase());
+}
+
+function currentFolder() {
+
+    const key = location.hash.replace("#", "");
+
+    return FOLDERS[key] ? key : null;
+}
+
+function render() {
+
+    const key = currentFolder();
+
+    homeView.hidden   = Boolean(key);
+    folderView.hidden = !key;
+
+    if (key !== lastFolder) {
+
+        folderSearch.value = "";
+
+        if (key) {
+            document.getElementById("catalogue").scrollIntoView();
+        }
+
+        lastFolder = key;
+    }
+
+    if (key) {
+        renderFolder(key);
+    } else {
+        renderHome();
+    }
+}
+
+
+/* =====================================
+   ÉVÉNEMENTS
+===================================== */
+
+globalSearch.addEventListener("input", renderHome);
+
+folderSearch.addEventListener("input", () => {
+
+    const key = currentFolder();
+
+    if (key) renderFolder(key);
 });
 
-searchInput.addEventListener("input", applyFilters);
+document.addEventListener("keydown", event => {
 
-applyFilters();
+    if (event.key !== "Escape") return;
+
+    if (document.activeElement === globalSearch) {
+        globalSearch.value = "";
+        renderHome();
+    }
+
+    if (document.activeElement === folderSearch) {
+        folderSearch.value = "";
+        renderFolder(currentFolder());
+    }
+});
+
+document.getElementById("back-link").addEventListener("click", event => {
+
+    event.preventDefault();
+
+    history.pushState("", document.title, location.pathname + location.search);
+
+    render();
+});
+
+window.addEventListener("hashchange", render);
+
+countFiles();
+render();
 
 </script>
 
