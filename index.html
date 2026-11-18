@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NetRevision : cours, quiz et labs pour apprendre les réseaux, la programmation et la cybersécurité.">
+<title>NetRevision — Apprends. Teste. Progresse.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Georama:wdth,wght@62.5..150,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar" aria-label="Navigation principale">
+
+    <a href="index.html" class="nav-logo">NetRevision</a>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="nav-links">
+        ☰
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="cours.html">COURS</a></li>
+        <li><a href="quizz.html">QUIZ</a></li>
+        <li><a href="#labs">LABS</a></li>
+        <li>
+            <button class="btn" type="button">SE CONNECTER</button>
+        </li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="home-hero">
+
+    <div class="hero-buble" aria-hidden="true">🫧</div>
+    <div class="hero-crash" aria-hidden="true">💥</div>
+    <div class="hero-bug" aria-hidden="true">🐛</div>
+    <div class="hero-hourglass" aria-hidden="true">⏳</div>
+
+    <p class="home-eyebrow">BIENVENUE SUR NETREVISION®</p>
+
+    <h1>
+        APPRENDS.<br>
+        <span>TESTE. PROGRESSE.</span>
+    </h1>
+
+    <p class="home-description">
+        Développe tes connaissances, entraîne-toi et avance à ton rythme.
+    </p>
+
+    <a href="cours.html" class="home-cta">EXPLORER LES COURS ↗</a>
+
+</section>
+
+
+<!-- CARTES D'APPRENTISSAGE -->
+
+<main class="learning-section" id="apprendre">
+
+    <div class="section-heading">
+        <p class="section-eyebrow">TON ESPACE D'APPRENTISSAGE</p>
+        <h2>CHOISIS TON PROCHAIN <span>DÉFI.</span></h2>
+    </div>
+
+    <div class="card-container">
+
+        <article class="card card-form-1">
+            <span class="badge">NOUVEAU</span>
+            <span class="card-number">01 / COURS</span>
+            <h3>Apprends les bases.</h3>
+            <p>Des cours pour progresser.</p>
+            <a href="cours.html" class="btn">Découvrir ↗</a>
+            <div class="card-illustration card-emoji" aria-hidden="true">🎓</div>
+        </article>
+
+        <article class="card card-form-2" id="quizz">
+            <span class="badge">NOUVEAU</span>
+            <span class="card-number">02 / QUIZ</span>
+            <h3>Teste tes connaissances.</h3>
+            <p>Mesure tes progrès.</p>
+            <a href="quizz.html" class="btn">Faire un quiz ↗</a>
+            <div class="card-illustration card-emoji" aria-hidden="true">🧠</div>
+        </article>
+
+        <article class="card card-form-3" id="labs">
+            <span class="card-number">03 / LABS</span>
+            <h3>Passe à la pratique.</h3>
+            <p>Expérimente et mets tes connaissances en application.</p>
+            <a href="#labs" class="link">Explorer les Labs ↗</a>
+            <div class="card-illustration card-emoji" aria-hidden="true">🔬</div>
+        </article>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div class="bf-scene">
+
+        <svg class="bf-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,300 V130 C30,110 70,70 45,8 C100,45 112,95 92,135 C86,152 100,168 128,166 C128,110 160,60 225,30 C212,90 250,118 292,146 C332,174 332,226 318,252 C336,236 360,196 402,186 C424,202 414,238 440,264 L1000,264 C1016,244 1004,214 1052,194 C1076,214 1084,240 1106,238 C1112,200 1134,150 1156,118 C1166,86 1182,62 1206,44 C1218,100 1262,128 1286,160 C1306,188 1300,232 1290,254 C1322,244 1334,160 1336,108 C1356,76 1384,36 1404,6 C1404,56 1440,96 1440,130 V300 Z"/>
+        </svg>
+
+        <svg class="bf-mascot" viewBox="0 0 400 330" aria-hidden="true">
+            <g class="wiggle">
+                <path class="solid" d="M200 20 C150 20 105 62 105 120 C105 160 128 182 142 208 C148 220 150 232 150 246 H250 C250 232 252 220 258 208 C272 182 295 160 295 120 C295 62 250 20 200 20 Z"/>
+                <path class="line" d="M165 262 H235 M175 284 H225"/>
+                <path class="line" d="M178 246 C170 215 160 190 185 170 C205 154 215 190 222 170 C230 150 220 140 215 128"/>
+                <path class="face" d="M150 132 Q168 118 186 132"/>
+                <path class="face" d="M214 132 Q232 118 250 132"/>
+                <path class="solid" d="M300 -10 L335 -10 L322 78 L305 78 Z" transform="rotate(14 318 34)"/>
+                <circle class="solid" cx="330" cy="108" r="14"/>
+            </g>
+            <g class="solid">
+                <path d="M70 262 L118 250 L128 296 L84 306 Z"/>
+                <path d="M282 250 L330 262 L316 306 L272 296 Z"/>
+            </g>
+        </svg>
+
+    </div>
+
+    <div class="bf-body">
+
+        <div class="bf-cols">
+
+            <nav class="bf-nav" aria-label="Navigation du pied de page">
+                <h2 class="bf-title">Navigation</h2>
+                <ul>
+                    <li><a href="cours.html">Cours</a></li>
+                    <li><a href="quizz.html">Quiz</a></li>
+                    <li><a href="#labs">Labs</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+
+            <div class="bf-hi">
+                <h2 class="bf-title">On commence ?</h2>
+                <p>Prêt à passer à la vitesse supérieure ?</p>
+                <a href="cours.html" class="bf-pill">C'est parti !</a>
+            </div>
+
+            <div class="bf-side">
+                <div class="bf-social">
+                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8S13.5 14.6 13.5 16v5h-4V9.5Z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Threads" target="_blank" rel="noopener">@</a>
+                </div>
+                <p class="bf-copy">© 2026 NetRevision®</p>
+                <a href="#" class="bf-badge">Fait avec ♥ en France</a>
+            </div>
+
+        </div>
+
+        <svg class="bf-wordmark" viewBox="0 0 1000 172" role="img" aria-label="NetRevision">
+            <text x="0" y="168" font-size="228" textLength="1000" lengthAdjust="spacingAndGlyphs">NETREVISION</text>
+        </svg>
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* ---------- Menu hamburger ---------- */
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+function closeMenu() {
+    navLinks.classList.remove("active");
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+}
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 700) closeMenu();
+});
+
+</script>
+
+</body>
+</html>
