@@ -196,7 +196,7 @@ body {
 }
 
 .hero-buble, .hero-crash, .hero-bug, .hero-hourglass,
-.hero-world, .hero-star, .hero-rocket {
+.hero-world, .hero-computer, .hero-rocket {
     position: absolute;
     color: var(--mint);
     z-index: 0;
