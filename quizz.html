@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quiz NetRevision : flashcartes, memory, QCM et textes à trous pour réviser.">
+<title>Quiz — NetRevision</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Georama:wdth,wght@62.5..150,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar" aria-label="Navigation principale">
+
+    <a href="index.html" class="nav-logo">NetRevision</a>
+
+    <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="nav-links">
+        ☰
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="cours.html">COURS</a></li>
+        <li><a href="quizz.html" class="active-page" aria-current="page">QUIZ</a></li>
+        <li><a href="index.html#labs">LABS</a></li>
+        <li>
+            <button class="btn" type="button">SE CONNECTER</button>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="page-hero">
+
+    <div class="hero-world" aria-hidden="true">🧠</div>
+    <div class="hero-star" aria-hidden="true">❓</div>
+    <div class="hero-rocket" aria-hidden="true">🎯</div>
+
+    <p class="hero-eyebrow">ENTRAÎNE-TOI</p>
+
+    <h1>TESTE TES<br><span>CONNAISSANCES.</span></h1>
+
+    <p class="hero-description">Flashcartes, memory, QCM et textes à trous.</p>
+
+</header>
+
+
+<!-- EXERCICES -->
+
+<main class="library" id="quiz">
+<div class="library-inner">
+
+    <div class="quiz-tabs" role="tablist" aria-label="Types d'exercices">
+        <button class="tab on" role="tab" aria-selected="true" data-p="flash">🃏 FLASHCARTES</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="mem">🧩 MEMORY</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="qcm">✅ QCM</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="gaps">✍️ TEXTE À TROUS</button>
+    </div>
+
+    <section class="panel" id="p-flash">
+        <div class="panel-head"><h2>Flashcartes</h2><p>CLIQUE SUR LA CARTE POUR LA RETOURNER</p></div>
+        <div class="quiz-card">
+            <button class="flash" id="fc" type="button" aria-live="polite"></button>
+            <div class="q-actions">
+                <button class="qbtn alt" id="fprev" type="button">← Précédente</button>
+                <button class="qbtn" id="fok" type="button">✅ Je savais</button>
+                <button class="qbtn" id="fko" type="button">🔁 À revoir</button>
+                <button class="qbtn alt" id="fnext" type="button">Suivante →</button>
+            </div>
+            <p class="q-info" id="finfo"></p>
+        </div>
+    </section>
+
+    <section class="panel" id="p-mem" hidden>
+        <div class="panel-head"><h2>Memory</h2><p>ASSOCIE CHAQUE PROTOCOLE À SON RÔLE</p></div>
+        <div class="quiz-card">
+            <div class="mem-grid" id="mgrid"></div>
+            <p class="q-info" id="minfo" aria-live="polite"></p>
+            <div class="q-actions"><button class="qbtn" id="mre" type="button">Rejouer</button></div>
+        </div>
+    </section>
+
+    <section class="panel" id="p-qcm" hidden>
+        <div class="panel-head"><h2>QCM</h2><p>UNE SEULE BONNE RÉPONSE PAR QUESTION</p></div>
+        <div class="quiz-card">
+            <div id="qbox"></div>
+            <p class="q-info" id="qinfo"></p>
+        </div>
+    </section>
+
+    <section class="panel" id="p-gaps" hidden>
+        <div class="panel-head"><h2>Texte à trous</h2><p>COMPLÈTE CHAQUE PHRASE</p></div>
+        <div class="quiz-card">
+            <div id="gbox"></div>
+            <div class="q-actions">
+                <button class="qbtn" id="gcheck" type="button">Vérifier</button>
+                <button class="qbtn alt" id="gredo" type="button">Recommencer</button>
+            </div>
+            <p class="q-info" id="ginfo" aria-live="polite"></p>
+        </div>
+    </section>
+
+</div>
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div class="bf-scene">
+
+        <svg class="bf-flames" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,300 V130 C30,110 70,70 45,8 C100,45 112,95 92,135 C86,152 100,168 128,166 C128,110 160,60 225,30 C212,90 250,118 292,146 C332,174 332,226 318,252 C336,236 360,196 402,186 C424,202 414,238 440,264 L1000,264 C1016,244 1004,214 1052,194 C1076,214 1084,240 1106,238 C1112,200 1134,150 1156,118 C1166,86 1182,62 1206,44 C1218,100 1262,128 1286,160 C1306,188 1300,232 1290,254 C1322,244 1334,160 1336,108 C1356,76 1384,36 1404,6 C1404,56 1440,96 1440,130 V300 Z"/>
+        </svg>
+
+        <svg class="bf-mascot" viewBox="0 0 400 330" aria-hidden="true">
+            <g class="wiggle">
+                <path class="solid" d="M200 20 C150 20 105 62 105 120 C105 160 128 182 142 208 C148 220 150 232 150 246 H250 C250 232 252 220 258 208 C272 182 295 160 295 120 C295 62 250 20 200 20 Z"/>
+                <path class="line" d="M165 262 H235 M175 284 H225"/>
+                <path class="line" d="M178 246 C170 215 160 190 185 170 C205 154 215 190 222 170 C230 150 220 140 215 128"/>
+                <path class="face" d="M150 132 Q168 118 186 132"/>
+                <path class="face" d="M214 132 Q232 118 250 132"/>
+                <path class="solid" d="M300 -10 L335 -10 L322 78 L305 78 Z" transform="rotate(14 318 34)"/>
+                <circle class="solid" cx="330" cy="108" r="14"/>
+            </g>
+            <g class="solid">
+                <path d="M70 262 L118 250 L128 296 L84 306 Z"/>
+                <path d="M282 250 L330 262 L316 306 L272 296 Z"/>
+            </g>
+        </svg>
+
+    </div>
+
+    <div class="bf-body">
+
+        <div class="bf-cols">
+
+            <nav class="bf-nav" aria-label="Navigation du pied de page">
+                <h2 class="bf-title">Navigation</h2>
+                <ul>
+                    <li><a href="cours.html">Cours</a></li>
+                    <li><a href="quizz.html">Quiz</a></li>
+                    <li><a href="index.html#labs">Labs</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+
+            <div class="bf-hi">
+                <h2 class="bf-title">On commence ?</h2>
+                <p>Prêt à passer à la vitesse supérieure ?</p>
+                <a href="cours.html" class="bf-pill">C'est parti !</a>
+            </div>
+
+            <div class="bf-side">
+                <div class="bf-social">
+                    <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8S13.5 14.6 13.5 16v5h-4V9.5Z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Threads" target="_blank" rel="noopener">@</a>
+                </div>
+                <p class="bf-copy">© 2026 NetRevision®</p>
+                <a href="#" class="bf-badge">Fait avec ♥ en France</a>
+            </div>
+
+        </div>
+
+        <svg class="bf-wordmark" viewBox="0 0 1000 172" role="img" aria-label="NetRevision">
+            <text x="0" y="168" font-size="228" textLength="1000" lengthAdjust="spacingAndGlyphs">NETREVISION</text>
+        </svg>
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* ---------- Menu hamburger ---------- */
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+function closeMenu() {
+    navLinks.classList.remove("active");
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+}
+
+menuToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 700) closeMenu();
+});
+
+
+/* =====================================
+   DONNÉES — modifie ces listes
+===================================== */
+
+const FLASH = [
+    { q: "Que signifie DNS ?", a: "Domain Name System : il traduit un nom de domaine en adresse IP." },
+    { q: "Combien de couches compte le modèle OSI ?", a: "7 couches, de la couche physique à la couche application." },
+    { q: "Quel est le port par défaut de HTTPS ?", a: "443" },
+    { q: "Que représente le masque /24 ?", a: "255.255.255.0, soit 24 bits réservés au réseau." },
+    { q: "Combien de clés utilise le chiffrement asymétrique ?", a: "Deux : une clé publique et une clé privée." },
+    { q: "À quoi sert un switch ?", a: "Il relie les appareils d'un réseau local et transmet les trames selon les adresses MAC." }
+];
+
+const MEM = [["HTTP", "Pages web"], ["DNS", "Nom → adresse IP"], ["DHCP", "Attribue les adresses IP"],
+             ["SSH", "Accès distant sécurisé"], ["FTP", "Transfert de fichiers"], ["SMTP", "Envoi de mails"]];
+
+const QCM = [
+    { q: "Combien de bits compte une adresse IPv4 ?", o: ["16", "32", "64", "128"], a: 1, e: "Une adresse IPv4 est codée sur 32 bits, soit 4 octets." },
+    { q: "Quel protocole attribue automatiquement les adresses IP ?", o: ["DNS", "FTP", "DHCP", "SMTP"], a: 2, e: "DHCP distribue les adresses IP aux machines du réseau." },
+    { q: "Quelle couche OSI gère le routage des paquets ?", o: ["Liaison", "Réseau", "Transport", "Session"], a: 1, e: "La couche 3 (Réseau) route les paquets grâce aux adresses IP." },
+    { q: "Quel port utilise SSH par défaut ?", o: ["21", "22", "25", "80"], a: 1, e: "SSH écoute sur le port 22." },
+    { q: "Quelle clé sert à chiffrer un message pour un destinataire ?", o: ["Sa clé privée", "Sa clé publique", "Ma clé privée", "Une clé symétrique"], a: 1, e: "On chiffre avec la clé publique du destinataire ; lui seul peut déchiffrer avec sa clé privée." }
+];
+
+const GAPS = [
+    { t: "Le protocole ___ traduit un nom de domaine en adresse IP.", a: ["dns"] },
+    { t: "Une adresse IPv4 est codée sur ___ bits.", a: ["32"] },
+    { t: "Le port par défaut du protocole HTTPS est le ___.", a: ["443"] },
+    { t: "Le modèle OSI comporte ___ couches.", a: ["7", "sept"] },
+    { t: "Pour un réseau /24, le masque est 255.255.255.___.", a: ["0"] }
+];
+
+const $ = s => document.querySelector(s);
+const norm = t => t.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+/* Onglets */
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => {
+        b.classList.toggle("on", b === t);
+        b.setAttribute("aria-selected", b === t);
+    });
+    document.querySelectorAll(".panel").forEach(p => p.hidden = p.id !== "p-" + t.dataset.p);
+}));
+
+/* Flashcartes */
+let fi = 0, fk = 0, fr = 0, fshow = false;
+function flash() {
+    const c = FLASH[fi];
+    $("#fc").className = "flash" + (fshow ? " back" : "");
+    $("#fc").innerHTML = `<small>${fshow ? "RÉPONSE" : "QUESTION"}</small><span>${fshow ? c.a : c.q}</span>`;
+    $("#finfo").textContent = `Carte ${fi + 1} / ${FLASH.length} · ✅ ${fk} · 🔁 ${fr}`;
+}
+function fgo(d) { fi = (fi + d + FLASH.length) % FLASH.length; fshow = false; flash(); }
+$("#fc").onclick = () => { fshow = !fshow; flash(); };
+$("#fprev").onclick = () => fgo(-1);
+$("#fnext").onclick = () => fgo(1);
+$("#fok").onclick = () => { fk++; fgo(1); };
+$("#fko").onclick = () => { fr++; fgo(1); };
+
+/* Memory */
+let mOpen = null, mLock = false, mMoves = 0, mFound = 0;
+function memInfo() {
+    $("#minfo").textContent = mFound === MEM.length
+        ? `🎉 Bravo ! Terminé en ${mMoves} coups.`
+        : `Coups : ${mMoves} · Paires : ${mFound} / ${MEM.length}`;
+}
+function memStart() {
+    mOpen = null; mLock = false; mMoves = 0; mFound = 0;
+    const cards = MEM.flatMap((p, i) => [{ i, t: p[0] }, { i, t: p[1] }]).sort(() => Math.random() - .5);
+    $("#mgrid").innerHTML = cards.map(c => `<button class="mem-card" type="button" data-i="${c.i}">${c.t}</button>`).join("");
+    memInfo();
+}
+$("#mgrid").addEventListener("click", e => {
+    const b = e.target.closest(".mem-card");
+    if (!b || mLock || b === mOpen || b.classList.contains("done")) return;
+    b.classList.add("open");
+    if (!mOpen) { mOpen = b; return; }
+    mMoves++;
+    if (mOpen.dataset.i === b.dataset.i) {
+        [mOpen, b].forEach(x => { x.classList.remove("open"); x.classList.add("done"); });
+        mFound++; mOpen = null; memInfo();
+    } else {
+        mLock = true;
+        const a = mOpen; mOpen = null; memInfo();
+        setTimeout(() => { a.classList.remove("open"); b.classList.remove("open"); mLock = false; }, 900);
+    }
+});
+$("#mre").onclick = memStart;
+
+/* QCM */
+let qi = 0, qs = 0;
+function qcm() {
+    const box = $("#qbox");
+    if (qi >= QCM.length) {
+        box.innerHTML = `<p class="qcm-q">Terminé ! Score : ${qs} / ${QCM.length}</p><div class="q-actions"><button class="qbtn" id="qre" type="button">Recommencer</button></div>`;
+        $("#qre").onclick = () => { qi = 0; qs = 0; qcm(); };
+        $("#qinfo").textContent = "";
+        return;
+    }
+    const q = QCM[qi];
+    box.innerHTML = `<p class="qcm-q">${q.q}</p>
+        <div class="opts">${q.o.map((o, i) => `<button class="opt" type="button" data-i="${i}">${o}</button>`).join("")}</div>
+        <p class="qcm-exp" id="qexp" aria-live="polite"></p>
+        <div class="q-actions" id="qnext" hidden><button class="qbtn" id="qn" type="button">${qi + 1 < QCM.length ? "Question suivante →" : "Voir mon score"}</button></div>`;
+    $("#qinfo").textContent = `Question ${qi + 1} / ${QCM.length} · Score : ${qs}`;
+    box.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+        const ok = +b.dataset.i === q.a;
+        if (ok) qs++;
+        box.querySelectorAll(".opt").forEach(x => { x.disabled = true; if (+x.dataset.i === q.a) x.classList.add("ok"); });
+        if (!ok) b.classList.add("ko");
+        $("#qexp").textContent = (ok ? "✅ Bonne réponse ! " : "❌ Raté. ") + q.e;
+        $("#qnext").hidden = false;
+        $("#qinfo").textContent = `Question ${qi + 1} / ${QCM.length} · Score : ${qs}`;
+        $("#qn").onclick = () => { qi++; qcm(); };
+    });
+}
+
+/* Texte à trous */
+function gaps() {
+    $("#gbox").innerHTML = GAPS.map((g, i) =>
+        `<p class="gap-line">${g.t.replace("___", `<input type="text" data-i="${i}" autocomplete="off" aria-label="Réponse ${i + 1}">`)}</p>`).join("");
+    $("#ginfo").textContent = "";
+}
+$("#gcheck").onclick = () => {
+    let n = 0;
+    document.querySelectorAll("#gbox input").forEach(inp => {
+        const ok = GAPS[+inp.dataset.i].a.includes(norm(inp.value));
+        inp.classList.toggle("ok", ok);
+        inp.classList.toggle("ko", !ok);
+        if (ok) n++;
+    });
+    $("#ginfo").textContent = `Score : ${n} / ${GAPS.length}` + (n === GAPS.length ? " 🎉" : "");
+};
+$("#gredo").onclick = gaps;
+
+flash(); memStart(); qcm(); gaps();
+
+</script>
+
+</body>
+</html>
