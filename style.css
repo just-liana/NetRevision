@@ -211,7 +211,7 @@ body {
 
 /* cours.html */
 .hero-world  { left: 15%;   top: 5%;  font-size: 100px; transform: rotate(-10deg); }
-.hero-computer { left: 30%; top: 55%; font-size: 80px; font-weight: bold; transform: rotate(15deg); }
+.hero-computer { left: 30%; top: 230px; font-size: 80px; font-weight: bold; transform: rotate(15deg); }
 .hero-rocket { right: 20%; top: 25%;  font-size: 160px; transform: rotate(10deg); }
 
 /* =====================================
