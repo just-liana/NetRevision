@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quiz NetRevision : flashcartes, memory, QCM et textes à trous pour réviser.">
+<meta name="description" content="Quiz NetRevision : flashcartes personnalisées, memory et textes à trous par thèmes.">
 <title>Quiz — NetRevision</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
     <ul class="nav-links" id="nav-links">
         <li><a href="cours.html">COURS</a></li>
         <li><a href="quizz.html" class="active-page" aria-current="page">QUIZ</a></li>
-        <li><a href="index.html#labs">LABS</a></li>
+        <li><a href="labs.html">LABS</a></li>
         <li>
             <button class="btn" type="button">SE CONNECTER</button>
         </li>
@@ -41,74 +41,81 @@
 
 </nav>
 
-
 <!-- HERO -->
 
 <header class="page-hero">
 
     <div class="hero-world" aria-hidden="true">🧠</div>
-    <div class="hero-computeur" aria-hidden="true">❓</div>
+    <div class="hero-computer" aria-hidden="true">❓</div>
     <div class="hero-rocket" aria-hidden="true">🎯</div>
 
     <p class="hero-eyebrow">ENTRAÎNE-TOI</p>
 
     <h1>TESTE TES<br><span>CONNAISSANCES.</span></h1>
 
-    <p class="hero-description">Flashcartes, memory, QCM et textes à trous.</p>
+    <p class="hero-description">Flashcartes, memory et textes à trous.</p>
 
 </header>
 
 
-<!-- EXERCICES -->
+<!-- QUIZ -->
 
 <main class="library" id="quiz">
 <div class="library-inner">
 
-    <div class="quiz-tabs" role="tablist" aria-label="Types d'exercices">
-        <button class="tab on" role="tab" aria-selected="true" data-p="flash">🃏 FLASHCARTES</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="mem">🧩 MEMORY</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="qcm">✅ QCM</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="gaps">✍️ TEXTE À TROUS</button>
-    </div>
-
-    <section class="panel" id="p-flash">
-        <div class="panel-head"><h2>Flashcartes</h2><p>CLIQUE SUR LA CARTE POUR LA RETOURNER</p></div>
-        <div class="quiz-card">
-            <button class="flash" id="fc" type="button" aria-live="polite"></button>
-            <div class="q-actions">
-                <button class="qbtn alt" id="fprev" type="button">← Précédente</button>
-                <button class="qbtn" id="fok" type="button">✅ Je savais</button>
-                <button class="qbtn" id="fko" type="button">🔁 À revoir</button>
-                <button class="qbtn alt" id="fnext" type="button">Suivante →</button>
-            </div>
-            <p class="q-info" id="finfo"></p>
+    <section id="qz-home" aria-label="Choisis un type de quiz">
+        <p class="divider-label">CHOISIS TON TYPE DE QUIZ</p>
+        <div class="lab-grid three">
+            <a href="#flash" class="lab-card lab-vm">
+                <div class="lab-visual" aria-hidden="true"><span class="lv-a">🃏</span><span class="lv-b">📁</span><span class="lv-c">✏️</span></div>
+                <h2>Flashcartes</h2>
+                <p class="lab-tags">Cartes · Dossiers · Personnalisé</p>
+            </a>
+            <a href="#memory" class="lab-card lab-web">
+                <div class="lab-visual" aria-hidden="true"><span class="lv-a">🧩</span><span class="lv-b">🔌</span><span class="lv-c">⌨️</span></div>
+                <h2>Memory</h2>
+                <p class="lab-tags">Paires · 16 cartes · Thèmes</p>
+            </a>
+            <a href="#gaps" class="lab-card lab-yel">
+                <div class="lab-visual" aria-hidden="true"><span class="lv-a">✍️</span><span class="lv-b">📝</span><span class="lv-c">✅</span></div>
+                <h2>Texte à trous</h2>
+                <p class="lab-tags">Phrases · Thèmes · Correction</p>
+            </a>
         </div>
     </section>
 
-    <section class="panel" id="p-mem" hidden>
-        <div class="panel-head"><h2>Memory</h2><p>ASSOCIE CHAQUE PROTOCOLE À SON RÔLE</p></div>
-        <div class="quiz-card">
+    <section class="panel" id="p-flash" hidden>
+        <a href="#" class="back-link qz-back">← Tous les quiz</a>
+        <div class="panel-head"><h2>Ton espace</h2><p>FLASHCARTES · DOSSIERS</p></div>
+        <div id="fs-root"></div>
+    </section>
+
+    <section class="panel" id="p-memory" hidden>
+        <a href="#" class="back-link qz-back">← Tous les quiz</a>
+        <div class="panel-head"><h2>Memory</h2><p id="mm-sub">CHOISIS UN THÈME</p></div>
+        <div id="mm-themes"></div>
+        <div id="mm-edit" hidden></div>
+        <div class="quiz-card" id="mm-game" hidden>
             <div class="mem-grid" id="mgrid"></div>
             <p class="q-info" id="minfo" aria-live="polite"></p>
-            <div class="q-actions"><button class="qbtn" id="mre" type="button">Rejouer</button></div>
-        </div>
-    </section>
-
-    <section class="panel" id="p-qcm" hidden>
-        <div class="panel-head"><h2>QCM</h2><p>UNE SEULE BONNE RÉPONSE PAR QUESTION</p></div>
-        <div class="quiz-card">
-            <div id="qbox"></div>
-            <p class="q-info" id="qinfo"></p>
+            <div class="q-actions">
+                <button class="qbtn" id="mre" type="button">Rejouer</button>
+                <button class="qbtn alt" id="mth" type="button">← Thèmes</button>
+            </div>
         </div>
     </section>
 
     <section class="panel" id="p-gaps" hidden>
-        <div class="panel-head"><h2>Texte à trous</h2><p>COMPLÈTE CHAQUE PHRASE</p></div>
-        <div class="quiz-card">
+        <a href="#" class="back-link qz-back">← Tous les quiz</a>
+        <div class="panel-head"><h2>Texte à trous</h2><p id="gp-sub">CHOISIS UN THÈME</p></div>
+        <div id="gp-themes"></div>
+        <div id="gp-edit" hidden></div>
+        <div class="quiz-card" id="gp-ex" hidden>
             <div id="gbox"></div>
             <div class="q-actions">
                 <button class="qbtn" id="gcheck" type="button">Vérifier</button>
                 <button class="qbtn alt" id="gredo" type="button">Recommencer</button>
+                <button class="qbtn alt" id="gback" type="button">← Thèmes</button>
             </div>
             <p class="q-info" id="ginfo" aria-live="polite"></p>
         </div>
@@ -155,7 +162,7 @@
                 <ul>
                     <li><a href="cours.html">Cours</a></li>
                     <li><a href="quizz.html">Quiz</a></li>
-                    <li><a href="index.html#labs">Labs</a></li>
+                    <li><a href="labs.html">Labs</a></li>
                     <li><a href="#">À propos</a></li>
                     <li><a href="#">Mentions légales</a></li>
                 </ul>
@@ -221,78 +228,247 @@ window.addEventListener("resize", () => {
 });
 
 
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const norm = t => t.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const shuffle = a => [...a].sort(() => Math.random() - .5);
+const store = {
+    get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+
 /* =====================================
-   DONNÉES — modifie ces listes
+   FLASHCARTES
 ===================================== */
 
-const FLASH = [
-    { q: "Que signifie DNS ?", a: "Domain Name System : il traduit un nom de domaine en adresse IP." },
-    { q: "Combien de couches compte le modèle OSI ?", a: "7 couches, de la couche physique à la couche application." },
-    { q: "Quel est le port par défaut de HTTPS ?", a: "443" },
-    { q: "Que représente le masque /24 ?", a: "255.255.255.0, soit 24 bits réservés au réseau." },
-    { q: "Combien de clés utilise le chiffrement asymétrique ?", a: "Deux : une clé publique et une clé privée." },
-    { q: "À quoi sert un switch ?", a: "Il relie les appareils d'un réseau local et transmet les trames selon les adresses MAC." }
+const FL0 = {
+    nid: 20,
+    folders: [{ id: 1, name: "Réseaux" }, { id: 2, name: "Linux" }, { id: 3, name: "Cybersécurité" }],
+    cards: [
+        { id: 1, f: 1, q: "Que signifie DNS ?", a: "Domain Name System : traduit un nom de domaine en adresse IP." },
+        { id: 2, f: 1, q: "Combien de couches compte le modèle OSI ?", a: "7 couches." },
+        { id: 3, f: 1, q: "Port par défaut de HTTPS ?", a: "443" },
+        { id: 4, f: 1, q: "Que représente le masque /24 ?", a: "255.255.255.0" },
+        { id: 5, f: 2, q: "Que fait la commande ls ?", a: "Elle liste le contenu d'un dossier." },
+        { id: 6, f: 2, q: "Que fait la commande chmod ?", a: "Elle modifie les droits d'un fichier." },
+        { id: 7, f: 2, q: "Que fait la commande grep ?", a: "Elle cherche du texte dans un fichier." },
+        { id: 8, f: 3, q: "Chiffrement asymétrique : combien de clés ?", a: "Deux : une publique et une privée." },
+        { id: 9, f: 3, q: "Que fait un pare-feu ?", a: "Il filtre le trafic réseau entrant et sortant." },
+        { id: 10, f: 3, q: "Qu'est-ce que le phishing ?", a: "Une arnaque qui imite un site ou un mail pour voler des informations." }
+    ]
+};
+
+let fl = store.get("nr-fl", null) || FL0;
+let fv = "dossiers", fcur = 0, fidx = 0, fshuf = 0, fdel = 0, fedit = 0, fsort = "recent";
+const flSave = () => store.set("nr-fl", fl);
+const plur = (n, s) => n + " " + s + (n > 1 ? "s" : "");
+
+function flCards() {
+    let l = fl.cards.filter(c => fv !== "folder" || c.f === fcur);
+    if (fshuf) l = l.slice().sort((x, y) => ((x.id * fshuf) % 97) - ((y.id * fshuf) % 97));
+    return l;
+}
+
+function studyHTML(cs) {
+    const n = cs.length;
+    if (!n) return `<div class="quiz-card"><p class="hv-empty">Aucune carte ici. Ajoute-en une ci-dessous !</p></div>`;
+    if (fidx >= n) fidx = 0;
+    return `<button class="fc" id="fc" type="button" aria-label="Retourner la carte"><div class="fc-in"><div class="fc-face">${esc(cs[fidx].q)}</div><div class="fc-face fc-back">${esc(cs[fidx].a)}</div></div></button>
+        <div class="fl-prog"><i style="width:${(fidx + 1) / n * 100}%"></i></div>
+        <div class="fl-bar"><button class="qbtn sm alt" id="fl-prev" type="button" aria-label="Carte précédente">←</button><span>${fidx + 1} / ${n}</span><button class="qbtn sm alt" id="fl-next" type="button" aria-label="Carte suivante">→</button><button class="qbtn sm" id="fl-shuf" type="button">🔀 Mélanger</button></div>`;
+}
+
+function addHTML() {
+    const sel = fv === "folder" ? "" : `<select id="fs-sel" aria-label="Dossier">${fl.folders.map(f => `<option value="${f.id}">${esc(f.name)}</option>`).join("")}</select>`;
+    return `<div class="fs-banner fs-add"><b>＋</b><input id="fs-q" maxlength="120" placeholder="Terme ou question" aria-label="Terme ou question"><input id="fs-a" maxlength="200" placeholder="Définition ou réponse" aria-label="Définition ou réponse">${sel}<button class="qbtn sm" id="fs-addc" type="button">Ajouter</button></div><p class="q-info" id="fs-msg" aria-live="polite"></p>`;
+}
+
+function listHTML(cs) {
+    return `<ul class="fl-list">${cs.map(c => c.id === fedit
+        ? `<li class="fl-edit"><input id="fe-q" maxlength="120" value="${esc(c.q)}" aria-label="Terme ou question"><input id="fe-a" maxlength="200" value="${esc(c.a)}" aria-label="Définition ou réponse"><button class="qbtn sm" data-fsave="${c.id}" type="button">Enregistrer</button><button class="qbtn sm alt" data-fcancel="1" type="button">Annuler</button><span class="fe-msg" id="fe-msg" aria-live="polite"></span></li>`
+        : `<li><div><b>${esc(c.q)}</b>${esc(c.a)}</div><button class="fl-pen" data-ecard="${c.id}" type="button" aria-label="Modifier la carte" title="Modifier">✏️</button><button data-del="${c.id}" type="button" aria-label="Supprimer la carte">🗑</button></li>`).join("")}</ul>`;
+}
+
+function saveEdit() {
+    const c = fl.cards.find(x => x.id === fedit), q = $("#fe-q").value.trim(), a = $("#fe-a").value.trim();
+    if (!q || !a) { $("#fe-msg").textContent = "Le terme et la définition ne peuvent pas être vides."; return false; }
+    c.q = q; c.a = a; fedit = 0; flSave();
+    return true;
+}
+
+function flRender() {
+    const root = $("#fs-root");
+    if (fv === "folder") {
+        const f = fl.folders.find(x => x.id === fcur);
+        if (!f) { fv = "dossiers"; flRender(); return; }
+        const cs = flCards();
+        root.innerHTML = `<a href="#" class="back-link qz-back" id="fs-back">← Mes dossiers</a>
+            <h3 class="fs-sub">📁 ${esc(f.name)} <small>${plur(cs.length, "carte")}</small></h3>` + studyHTML(cs) + addHTML() + listHTML(cs);
+        return;
+    }
+    const pills = `<div class="fs-pills"><button class="tab ${fv === "dossiers" ? "on" : ""}" data-v="dossiers" type="button">📁 Dossiers</button><button class="tab ${fv === "all" ? "on" : ""}" data-v="all" type="button">🃏 Toutes les cartes</button></div>`;
+    if (fv === "all") {
+        const cs = flCards();
+        root.innerHTML = pills + studyHTML(cs) + addHTML() + listHTML(cs);
+        return;
+    }
+    const fs = fl.folders.slice().sort((x, y) => fsort === "az" ? x.name.localeCompare(y.name) : y.id - x.id);
+    root.innerHTML = pills +
+        `<div class="fs-banner"><b>📁</b><input id="fs-newf" maxlength="24" placeholder="Crée un dossier pour organiser tes flashcartes" aria-label="Nom du nouveau dossier"><button class="qbtn sm" id="fs-newbtn" type="button">Créer</button></div>
+         <div class="fs-sort"><button id="fs-sort" type="button">Trier : ${fsort === "az" ? "A → Z" : "plus récents"} ⇅</button></div>` +
+        (fs.length ? `<ul class="fs-list">${fs.map(f => `<li class="fs-row"><button class="fs-open" data-open="${f.id}" type="button"><span class="fs-ico">📁</span><span><strong>${esc(f.name)}</strong><small>Dossier · ${plur(fl.cards.filter(c => c.f === f.id).length, "carte")}</small></span></button><button class="fs-del" data-delf="${f.id}" type="button" aria-label="Supprimer le dossier">${fdel === f.id ? "Confirmer ?" : "🗑"}</button></li>`).join("")}</ul>`
+            : `<p class="hv-empty">Aucun dossier pour le moment.</p>`);
+}
+
+function addCard() {
+    const q = $("#fs-q").value.trim(), a = $("#fs-a").value.trim();
+    const f = fv === "folder" ? fcur : +($("#fs-sel") || {}).value;
+    if (!f) { $("#fs-msg").textContent = "Crée d'abord un dossier."; return; }
+    if (!q || !a) { $("#fs-msg").textContent = "Remplis le terme et la définition."; return; }
+    fl.cards.push({ id: fl.nid++, f, q, a }); flSave(); flRender();
+    $("#fs-msg").textContent = "✅ Carte ajoutée.";
+}
+
+function addFolder() {
+    const n = $("#fs-newf").value.trim();
+    if (!n) return;
+    fl.folders.push({ id: fl.nid++, name: n }); flSave(); flRender();
+}
+
+$("#fs-root").addEventListener("click", e => {
+    const t = e.target;
+    const pill = t.closest("[data-v]"), open = t.closest("[data-open]"), df = t.closest("[data-delf]"), dc = t.closest("[data-del]"), ec = t.closest("[data-ecard]");
+    if (pill) { fv = pill.dataset.v; fidx = 0; fshuf = 0; fedit = 0; }
+    else if (open) { fv = "folder"; fcur = +open.dataset.open; fidx = 0; fshuf = 0; fedit = 0; }
+    else if (t.closest("#fs-back")) { e.preventDefault(); e.stopPropagation(); fv = "dossiers"; fidx = 0; fshuf = 0; fedit = 0; }
+    else if (t.closest("#fs-sort")) fsort = fsort === "az" ? "recent" : "az";
+    else if (t.closest("#fs-newbtn")) { addFolder(); return; }
+    else if (t.closest("#fs-addc")) { addCard(); return; }
+    else if (df) {
+        const id = +df.dataset.delf;
+        if (fdel !== id) fdel = id;
+        else { fl.folders = fl.folders.filter(f => f.id !== id); fl.cards = fl.cards.filter(c => c.f !== id); fdel = 0; flSave(); }
+    }
+    else if (ec) fedit = +ec.dataset.ecard;
+    else if (t.closest("[data-fcancel]")) fedit = 0;
+    else if (t.closest("[data-fsave]")) { if (!saveEdit()) return; }
+    else if (dc) { fl.cards = fl.cards.filter(c => c.id !== +dc.dataset.del); flSave(); }
+    else if (t.closest("#fc")) { $("#fc").classList.toggle("flip"); return; }
+    else if (t.id === "fl-prev" || t.id === "fl-next") { const n = flCards().length; fidx = (fidx + (t.id === "fl-next" ? 1 : -1) + n) % n; }
+    else if (t.id === "fl-shuf") { fshuf = 1 + Math.floor(Math.random() * 1000); fidx = 0; }
+    else return;
+    if (!df) fdel = 0;
+    flRender();
+});
+
+$("#fs-root").addEventListener("keydown", e => {
+    const id = e.target.id;
+    if (e.key === "Escape" && (id === "fe-q" || id === "fe-a")) { fedit = 0; flRender(); return; }
+    if (e.key !== "Enter") return;
+    if (id === "fs-newf") addFolder();
+    if (id === "fs-q" || id === "fs-a") addCard();
+    if ((id === "fe-q" || id === "fe-a") && saveEdit()) flRender();
+});
+
+
+/* =====================================
+   MEMORY (8 paires = 16 cartes par grille)
+===================================== */
+
+const MEM0 = [
+    { n: "Ports d'écoute", e: "🔌", p: [["22", "SSH"], ["80", "HTTP"], ["443", "HTTPS"], ["53", "DNS"], ["25", "SMTP"], ["21", "FTP"], ["3306", "MySQL"], ["3389", "RDP"]] },
+    { n: "Protocoles et fonctions", e: "📡", p: [["DHCP", "Attribue les IP"], ["ARP", "IP → adresse MAC"], ["ICMP", "Ping et diagnostic"], ["TCP", "Transport fiable"], ["UDP", "Transport rapide"], ["NAT", "Traduit les adresses"], ["VLAN", "Réseau virtuel"], ["VPN", "Tunnel chiffré"]] },
+    { n: "Commandes Linux", e: "🐧", p: [["ls", "Liste les fichiers"], ["cd", "Change de dossier"], ["pwd", "Dossier actuel"], ["chmod", "Modifie les droits"], ["grep", "Cherche du texte"], ["ps", "Liste les processus"], ["sudo", "Mode administrateur"], ["cat", "Affiche un fichier"]] },
+    { n: "Cybersécurité", e: "🛡️", p: [["Phishing", "Hameçonnage"], ["Pare-feu", "Filtre le trafic"], ["2FA", "Double authentification"], ["Hash", "Empreinte irréversible"], ["AES", "Chiffrement symétrique"], ["RSA", "Chiffrement asymétrique"], ["DDoS", "Attaque par saturation"], ["TLS", "Chiffre les échanges web"]] }
 ];
 
-const MEM = [["HTTP", "Pages web"], ["DNS", "Nom → adresse IP"], ["DHCP", "Attribue les adresses IP"],
-             ["SSH", "Accès distant sécurisé"], ["FTP", "Transfert de fichiers"], ["SMTP", "Envoi de mails"]];
+let MEMT = store.get("nr-mem", null) || MEM0;
+const memSave = () => store.set("nr-mem", MEMT);
 
-const QCM = [
-    { q: "Combien de bits compte une adresse IPv4 ?", o: ["16", "32", "64", "128"], a: 1, e: "Une adresse IPv4 est codée sur 32 bits, soit 4 octets." },
-    { q: "Quel protocole attribue automatiquement les adresses IP ?", o: ["DNS", "FTP", "DHCP", "SMTP"], a: 2, e: "DHCP distribue les adresses IP aux machines du réseau." },
-    { q: "Quelle couche OSI gère le routage des paquets ?", o: ["Liaison", "Réseau", "Transport", "Session"], a: 1, e: "La couche 3 (Réseau) route les paquets grâce aux adresses IP." },
-    { q: "Quel port utilise SSH par défaut ?", o: ["21", "22", "25", "80"], a: 1, e: "SSH écoute sur le port 22." },
-    { q: "Quelle clé sert à chiffrer un message pour un destinataire ?", o: ["Sa clé privée", "Sa clé publique", "Ma clé privée", "Une clé symétrique"], a: 1, e: "On chiffre avec la clé publique du destinataire ; lui seul peut déchiffrer avec sa clé privée." }
-];
+let mOpen = null, mLock = false, mMoves = 0, mFound = 0, mTotal = 0, mTheme = "rand";
 
-const GAPS = [
-    { t: "Le protocole ___ traduit un nom de domaine en adresse IP.", a: ["dns"] },
-    { t: "Une adresse IPv4 est codée sur ___ bits.", a: ["32"] },
-    { t: "Le port par défaut du protocole HTTPS est le ___.", a: ["443"] },
-    { t: "Le modèle OSI comporte ___ couches.", a: ["7", "sept"] },
-    { t: "Pour un réseau /24, le masque est 255.255.255.___.", a: ["0"] }
-];
-
-const $ = s => document.querySelector(s);
-const norm = t => t.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-/* Onglets */
-document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(b => {
-        b.classList.toggle("on", b === t);
-        b.setAttribute("aria-selected", b === t);
-    });
-    document.querySelectorAll(".panel").forEach(p => p.hidden = p.id !== "p-" + t.dataset.p);
-}));
-
-/* Flashcartes */
-let fi = 0, fk = 0, fr = 0, fshow = false;
-function flash() {
-    const c = FLASH[fi];
-    $("#fc").className = "flash" + (fshow ? " back" : "");
-    $("#fc").innerHTML = `<small>${fshow ? "RÉPONSE" : "QUESTION"}</small><span>${fshow ? c.a : c.q}</span>`;
-    $("#finfo").textContent = `Carte ${fi + 1} / ${FLASH.length} · ✅ ${fk} · 🔁 ${fr}`;
+function mmThemes() {
+    ed = null;
+    $("#mm-game").hidden = true; $("#mm-edit").hidden = true; $("#mm-themes").hidden = false; $("#mm-sub").textContent = "CHOISIS UN THÈME";
+    $("#mm-themes").innerHTML = `<div class="theme-grid"><button class="theme rand" data-t="rand" type="button"><b>🎲</b><strong>Aléatoire</strong><small>PIOCHE DANS TOUS LES DOSSIERS · 16 CARTES</small></button>` +
+        MEMT.map((t, i) => `<div class="theme-wrap"><button class="theme" data-t="${i}" type="button"><b>${esc(t.e)}</b><strong>${esc(t.n)}</strong><small>${t.p.length * 2} CARTES${t.p.length < 8 ? " · MIN. 16" : ""}</small></button><button class="theme-edit" data-edit="${i}" type="button" aria-label="Modifier le thème ${esc(t.n)}" title="Modifier">✏️</button></div>`).join("") +
+        `<button class="theme new" data-new="1" type="button"><b>＋</b><strong>Créer un thème</strong><small>TES PROPRES CARTES</small></button></div>`;
 }
-function fgo(d) { fi = (fi + d + FLASH.length) % FLASH.length; fshow = false; flash(); }
-$("#fc").onclick = () => { fshow = !fshow; flash(); };
-$("#fprev").onclick = () => fgo(-1);
-$("#fnext").onclick = () => fgo(1);
-$("#fok").onclick = () => { fk++; fgo(1); };
-$("#fko").onclick = () => { fr++; fgo(1); };
 
-/* Memory */
-let mOpen = null, mLock = false, mMoves = 0, mFound = 0;
-function memInfo() {
-    $("#minfo").textContent = mFound === MEM.length
-        ? `🎉 Bravo ! Terminé en ${mMoves} coups.`
-        : `Coups : ${mMoves} · Paires : ${mFound} / ${MEM.length}`;
+function memPairs(t) {
+    if (t !== "rand") return MEMT[+t].p;
+    const pools = MEMT.map(x => shuffle(x.p)), out = [];
+    for (let k = 0; out.length < 8 && pools.some(p => p.length > k); k++) pools.forEach(p => { if (out.length < 8 && p[k]) out.push(p[k]); });
+    return out;
 }
-function memStart() {
-    mOpen = null; mLock = false; mMoves = 0; mFound = 0;
-    const cards = MEM.flatMap((p, i) => [{ i, t: p[0] }, { i, t: p[1] }]).sort(() => Math.random() - .5);
-    $("#mgrid").innerHTML = cards.map(c => `<button class="mem-card" type="button" data-i="${c.i}">${c.t}</button>`).join("");
-    memInfo();
+
+/* Création et modification des thèmes */
+let ed = null;
+
+function mmEditRender() {
+    $("#mm-themes").hidden = true; $("#mm-game").hidden = true; $("#mm-edit").hidden = false;
+    $("#mm-sub").textContent = ed.i === -1 ? "NOUVEAU THÈME" : "MODIFIER LE THÈME";
+    $("#mm-edit").innerHTML = `<div class="quiz-card"><div class="fld-grid"><label>Nom du thème<input id="ed-name" maxlength="30" value="${esc(ed.name)}"></label><label>Emoji<input id="ed-emo" maxlength="4" value="${esc(ed.e)}"></label></div>
+        <h3 class="ed-h">Paires de cartes <small>${ed.p.length} PAIRES · ${ed.p.length * 2} CARTES (MINIMUM 16)</small></h3>
+        <div class="ed-rows">${ed.p.map((x, k) => `<div class="ed-row"><input data-k="${k}" data-s="0" value="${esc(x[0])}" placeholder="Terme" aria-label="Terme ${k + 1}"><span>↔</span><input data-k="${k}" data-s="1" value="${esc(x[1])}" placeholder="Définition" aria-label="Définition ${k + 1}"><button data-rm="${k}" type="button" aria-label="Supprimer la paire">🗑</button></div>`).join("")}</div>
+        <p class="q-info" id="ed-msg" aria-live="polite"></p>
+        <div class="q-actions"><button class="qbtn sm alt" id="ed-add" type="button">＋ Ajouter une paire</button><button class="qbtn" id="ed-save" type="button">Enregistrer</button><button class="qbtn alt" id="ed-cancel" type="button">Annuler</button>${ed.i === -1 ? "" : `<button class="qbtn sm" id="ed-del" type="button">${ed.del ? "Confirmer la suppression ?" : "🗑 Supprimer le thème"}</button>`}</div></div>`;
 }
+
+function edSync() {
+    ed.name = $("#ed-name").value; ed.e = $("#ed-emo").value;
+    document.querySelectorAll("#mm-edit [data-k]").forEach(inp => { ed.p[+inp.dataset.k][+inp.dataset.s] = inp.value; });
+}
+
+$("#mm-edit").addEventListener("click", e => {
+    const t = e.target, rm = t.closest("[data-rm]");
+    if (rm) { edSync(); ed.p.splice(+rm.dataset.rm, 1); mmEditRender(); }
+    else if (t.id === "ed-add") {
+        edSync(); ed.p.push(["", ""]); mmEditRender();
+        const last = document.querySelector('#mm-edit [data-k="' + (ed.p.length - 1) + '"]'); if (last) last.focus();
+    }
+    else if (t.id === "ed-cancel") mmThemes();
+    else if (t.id === "ed-del") {
+        edSync();
+        if (!ed.del) { ed.del = true; mmEditRender(); }
+        else { MEMT.splice(ed.i, 1); memSave(); mmThemes(); }
+    }
+    else if (t.id === "ed-save") {
+        edSync();
+        const p = ed.p.map(x => [x[0].trim(), x[1].trim()]).filter(x => x[0] && x[1]);
+        if (!ed.name.trim()) { $("#ed-msg").textContent = "Donne un nom au thème."; return; }
+        if (!p.length) { $("#ed-msg").textContent = "Ajoute au moins une paire complète."; return; }
+        const th = { n: ed.name.trim(), e: ed.e.trim() || "🧩", p };
+        if (ed.i === -1) MEMT.push(th); else MEMT[ed.i] = th;
+        memSave(); mmThemes();
+    }
+});
+
+function mmInfo() {
+    $("#minfo").textContent = mFound === mTotal ? `🎉 Bravo ! Terminé en ${mMoves} coups.` : `Coups : ${mMoves} · Paires : ${mFound} / ${mTotal}`;
+}
+
+function mmStart(t) {
+    mTheme = t;
+    const pairs = memPairs(t);
+    if (pairs.length < 8) { $("#mm-sub").textContent = "IL FAUT AU MOINS 8 PAIRES (16 CARTES) POUR JOUER"; return; }
+    mOpen = null; mLock = false; mMoves = 0; mFound = 0; mTotal = pairs.length;
+    $("#mm-themes").hidden = true; $("#mm-game").hidden = false;
+    $("#mm-sub").textContent = "THÈME : " + (t === "rand" ? "ALÉATOIRE" : MEMT[+t].n.toUpperCase());
+    $("#mgrid").innerHTML = shuffle(pairs.flatMap((p, i) => [{ i, t: p[0] }, { i, t: p[1] }]))
+        .map(c => `<button class="mem-card" type="button" data-i="${c.i}">${esc(c.t)}</button>`).join("");
+    mmInfo();
+}
+
+$("#mm-themes").onclick = e => {
+    const ed_ = e.target.closest("[data-edit]"), nw = e.target.closest("[data-new]"), b = e.target.closest("[data-t]");
+    if (ed_) { const i = +ed_.dataset.edit; ed = { i, name: MEMT[i].n, e: MEMT[i].e, p: MEMT[i].p.map(x => x.slice()), del: false }; mmEditRender(); }
+    else if (nw) { ed = { i: -1, name: "", e: "🧩", p: Array.from({ length: 8 }, () => ["", ""]) }; mmEditRender(); }
+    else if (b) mmStart(b.dataset.t);
+};
+$("#mre").onclick = () => mmStart(mTheme);
+$("#mth").onclick = mmThemes;
+
 $("#mgrid").addEventListener("click", e => {
     const b = e.target.closest(".mem-card");
     if (!b || mLock || b === mOpen || b.classList.contains("done")) return;
@@ -301,62 +477,151 @@ $("#mgrid").addEventListener("click", e => {
     mMoves++;
     if (mOpen.dataset.i === b.dataset.i) {
         [mOpen, b].forEach(x => { x.classList.remove("open"); x.classList.add("done"); });
-        mFound++; mOpen = null; memInfo();
+        mFound++; mOpen = null; mmInfo();
     } else {
         mLock = true;
-        const a = mOpen; mOpen = null; memInfo();
+        const a = mOpen; mOpen = null; mmInfo();
         setTimeout(() => { a.classList.remove("open"); b.classList.remove("open"); mLock = false; }, 900);
     }
 });
-$("#mre").onclick = memStart;
 
-/* QCM */
-let qi = 0, qs = 0;
-function qcm() {
-    const box = $("#qbox");
-    if (qi >= QCM.length) {
-        box.innerHTML = `<p class="qcm-q">Terminé ! Score : ${qs} / ${QCM.length}</p><div class="q-actions"><button class="qbtn" id="qre" type="button">Recommencer</button></div>`;
-        $("#qre").onclick = () => { qi = 0; qs = 0; qcm(); };
-        $("#qinfo").textContent = "";
-        return;
-    }
-    const q = QCM[qi];
-    box.innerHTML = `<p class="qcm-q">${q.q}</p>
-        <div class="opts">${q.o.map((o, i) => `<button class="opt" type="button" data-i="${i}">${o}</button>`).join("")}</div>
-        <p class="qcm-exp" id="qexp" aria-live="polite"></p>
-        <div class="q-actions" id="qnext" hidden><button class="qbtn" id="qn" type="button">${qi + 1 < QCM.length ? "Question suivante →" : "Voir mon score"}</button></div>`;
-    $("#qinfo").textContent = `Question ${qi + 1} / ${QCM.length} · Score : ${qs}`;
-    box.querySelectorAll(".opt").forEach(b => b.onclick = () => {
-        const ok = +b.dataset.i === q.a;
-        if (ok) qs++;
-        box.querySelectorAll(".opt").forEach(x => { x.disabled = true; if (+x.dataset.i === q.a) x.classList.add("ok"); });
-        if (!ok) b.classList.add("ko");
-        $("#qexp").textContent = (ok ? "✅ Bonne réponse ! " : "❌ Raté. ") + q.e;
-        $("#qnext").hidden = false;
-        $("#qinfo").textContent = `Question ${qi + 1} / ${QCM.length} · Score : ${qs}`;
-        $("#qn").onclick = () => { qi++; qcm(); };
-    });
+
+/* =====================================
+   TEXTE À TROUS
+===================================== */
+
+const GAP0 = [
+    { n: "Réseaux", e: "🌐", s: [
+        { t: "Le protocole ___ traduit un nom de domaine en adresse IP.", a: ["dns"] },
+        { t: "Une adresse IPv4 est codée sur ___ bits.", a: ["32"] },
+        { t: "Le port par défaut du protocole HTTPS est le ___.", a: ["443"] },
+        { t: "Le modèle OSI comporte ___ couches.", a: ["7", "sept"] },
+        { t: "Le protocole ___ attribue automatiquement les adresses IP.", a: ["dhcp"] } ] },
+    { n: "Linux", e: "🐧", s: [
+        { t: "La commande ___ affiche le contenu d'un dossier.", a: ["ls"] },
+        { t: "Pour changer de dossier, on utilise la commande ___.", a: ["cd"] },
+        { t: "La commande ___ modifie les droits d'un fichier.", a: ["chmod"] },
+        { t: "La commande ___ cherche du texte dans un fichier.", a: ["grep"] },
+        { t: "Le dossier personnel de l'administrateur s'appelle /___.", a: ["root"] } ] },
+    { n: "Cybersécurité", e: "🛡️", s: [
+        { t: "Un ___ filtre le trafic entrant et sortant d'un réseau.", a: ["pare-feu", "parefeu", "firewall"] },
+        { t: "Le chiffrement ___ utilise une clé publique et une clé privée.", a: ["asymétrique"] },
+        { t: "Le ___ imite un site ou un mail pour voler des informations.", a: ["phishing", "hameçonnage"] },
+        { t: "Une attaque ___ sature un serveur de requêtes.", a: ["ddos"] },
+        { t: "La double authentification s'abrège en ___.", a: ["2fa"] } ] },
+    { n: "Développement web", e: "💻", s: [
+        { t: "HTML signifie HyperText ___ Language.", a: ["markup"] },
+        { t: "On utilise le langage ___ pour mettre en forme une page web.", a: ["css"] },
+        { t: "La balise ___ sert à créer un lien.", a: ["a"] },
+        { t: "Le langage ___ rend une page web interactive.", a: ["javascript", "js"] },
+        { t: "La balise ___ affiche une image.", a: ["img"] } ] }
+];
+
+let GAPT = store.get("nr-gap", null) || GAP0;
+const gapSave = () => store.set("nr-gap", GAPT);
+
+let gt = null, ge = null;
+
+function gpThemes() {
+    ge = null;
+    $("#gp-ex").hidden = true; $("#gp-edit").hidden = true; $("#gp-themes").hidden = false; $("#gp-sub").textContent = "CHOISIS UN THÈME";
+    $("#gp-themes").innerHTML = `<div class="theme-grid">` + GAPT.map((t, i) =>
+        `<div class="theme-wrap"><button class="theme" data-t="${i}" type="button"><b>${esc(t.e)}</b><strong>${esc(t.n)}</strong><small>${t.s.length} PHRASES</small></button><button class="theme-edit" data-edit="${i}" type="button" aria-label="Modifier le thème ${esc(t.n)}" title="Modifier">✏️</button></div>`).join("") +
+        `<button class="theme new" data-new="1" type="button"><b>＋</b><strong>Créer un thème</strong><small>TES PROPRES PHRASES</small></button></div>`;
 }
 
-/* Texte à trous */
-function gaps() {
-    $("#gbox").innerHTML = GAPS.map((g, i) =>
-        `<p class="gap-line">${g.t.replace("___", `<input type="text" data-i="${i}" autocomplete="off" aria-label="Réponse ${i + 1}">`)}</p>`).join("");
+/* Création et modification des thèmes */
+function geRender() {
+    $("#gp-themes").hidden = true; $("#gp-ex").hidden = true; $("#gp-edit").hidden = false;
+    $("#gp-sub").textContent = ge.i === -1 ? "NOUVEAU THÈME" : "MODIFIER LE THÈME";
+    $("#gp-edit").innerHTML = `<div class="quiz-card"><div class="fld-grid"><label>Nom du thème<input id="ge-name" maxlength="30" value="${esc(ge.name)}"></label><label>Emoji<input id="ge-emo" maxlength="4" value="${esc(ge.e)}"></label></div>
+        <h3 class="ed-h">Phrases <small>ÉCRIS ___ À LA PLACE DU MOT MANQUANT (UN TROU PAR PHRASE) · PLUSIEURS RÉPONSES : SÉPARE-LES PAR /</small></h3>
+        <div class="ed-rows">${ge.s.map((x, k) => `<div class="ed-row ed-gap"><input data-k="${k}" data-s="0" value="${esc(x[0])}" placeholder="Ex : Le port de HTTPS est le ___." aria-label="Phrase ${k + 1}"><input data-k="${k}" data-s="1" value="${esc(x[1])}" placeholder="Réponse" aria-label="Réponse ${k + 1}"><button data-rm="${k}" type="button" aria-label="Supprimer la phrase">🗑</button></div>`).join("")}</div>
+        <p class="q-info" id="ge-msg" aria-live="polite"></p>
+        <div class="q-actions"><button class="qbtn sm alt" id="ge-add" type="button">＋ Ajouter une phrase</button><button class="qbtn" id="ge-save" type="button">Enregistrer</button><button class="qbtn alt" id="ge-cancel" type="button">Annuler</button>${ge.i === -1 ? "" : `<button class="qbtn sm" id="ge-del" type="button">${ge.del ? "Confirmer la suppression ?" : "🗑 Supprimer le thème"}</button>`}</div></div>`;
+}
+
+function geSync() {
+    ge.name = $("#ge-name").value; ge.e = $("#ge-emo").value;
+    document.querySelectorAll("#gp-edit [data-k]").forEach(inp => { ge.s[+inp.dataset.k][+inp.dataset.s] = inp.value; });
+}
+
+$("#gp-edit").addEventListener("click", e => {
+    const t = e.target, rm = t.closest("[data-rm]");
+    if (rm) { geSync(); ge.s.splice(+rm.dataset.rm, 1); geRender(); }
+    else if (t.id === "ge-add") {
+        geSync(); ge.s.push(["", ""]); geRender();
+        const last = document.querySelector('#gp-edit [data-k="' + (ge.s.length - 1) + '"]'); if (last) last.focus();
+    }
+    else if (t.id === "ge-cancel") gpThemes();
+    else if (t.id === "ge-del") {
+        geSync();
+        if (!ge.del) { ge.del = true; geRender(); }
+        else { GAPT.splice(ge.i, 1); gapSave(); gpThemes(); }
+    }
+    else if (t.id === "ge-save") {
+        geSync();
+        const rows = ge.s.map(x => [x[0].trim(), x[1].trim()]).filter(x => x[0] || x[1]);
+        if (!ge.name.trim()) { $("#ge-msg").textContent = "Donne un nom au thème."; return; }
+        if (!rows.length) { $("#ge-msg").textContent = "Ajoute au moins une phrase."; return; }
+        const bad = rows.findIndex(x => x[0].split("___").length !== 2 || !x[1].split("/").some(a => a.trim()));
+        if (bad >= 0) { $("#ge-msg").textContent = "Phrase " + (bad + 1) + " : il faut un seul ___ et au moins une réponse."; return; }
+        const th = { n: ge.name.trim(), e: ge.e.trim() || "📝", s: rows.map(x => ({ t: x[0], a: x[1].split("/").map(a => a.trim()).filter(Boolean) })) };
+        if (ge.i === -1) GAPT.push(th); else GAPT[ge.i] = th;
+        gapSave(); gpThemes();
+    }
+});
+
+function gpStart(i) {
+    gt = GAPT[+i];
+    $("#gp-themes").hidden = true; $("#gp-ex").hidden = false; $("#gp-sub").textContent = "THÈME : " + gt.n.toUpperCase();
+    $("#gbox").innerHTML = gt.s.map((g, j) => `<p class="gap-line">${g.t.replace("___", `<input type="text" data-i="${j}" autocomplete="off" aria-label="Réponse ${j + 1}">`)}</p>`).join("");
     $("#ginfo").textContent = "";
 }
+
+$("#gp-themes").onclick = e => {
+    const ed_ = e.target.closest("[data-edit]"), nw = e.target.closest("[data-new]"), b = e.target.closest("[data-t]");
+    if (ed_) { const i = +ed_.dataset.edit; ge = { i, name: GAPT[i].n, e: GAPT[i].e, s: GAPT[i].s.map(x => [x.t, x.a.join(" / ")]), del: false }; geRender(); }
+    else if (nw) { ge = { i: -1, name: "", e: "📝", s: Array.from({ length: 5 }, () => ["", ""]), del: false }; geRender(); }
+    else if (b) gpStart(b.dataset.t);
+};
+$("#gredo").onclick = () => gpStart(GAPT.indexOf(gt));
+$("#gback").onclick = gpThemes;
+
 $("#gcheck").onclick = () => {
     let n = 0;
     document.querySelectorAll("#gbox input").forEach(inp => {
-        const ok = GAPS[+inp.dataset.i].a.includes(norm(inp.value));
-        inp.classList.toggle("ok", ok);
-        inp.classList.toggle("ko", !ok);
+        const ok = gt.s[+inp.dataset.i].a.map(norm).includes(norm(inp.value));
+        inp.classList.toggle("ok", ok); inp.classList.toggle("ko", !ok);
         if (ok) n++;
     });
-    $("#ginfo").textContent = `Score : ${n} / ${GAPS.length}` + (n === GAPS.length ? " 🎉" : "");
+    $("#ginfo").textContent = `Score : ${n} / ${gt.s.length}` + (n === gt.s.length ? " 🎉" : "");
 };
-$("#gredo").onclick = gaps;
 
-flash(); memStart(); qcm(); gaps();
+
+/* =====================================
+   NAVIGATION ENTRE LES TYPES DE QUIZ
+===================================== */
+
+function route() {
+    const k = location.hash.replace("#", "");
+    const ok = ["flash", "memory", "gaps"].includes(k);
+    $("#qz-home").hidden = ok;
+    ["flash", "memory", "gaps"].forEach(x => { $("#p-" + x).hidden = x !== k; });
+    if (!ok) return;
+    if (k === "memory") mmThemes();
+    if (k === "gaps") gpThemes();
+    $("#quiz").scrollIntoView();
+}
+
+document.querySelectorAll(".panel > .qz-back").forEach(a => a.addEventListener("click", e => {
+    e.preventDefault();
+    history.pushState("", document.title, location.pathname + location.search);
+    route();
+}));
+window.addEventListener("hashchange", route);
+
+flRender(); route();
 
 </script>
 
